@@ -1,3 +1,5 @@
+# Specific files
+bottle.py
 *.csv
 .vscode/*
 
@@ -124,4 +126,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-bottle.py
+.DS_Store
