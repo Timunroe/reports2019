@@ -1,0 +1,69 @@
+Daily site csv file headers:
+
+['Date',
+ 'Posts',
+ 'New Posts',
+ 'Visitors',
+ 'Views',
+ 'Engaged minutes',
+ 'Social interactions',
+ 'Fb interactions',
+ 'Tw interactions',
+ 'Pi interactions',
+ 'Desktop views',
+ 'Mobile views',
+ 'Tablet views',
+ 'Search refs',
+ 'Internal refs',
+ 'Other refs',
+ 'Direct refs',
+ 'Social refs',
+ 'Fb refs',
+ 'Tw refs',
+ 'Pi refs',
+ 'Channel vis.',
+ 'New vis.',
+ 'Views new vis.',
+ 'Avg. views new vis.',
+ 'Minutes New Vis.',
+ 'Avg. minutes new vis.',
+ 'Returning vis.',
+ 'Views ret. vis.',
+ 'Avg. views ret. vis.',
+ 'Minutes Ret. Vis.',
+ 'Avg. minutes ret. vis.',
+ 'Website views',
+ 'AMP views',
+ 'Fb instant views']
+
+Date                       object * should be date object
+Posts                       int64
+New Posts                   int64
+Visitors                    int64
+Views                       int64
+Engaged minutes             int64
+Social interactions         int64
+Fb interactions             int64
+Tw interactions             int64
+Pi interactions             int64
+Desktop views             float64 * should be int
+Mobile views                int64
+Tablet views                int64
+Search refs               float64 * should be int
+Internal refs             float64 * should be int
+Other refs                float64 * should be int
+Direct refs               float64 * should be int
+Social refs               float64 * should be int
+Fb refs                   float64 * should be int
+Tw refs                   float64 * should be int
+New vis.                    int64
+Views new vis.              int64
+Avg. views new vis.       float64 * should be int
+Minutes New Vis.            int64
+Avg. minutes new vis.     float64 * should be int
+Returning vis.              int64
+Views ret. vis.             int64
+Avg. views ret. vis.      float64 * should be int
+Minutes Ret. Vis.           int64
+Avg. minutes ret. vis.    float64 * should be int
+

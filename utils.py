@@ -3,12 +3,15 @@ import random
 import pathlib
 import sys
 import re
+from decimal import Decimal, ROUND_UP
 # external
 import htmlmin
 import requests
 import boto3
 
 # [ FILE I/O ]-------------------------
+
+
 
 
 def read_file(filename, folders=None):
@@ -26,7 +29,7 @@ def read_file(filename, folders=None):
     return path.read_text()
 
 
-def put_file(data, filename, folders=None):
+def write_file(data, filename, folders=None):
     # WARNING: THIS OVERWRITES DATA
     # print(f'''Writing {filename} in {folder}''')
     if folders:
@@ -79,7 +82,8 @@ def put_S3(file_name):
     s3 = boto3.resource('s3')
     js_file_name = f"{file_name}.js"
     data = open(f'./build/{js_file_name}', 'rb')
-    s3.Bucket('picabot').put_object(Key=f'pagejs/{js_file_name}', Body=data, CacheControl="max-age=1800")
+    s3.Bucket('picabot').put_object(
+        Key=f'pagejs/{js_file_name}', Body=data, CacheControl="max-age=1800")
     return
 
 
@@ -97,20 +101,42 @@ def minify_html(s):
     # returns string of minified html
     return htmlmin.minify(s, remove_comments=True, remove_empty_space=True)
 
+
 # [ NUMBER CRUNCHING ]-----------------
-# best practice to always return numbers, not text
+# CALCULATIONS SHOULD RETURN NUMBERS (except Humanize)
+# CONVERTING TO STRING FOR REPORTS SHOULD BE DONE ELSEWHERE!
 
 
-def percentage(part, total):
-    # have to take into account part might be none (actually '')
-    if part != '':
-        result = round((float(part) / float(total)) * 100, 0)
-        return result
-    else:
-        return 0
+def vs_ma(new, avg):
+    # print("New value: ", humanize_number(new))
+    # print("Avg value: ", humanize_number(daily_avg, 0))
+    result = ((float(new) - float(avg)) / float(avg)) * 100
+    result = round(result, 1)
+    return result
 
 
-# exception, it has to return a string
+def get_avg_values(the_list, key):
+    # get avg values of specific key in list of dicts
+    # print("Divisor is: ", divisor)
+    # assume all values are string represenations of integers, though some end in '.0'
+    # assume no empty values
+    # values that are string reps of floats we aren't dealing with at moment
+    result = [int(item[key].replace('.0', '')) for item in the_list]
+    the_average = sum(result) / len(result)
+    return Decimal(the_average).quantize(Decimal('1.'), rounding=ROUND_UP)
+
+
+def sum_safe(l):
+    #  handles if item is no value in list
+    new_list = []
+    for item in l:
+        if not item:
+            item = 0
+        item = float(item)
+        new_list.append(item)
+    return sum(new_list)
+
+
 def humanize(value, fraction_point=1):
     if value != '':
         if value == 0:
@@ -137,3 +163,16 @@ def humanize(value, fraction_point=1):
         return return_value.replace('.0K', 'K')
     else:
         return '0'
+
+
+def percentage(part, total, fraction_point=0):
+    # have to take into account part might be none (actually '')
+    if part != '':
+        result = round((float(part) / float(total)) * 100, fraction_point)
+        if fraction_point == 0:
+            return int(result)
+        else:
+            return result
+    else:
+        return 0
+
