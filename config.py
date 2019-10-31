@@ -8,10 +8,18 @@ var = {
     },
     'weekly': {
         'period': 13,
-        'site_csv': 'spectator-site-last-week-thespec-com-any.csv',
-        'site_archives_csv': 'spectator-site-2019.csv',
-        'pages_csv': 'spectator-pages-last-week-thespec-com-any.csv',
-        'referrers': 'spectator-referrers-last-week-thespec-com-any.csv',
+        'spectator': {
+            'site_csv': 'spectator-site-last-week-thespec-com-any.csv',
+            'site_archives_csv': 'spectator-site-2019.csv',
+            'pages_csv': 'spectator-pages-last-week-thespec-com-any.csv',
+            'referrers': 'spectator-referrers-last-week-thespec-com-any.csv',
+        },
+        'record': {
+            'site_csv': 'record-site-last-week-therecord-com-any.csv',
+            'site_archives_csv': 'record-site-2019.csv',
+            'pages_csv': 'record-pages-last-week-thespec-com-any.csv',
+            'referrers': 'record-referrers-last-week-thespec-com-any.csv',
+        }
     },
     # SITE STATS
     'site_cols_keep': [
