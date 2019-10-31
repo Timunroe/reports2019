@@ -1,3 +1,26 @@
+After massaging the 'pages' csv,
+Non-article items will have pub date value of '0'.
+Articles with no metric in a particular categor will have value of 0.
+
++++++++++++
+How did traffic get to our site?
+total traffic to site: 1157214 (1100605)
+Direct overall: 267459
+Internal: 325104
+Homepage traffic 220587 - Home page traffic direct: 156157
+---------
+Direct to homepage: 156157
+Social (Facebook): 153143
+Search (Google): 300536
+Other (Google News): 54363
+total: 664199
+---------
+
+
+
+
++++++++++++
+
 Daily site csv file headers:
 
 ['Date',
@@ -66,4 +89,58 @@ Views ret. vis.             int64
 Avg. views ret. vis.      float64 * should be int
 Minutes Ret. Vis.           int64
 Avg. minutes ret. vis.    float64 * should be int
+
++++++++++++++++
+
+pages csv headers 
+['URL',
+ 'Title',
+ 'Publish date',
+ 'Authors',
+ 'Section',
+ 'Tags',
+ 'Visitors',
+ 'Views',
+ 'Engaged minutes',
+ 'New vis.',
+ 'Returning vis.',
+ 'Desktop views',
+ 'Mobile views',
+ 'Tablet views',
+ 'Search refs',
+ 'Internal refs',
+ 'Other refs',
+ 'Direct refs',
+ 'Social refs',
+ 'Fb refs',
+ 'Tw refs',
+ 'Pi refs',
+ 'Social interactions',
+ 'Fb interactions',
+ 'Tw interactions']
+URL                     object
+Title                   object
+Publish date            object * should be date object
+Authors                 object * should be str
+Section                 object * should be str
+Tags                    object * should be str
+Visitors                 int64 
+Views                    int64
+Engaged minutes        float64 * should be int
+New vis.                 int64
+Returning vis.           int64
+Desktop views          float64 * should be int
+Mobile views            object * should be int
+Tablet views            object * should be int
+Search refs             object * should be int
+Internal refs           object * should be int
+Other refs              object * should be int
+Direct refs             object * should be int
+Social refs             object * should be int
+Fb refs                 object * should be int
+Tw refs                 object * should be int
+Pi refs                 object * should be int
+Social interactions     object * should be int
+Fb interactions         object * should be int
+Tw interactions         object * should be int
 

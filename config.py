@@ -1,10 +1,18 @@
 var = {
     # FILES TO PROCESS
-    'site_csv': 'spectator-site-yesterday-thespec-com-any.csv',
-    'pages_csv': 'spectator-pages-yesterday-thespec-com-any.csv',
-    'site_archives_csv': 'spectator_site_2019.csv',
-    # TIME UNITS
-    'period': 90,
+    'daily': {
+        'period': 90,
+        'site_csv': 'spectator-site-yesterday-thespec-com-any.csv',
+        'site_archives_csv': 'spectator-site-2019.csv',
+        'pages_csv': 'spectator-pages-yesterday-thespec-com-any.csv',
+    },
+    'weekly': {
+        'period': 13,
+        'site_csv': 'spectator-site-last-week-thespec-com-any.csv',
+        'site_archives_csv': 'spectator-site-2019.csv',
+        'pages_csv': 'spectator-pages-last-week-thespec-com-any.csv',
+        'referrers': 'spectator-referrers-last-week-thespec-com-any.csv',
+    },
     # SITE STATS
     'site_cols_keep': [
         'Date',
@@ -45,6 +53,7 @@ var = {
         'Publish date',
         'Authors',
         'Section',
+        'Tags',
         'Visitors',
         'Views',
         'Engaged minutes',
@@ -60,10 +69,11 @@ var = {
         'Social refs',
         'Fb refs',
         'Tw refs',
-        # 'Li refs',
-        'Pi refs',
         'Social interactions',
         'Fb interactions',
         'Tw interactions',
-    ]
+    ],
+    # handy helpers
+    'newline': '\n',
+    'dbline': '\n\n',
 }

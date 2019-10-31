@@ -108,6 +108,7 @@ dbline = '\n\n'
 
 # intialize string
 report = ''
+data = {}
 
 
 def read_parsely_csv(filename, folders=None, cols_to_keep=None):
@@ -154,6 +155,25 @@ def massage_site_csv(df):
     return df
 
 
+def massage_pages_csv(df):
+    # remove any nbsp's in the column names
+    df.columns = [x.strip().replace('\xa0', '_') for x in df.columns]
+    # convert date column to datetime object
+    df['Date'] = pd.to_datetime(df['Date'])
+    # get day of week from Date column, add it as another column
+    df['DayOfWeek'] = df['Date'].dt.day_name(),
+    # fix columns that have float data types but should be integers
+    for item in [
+        'Desktop views', 'Search refs', 'Internal refs', 
+        'Other refs', 'Direct refs', 'Social refs', 
+        'Fb refs', 'Tw refs'
+    ]:
+        df[item] = df[item].apply(lambda x: int(x))
+    # reverse sort on Date because that's how Pandas likes to roll
+    df = df.sort_values(by=['Date'])
+    return df
+
+
 def parse_site_csv(df, period):
     data = {}
     # get site stats from site dataframe
@@ -174,6 +194,7 @@ def parse_site_csv(df, period):
         ('Tw%', 'Tw refs'),
     ]:
         data[item[0]] = int(round((df.tail(1)[item[1]].values[0] / data['pv']) * 100, 0))
+
     data['Returning%'] = int(round(
         (df.tail(1)['Returning vis.'] / data['uv']) * 100, 0
     ))
@@ -183,13 +204,14 @@ def parse_site_csv(df, period):
 
 # read in CSV, only keeping columns we want
 df = read_parsely_csv(
-    c.var['site_csv'], 
+    c.var['daily']['site_csv'], 
     ['data', 'daily'], 
     c.var['site_cols_keep']
 )
 df_site = massage_site_csv(df)
-data_site = parse_site_csv(df_site, c.var['period'])
-pprint.pprint(data_site)
+data['site'] = parse_site_csv(df_site, c.var['daily']['period'])
+
+pprint.pprint(data)
 
 # pprint.pprint(list(df_site.columns.values))
 # pprint.pprint(df_site.dtypes)

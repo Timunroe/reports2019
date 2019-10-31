@@ -107,14 +107,6 @@ def minify_html(s):
 # CONVERTING TO STRING FOR REPORTS SHOULD BE DONE ELSEWHERE!
 
 
-def vs_ma(new, avg):
-    # print("New value: ", humanize_number(new))
-    # print("Avg value: ", humanize_number(daily_avg, 0))
-    result = ((float(new) - float(avg)) / float(avg)) * 100
-    result = round(result, 1)
-    return result
-
-
 def get_avg_values(the_list, key):
     # get avg values of specific key in list of dicts
     # print("Divisor is: ", divisor)
@@ -165,7 +157,7 @@ def humanize(value, fraction_point=1):
         return '0'
 
 
-def percentage(part, total, fraction_point=0):
+def pct(part, total, fraction_point=0):
     # have to take into account part might be none (actually '')
     if part != '':
         result = round((float(part) / float(total)) * 100, fraction_point)
@@ -176,3 +168,10 @@ def percentage(part, total, fraction_point=0):
     else:
         return 0
 
+
+def vs_rm_pct(new, avg):
+    # print("New value: ", humanize_number(new))
+    # print("Avg value: ", humanize_number(daily_avg, 0))
+    result = ((float(new) - float(avg)) / float(avg)) * 100
+    result = round(result, 1)
+    return result
