@@ -9,7 +9,7 @@ var = {
         # readerboard
         'pv/v': 2.02,
         'min/v': 1.33,
-        'register views': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')]
+        'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')]
     },
     'record': {
         # parsely stats
@@ -20,7 +20,7 @@ var = {
         'freq': 26.5,
         'pv/v': 2.07,
         'min/v': 1.32,
-        'register views': [(10, 'voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race'), (6, 'joseph-garreffa-speaks-out-about-leaving-kitchener-rangers'), (5, 'liberal-leadership-hopeful-alvin-tedjo-promising-to-end-catholic-school-funding'), (5, 'major-waterloo-rec-centre-expansion-slated-for-completion-in-2022'), (4, 'live-updates-2019-federal-election-results'), (3, 'region-voters-stick-with-liberal-incumbents-in-four-ridings'), (2, 'virus-found-in-carp-from-alder-lake-in-new-dundee'), (3, 'driver-charged-after-collision-with-ion-train-in-kitchener'), (2, 'fence-goes-up-around-kitchener-eyesore-'), (2, 'kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing'), (3, 'therecord-contact-us')]
+        'registration_last_clicks': [(10, 'voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race'), (6, 'joseph-garreffa-speaks-out-about-leaving-kitchener-rangers'), (5, 'liberal-leadership-hopeful-alvin-tedjo-promising-to-end-catholic-school-funding'), (5, 'major-waterloo-rec-centre-expansion-slated-for-completion-in-2022'), (4, 'live-updates-2019-federal-election-results'), (3, 'region-voters-stick-with-liberal-incumbents-in-four-ridings'), (2, 'virus-found-in-carp-from-alder-lake-in-new-dundee'), (3, 'driver-charged-after-collision-with-ion-train-in-kitchener'), (2, 'fence-goes-up-around-kitchener-eyesore-'), (2, 'kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing'), (3, 'therecord-contact-us')]
     },
     'standard': {
         # parsely stats

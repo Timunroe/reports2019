@@ -2,9 +2,11 @@ var = {
     # FILES TO PROCESS
     'daily': {
         'period': 90,
-        'site_csv': 'spectator-site-yesterday-thespec-com-any.csv',
-        'site_archives_csv': 'spectator-site-2019.csv',
-        'pages_csv': 'spectator-pages-yesterday-thespec-com-any.csv',
+        'spectator': {
+            'site_csv': 'spectator-site-yesterday-thespec-com-any.csv',
+            'site_archives_csv': 'spectator-site-2019.csv',
+            'pages_csv': 'spectator-pages-yesterday-thespec-com-any.csv',
+        }
     },
     'weekly': {
         'period': 13,
@@ -13,6 +15,9 @@ var = {
             'site_archives_csv': 'spectator-site-2019.csv',
             'pages_csv': 'spectator-pages-last-week-thespec-com-any.csv',
             'referrers': 'spectator-referrers-last-week-thespec-com-any.csv',
+            'long_reads': '',
+            'top_sections': '',
+            'top_pages': '',
         },
         'record': {
             'site_csv': 'record-site-last-week-therecord-com-any.csv',

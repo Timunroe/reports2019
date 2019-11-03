@@ -12,8 +12,6 @@ import boto3
 # [ FILE I/O ]-------------------------
 
 
-
-
 def read_file(filename, folders=None):
     # folders = list of subdirectory names
     #           in tree from cwd

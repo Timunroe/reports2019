@@ -46,6 +46,7 @@ def read_parsely_csv(filename, folders=None, cols_to_keep=None):
 
 def parse_pages_csv(df):
     # ---- FIX DATAFRAME --------
+    print(df.dtypes)
     df['Publish date'] = df['Publish date'].apply(lambda x: '0' if x == '' else x)
     # fix columns that have object(string) data types but should be integers
     for item in [
