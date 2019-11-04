@@ -1,0 +1,58 @@
+<%
+import re
+
+def humanize(value, fraction_point=1):
+    if value != '':
+        if value == 0:
+            return '0'
+        end
+        powers = [10 ** x for x in (12, 9, 6, 3, 0)]
+        human_powers = ('T', 'B', 'M', 'K', '')
+        is_negative = False
+        if not isinstance(value, float):
+            value = float(value)
+        end
+        if value < 0:
+            is_negative = True
+            value = abs(value)
+        end
+        for i, p in enumerate(powers):
+            if value >= p:
+                return_value = str(round(value / (p / (10.0 ** fraction_point)))
+                                   / (10 ** fraction_point)) + human_powers[i]
+                break
+            end
+        end
+        if is_negative:
+            return_value = "-" + return_value
+        end
+        # remove pesky situation where xXX.0 occurs
+        # return_value = return_value.replace('.0', '')
+        # print("Return value is: ", return_value)
+        return_value = re.sub(r'.0$', '', return_value)
+        return return_value.replace('.0K', 'K')
+    else:
+        return '0'
+    end
+end
+%>
+
+<h3 style="font-size: 16px;">TOP REFERRERS: By page views</h3>
+<table style="border-collapse: collapse; border-spacing: 0; width: 300px;">
+    <thead>
+        <tr>
+            <th style="padding: 4px 0; border-bottom: 1px solid grey;">Domain</th>
+            <th style="padding: 4px 0; border-bottom: 1px solid grey;">PV</th>
+            <th style="padding: 4px 0; border-bottom: 1px solid grey;">Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        % for item in data['top_referrers']:
+        <tr>
+            <td style="padding: 4px 0;">{{item['Domain'].replace('.com', '') if item['Domain'] != 0 else ''}}</td>
+            <td style="padding: 4px 0;">{{humanize(item['Referred Views'])}}</td>
+            <td style="padding: 4px 0;">{{item['Referrer Type']}}</td>
+        </tr>
+        % end
+    </tbody>
+</table>

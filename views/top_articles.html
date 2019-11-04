@@ -1,0 +1,50 @@
+<%
+import re
+
+def humanize(value, fraction_point=1):
+    if value != '':
+        if value == 0:
+            return '0'
+        end
+        powers = [10 ** x for x in (12, 9, 6, 3, 0)]
+        human_powers = ('T', 'B', 'M', 'K', '')
+        is_negative = False
+        if not isinstance(value, float):
+            value = float(value)
+        end
+        if value < 0:
+            is_negative = True
+            value = abs(value)
+        end
+        for i, p in enumerate(powers):
+            if value >= p:
+                return_value = str(round(value / (p / (10.0 ** fraction_point)))
+                                   / (10 ** fraction_point)) + human_powers[i]
+                break
+            end
+        end
+        if is_negative:
+            return_value = "-" + return_value
+        end
+        # remove pesky situation where xXX.0 occurs
+        # return_value = return_value.replace('.0', '')
+        # print("Return value is: ", return_value)
+        return_value = re.sub(r'.0$', '', return_value)
+        return return_value.replace('.0K', 'K')
+    else:
+        return '0'
+    end
+end
+%>
+
+<h3 style="font-size: 16px;">TOP POSTS: by Page Views</h3>
+<ol style="padding-left: 28px; list-style-position: outside;">
+    % for article in articles:
+    <li>{{article['title']}}<br />
+    By {{(article['author']).title()}} in {{article['section'].title()}} | {{(article['date']).split(' ')[0]}} | Asset# <a href="{{article['url']}}">{{article['asset id']}}</a><br />
+    PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['avg time']}} min/visitor<br />
+    Key referrers %: {{article['Referrers report']}}<br />
+    Devices %: mobile <strong>{{article['Mobile views%']}}</strong>, desktop <strong>{{article['Desktop views%']}}</strong><br />
+    Social interactions: {{humanize(article['Social interactions'])}}</li>
+    % end
+</ol>

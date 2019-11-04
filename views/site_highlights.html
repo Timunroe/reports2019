@@ -1,0 +1,55 @@
+<%
+import re
+
+def humanize(value, fraction_point=1):
+    if value != '':
+        if value == 0:
+            return '0'
+        end
+        powers = [10 ** x for x in (12, 9, 6, 3, 0)]
+        human_powers = ('T', 'B', 'M', 'K', '')
+        is_negative = False
+        if not isinstance(value, float):
+            value = float(value)
+        end
+        if value < 0:
+            is_negative = True
+            value = abs(value)
+        end
+        for i, p in enumerate(powers):
+            if value >= p:
+                return_value = str(round(value / (p / (10.0 ** fraction_point)))
+                                   / (10 ** fraction_point)) + human_powers[i]
+                break
+            end
+        end
+        if is_negative:
+            return_value = "-" + return_value
+        end
+        # remove pesky situation where xXX.0 occurs
+        # return_value = return_value.replace('.0', '')
+        # print("Return value is: ", return_value)
+        return_value = re.sub(r'.0$', '', return_value)
+        return return_value.replace('.0K', 'K')
+    else:
+        return '0'
+    end
+end
+%>
+
+
+<h3 style="font-size: 16px;">SITE HIGHLIGHTS:</h3>
+<p><span style="font-weight: 600;">Page views</span>: {{humanize(site['Views'])}}, <span style="font-weight: 800;">{{f'''{site['Views vs rm%']:+}'''}}%</span> vs rolling avg.<br />
+<span style="font-weight: 600;">Comparison:</span> {{site['Views rank']}}<br />
+<span style="font-weight: 600;">Referrers by PV %:</span> {{site['Referrers report']}}<br />
+<span style="font-weight: 600;">Devices by PV %:</span> {{site['Devices report']}}
+</p>
+<p>Key shifts in referrals vs rolling avg: {{!site['Referrers change report']}}</p>
+<p><span style="font-weight: 600;">Visitors</span>: {{humanize(site['Visitors'], 0)}}, <span style="font-weight: 800;">{{f'''{site['Visitors vs rm%']:+}'''}}%</span> 
+    vs rolling avg, {{site['Returning vis.%']}}% returning.<br />
+    <span style="font-weight: 600;">Minutes</span>: {{humanize(site['Engaged minutes'], 0)}}, 
+    <span style="font-weight: 800;">{{f'''{site['Engaged minutes vs rm%']:+}'''}}%</span> vs rolling avg. 
+</p>
+<p><span style="font-weight: 600;">Avg time on site:</span> <span style="font-weight: 800;">{{site['site time']}}</span>, {{f'''{site['site time dec vs rm%']:+}%'''}} vs rolling avg.</p>
+<p><span style="font-weight: 600;">New posts:</span> <span style="font-weight: 800;">{{site['New Posts']}}</span>, {{f'''{site['New Posts vs rm%']:+}%'''}} vs. rolling avg.</p>
+<h5>*Rolling avg. covers past 13 weeks.</h5>   

@@ -48,27 +48,15 @@ end
         <h2>{{freq.title()}} report {{name.title()}}</h2>
         <p>PATH TO REGISTRATION: Last 3 clicks in 7 days</p>
         <p>MOST READ BY REGISTERED USERS (page views)</p>
-        <h3 style="font-size: 16px;">SITE HIGHLIGHTS:</h3>
-        <p><span style="font-weight: 600;">Page views</span>: {{humanize(site['Views'])}}, <span style="font-weight: 800;">{{f'''{site['Views vs rm%']:+}'''}}%</span> vs rolling avg.<br />
-        Breakdown %: {{site['Referrers report']}}<br />
-        Devices %: {{site['Devices report']}}
-        </p>
-        <p>Key page view shifts vs rolling avg: {{!site['Referrers change report']}}</p>
-        <p><span style="font-weight: 600;">Visitors</span>: {{humanize(site['Visitors'], 0)}}, <span style="font-weight: 800;">{{f'''{site['Visitors vs rm%']:+}'''}}%</span> vs rolling avg.<br />
-            <span style="font-weight: 600;">Minutes</span>: {{humanize(site['Engaged minutes'], 0)}}, <span style="font-weight: 800;">{{f'''{site['Engaged minutes vs rm%']:+}'''}}%</span> vs rolling avg.</p>
-        <h5>*Rolling avg. covers past 13 weeks.</h5>
-
-        <h3 style="font-size: 16px;">TOP POSTS: by Page Views</h3>
-        <ol>
-        % for article in articles:
-        <li>{{article['title']}}<br />
-        By {{(article['author']).title()}} in {{article['section']}} | {{article['date']}}| Asset# <a href="{{article['url']}}">{{article['asset id']}}</a><br />
-        PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['avg time']}} min/visitor<br />
-        Key sources %: {{article['Referrers report']}}<br />
-        Devices %: mobile <strong>{{article['Mobile views%']}}</strong>, desktop <strong>{{article['Desktop views%']}}</strong><br />
-        Social interactions: {{article['Social interactions']}}</li>
-        % end
-        </ol>
+        % include('kpi.html', site=site)
+        <hr />
+        % include('site_highlights.html', site=site)
+        <hr />
+        % include('top_articles.html', articles=articles)
+        <hr />
+        % include('home_page.html', hp=hp)
+        <hr />
+        % include('top_referrers.html', data=top_referrers)
         <hr />
         <h3 style="font-size: 16px;">TRAFFIC PRIMER</h3>
         <p>Traffic is described by 5 categories: 4 external (social, search, direct, other) and internal.</p>

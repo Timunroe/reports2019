@@ -3,27 +3,27 @@ var = {
     'daily': {
         'period': 90,
         'spectator': {
-            'site_csv': 'spectator-site-yesterday-thespec-com-any.csv',
+            'site_csv': 'spectator-site-yesterday.csv',
             'site_archives_csv': 'spectator-site-2019.csv',
-            'pages_csv': 'spectator-pages-yesterday-thespec-com-any.csv',
+            'pages_csv': 'spectator-pages-yesterday.csv',
         }
     },
     'weekly': {
         'period': 13,
         'spectator': {
-            'site_csv': 'spectator-site-last-week-thespec-com-any.csv',
+            'site_csv': 'spectator-site-last-week.csv',
             'site_archives_csv': 'spectator-site-2019.csv',
-            'pages_csv': 'spectator-pages-last-week-thespec-com-any.csv',
-            'referrers': 'spectator-referrers-last-week-thespec-com-any.csv',
-            'long_reads': '',
-            'top_sections': '',
-            'top_pages': '',
+            'pages_csv': 'spectator-pages-last-week.csv',
+            'referrers': 'spectator-referrers-last-week.csv',
+            'long_reads': 'spectator-long-reads-last-week.csv',
+            'top_sections': 'spectator-top-sections-last-week.csv',
+            'top_pages': 'spectator-top-pages-last-week.csv',
         },
         'record': {
-            'site_csv': 'record-site-last-week-therecord-com-any.csv',
+            'site_csv': 'record-site-last-week.csv',
             'site_archives_csv': 'record-site-2019.csv',
-            'pages_csv': 'record-pages-last-week-thespec-com-any.csv',
-            'referrers': 'record-referrers-last-week-thespec-com-any.csv',
+            'pages_csv': 'record-pages-last-week.csv',
+            'referrers': 'record-referrers-last-week.csv',
         }
     },
     # SITE STATS
@@ -85,6 +85,25 @@ var = {
         'Social interactions',
         'Fb interactions',
         'Tw interactions',
+    ],
+    # REFERRERS STATS
+    'referrers_cols_keep': [
+        'Referrer Type',
+        'Domain',
+        'Referred Views',
+    ],
+    # LONG READS
+    'longreads_cols_keep': [
+        'URL',
+        'Title',
+        'Publish date',
+        'Authors',
+        'Section',
+        'Sort (Avg. minutes)',
+        'Visitors',
+        'Views',
+        'New vis.',
+        'Returning vis.',
     ],
     # handy helpers
     'newline': '\n',

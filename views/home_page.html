@@ -1,0 +1,22 @@
+<h3 style="font-size: 16px;">HOME PAGE STATS</h3>
+<p>
+    <span style="font-weight: 600;">Page views</span>: 
+    {{humanize(hp['pv'])}}, {{f'''{hp['pv vs total']}'''}}% of site total.<br />
+    <span style="font-weight: 600;">Avg time:</span> {{hp['avg time']}}<br />
+    <span style="font-weight: 600;">Key referrers by PV %:</span> {{hp['direct pv%']}} direct, {{hp['search pv%']}} search, {{hp['internal pv%']}} internal<br />
+    <span style="font-weight: 600;">Devices by PV %:</span> desktop {{hp['desktop pv%']}}, mobile {{hp['mobile pv%']}}, tablet {{hp['tablet pv%']}}<br />
+    <span style="font-weight: 600;">Visitors:</span> {{hp['returning uv%']}}% returning
+</p>
+<h4 style="font-size: 14px;">Activity after viewing home page</h4>
+<p>
+        <span style="font-weight: 600;">{{hp['hp_posts']}}%</span>
+         to posts, <span style="font-weight: 600;">{{hp['hp_section']}}</span>% to index and section pages, 
+         for a bounce rate of 
+         <span style="font-weight: 600;">{{round(100-(hp['hp_posts'] + hp['hp_section']), 1)}}%</span>
+</p>
+<h4 style="font-size: 14px;">Top pages clicked from home page</h4>
+<p>
+    % for item in hp['hp_links'][:5]:
+    <small>{{item}} PV</small></br>
+    % end
+</p>
