@@ -1,20 +1,27 @@
+<hr>
 <h3 style="font-size: 16px;">KPI FOR OKR</h3>
 <p>
-<span style="font-weight: 600;">Return frequency (less than 1 day): {{kpi['freq']}}%</span></br>
+<span style="font-weight: 600;">Return frequency (less than 1 day): {{data['input']['freq']}}%</span></br>
 Key Result: Maintain recency of visits that come within the day. Higher is better.</br>
-KPI/Target level: 28% Spec</br>
+% if data['site'] == 'spectator':
+KPI/Target level: 28%</br>
 Trend: Better than last week.
+% end
 </p>
 <p>
-<span style="font-weight: 600;">Page views/visitor/day: {{kpi['pv/v']}} (last 30 days)</span></br>
+<span style="font-weight: 600;">Page views/visitor/day: {{data['input']['pv/v']}} (last 30 days)</span></br>
 Key Result: Increase average number of pages consumed by visitors. Higher is better.</br>
-KPI/Target level: 2.4 Spec</br>
+% if data['site'] == 'spectator':
+KPI/Target level: 2.4</br>
 Trend: xxxx.
+% end
 </p>
 <p>
 <span style="font-weight: 600;">Home page bounce rate: 
-    {{round(100 - (kpi['hp_posts'] + kpi['hp_section']),1)}}%</span></br>
+    {{round(100 - (data['input']['hp_posts'] + data['input']['hp_section']),1)}}%</span></br>
 Key Result: Decrease percentage of visitors to the home page who leave without clicking an article or landing page. Lower is better.</br>
-KPI/Target level: Low-30s Spectator/ Record.</br>
+% if data['site'] == 'spectator':
+KPI/Target level: Low-30s</br>
 Trend: xxxx.
+% end
 </p>

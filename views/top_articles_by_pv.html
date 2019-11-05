@@ -36,15 +36,15 @@ def humanize(value, fraction_point=1):
     end
 end
 %>
+
 <hr>
-<h3 style="font-size: 16px;">TOP POSTS: By avg. engaged time</h3>
-<p><small>Parameters: More than 300 visitors.</small></p>
+<h3 style="font-size: 16px;">TOP POSTS: By page views</h3>
 <ol style="padding-left: 28px; list-style-position: outside;">
-    % for article in data['the_list']:
-    <li>{{article['title']}}<br />
+    % for article in data['article_list']:
+    <li style="margin-bottom: 0.4rem;"><span style="font-family: Georgia, 'Times New Roman', Times, serif;">{{article['title']}}</span><br />
     By {{(article['author']).title()}} in {{article['section'].title()}} | {{(article['date']).split(' ')[0]}} | Asset# <a href="{{article['url']}}">{{article['asset id']}}</a><br />
     PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['avg time']}} min/visitor<br />
-    Key referrers %: {{article['Referrers report']}}<br />
+    Key referrers %: {{!article['Referrers report']}}<br />
     Devices %: mobile <strong>{{article['Mobile views%']}}</strong>, desktop <strong>{{article['Desktop views%']}}</strong><br />
     Social interactions: {{humanize(article['Social interactions'])}}</li>
     % end

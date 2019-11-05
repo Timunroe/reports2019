@@ -1,30 +1,79 @@
 var = {
     # FILES TO PROCESS
-    'daily': {
-        'period': 90,
-        'spectator': {
-            'site_csv': 'spectator-site-yesterday.csv',
-            'site_archives_csv': 'spectator-site-2019.csv',
-            'pages_csv': 'spectator-pages-yesterday.csv',
+    'spectator': {
+        'daily': {
+            'period': 90,
+            'url': 'https://www.thespec.com',
+            'files': {
+                'site_csv': 'spectator-site-yesterday.csv',
+                'site_archives_csv': 'spectator-site-2019.csv',
+                'pages_csv': 'spectator-pages-yesterday.csv',
+
+            }
+        },
+        'weekly': {
+            'period': 13,
+            'url': 'https://www.thespec.com',
+            'files': {
+                'site_csv': 'spectator-site-2019.csv',
+                'pages_csv': 'spectator-pages-last-week.csv',
+                'referrers': 'spectator-referrers-last-week.csv',
+                'long_reads': 'spectator-pages-last-week.csv',
+                'top_sections': 'spectator-top-sections-last-week.csv',
+                'top_pages': 'spectator-top-pages-last-week.csv',
+            }
+        },
+        'monthly': {
+            'period': 3,
+            'url': 'https://www.thespec.com',
+            'files': {
+                'site_csv': 'spectator-site-2019.csv',
+                'pages_csv': 'spectator-pages.csv',
+                'referrers': 'spectator-referrers.csv',
+                'long_reads_csv': 'spectator-pages.csv',
+                'top_sections': 'spectator-top-sections.csv',
+                'top_pages': 'spectator-top-pages.csv',
+            }
         }
     },
-    'weekly': {
-        'period': 13,
-        'spectator': {
-            'site_csv': 'spectator-site-last-week.csv',
-            'site_archives_csv': 'spectator-site-2019.csv',
-            'pages_csv': 'spectator-pages-last-week.csv',
-            'referrers': 'spectator-referrers-last-week.csv',
-            'long_reads': 'spectator-long-reads-last-week.csv',
-            'top_sections': 'spectator-top-sections-last-week.csv',
-            'top_pages': 'spectator-top-pages-last-week.csv',
+    'record': {
+        'daily': {
+            'period': 90,
+            'url': 'https://www.therecord.com',
         },
-        'record': {
-            'site_csv': 'record-site-last-week.csv',
-            'site_archives_csv': 'record-site-2019.csv',
-            'pages_csv': 'record-pages-last-week.csv',
-            'referrers': 'record-referrers-last-week.csv',
+        'weekly': {
+            'period': 90,
+            'url': 'https://www.therecord.com',
+            'files': {
+                'site_csv': 'record-site-2019.csv',
+                'pages_csv': 'record-pages-last-week.csv',
+                'referrers': 'record-referrers-last-week.csv',
+            }
+        },
+        'monthly': {
+            'period': 3,
+            'url': 'https://www.therecord.com',
+            'files': {
+                'site_csv': 'record-site-2019.csv',
+                'pages_csv': 'record-pages.csv',
+                'referrers': 'record-referrers.csv',
+                'long_reads_csv': 'record-pages.csv',
+                'top_sections': 'record-top-sections.csv',
+                'top_pages': 'record-top-pages.csv',
+            }
         }
+    },
+    'examiner': {
+
+    },
+    'standard': {
+
+    },
+    'tribune': {
+
+    },
+    'review': {
+
     },
     # SITE STATS
     'site_cols_keep': [
@@ -92,19 +141,7 @@ var = {
         'Domain',
         'Referred Views',
     ],
-    # LONG READS
-    'longreads_cols_keep': [
-        'URL',
-        'Title',
-        'Publish date',
-        'Authors',
-        'Section',
-        'Sort (Avg. minutes)',
-        'Visitors',
-        'Views',
-        'New vis.',
-        'Returning vis.',
-    ],
+    
     # handy helpers
     'newline': '\n',
     'dbline': '\n\n',
