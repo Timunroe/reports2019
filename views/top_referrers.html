@@ -39,23 +39,25 @@ end
 
 <hr>
 <h3 style="font-size: 16px;">TOP REFERRERS: By page views</h3>
-<table style="white-space: nowrap;border-collapse: collapse; border-spacing: 0; width: 350px;">
+<div style="overflow-x:auto;">
+<table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 350px;">
     <thead>
         <tr>
-            <th style="width: 35%; padding: 4px 4px 4px 0; border-bottom: 1px solid grey;">Domain</th>
-            <th style="text-align: center; width: 20%; padding: 4px 6px 4px 0; border-bottom: 1px solid grey;">PV</th>
-            <th style="text-align: center; width: 18%; padding: 4px 8px 4px 0; border-bottom: 1px solid grey;">%</th>
-            <th style="width: 30%; padding: 4px 0 4px 8px; border-bottom: 1px solid grey;">Type</th>
+            <th style="font-size: 0.8rem; text-align: left; padding: 6px 4px 6px 0; border-bottom: 1px solid grey;">Domain</th>
+            <th style="font-size: 0.8rem; text-align: center; width: 20%; padding: 6px 6px 6px 0; border-bottom: 1px solid grey;">PV</th>
+            <th style="font-size: 0.8rem; text-align: center; width: 18%; padding: 6px 8px 6px 0; border-bottom: 1px solid grey;">%</th>
+            <th style="font-size: 0.8rem; text-align: left; padding: 6px 0 6px 8px; border-bottom: 1px solid grey;">Type</th>
         </tr>
     </thead>
     <tbody>
         % for item in data['top_referrers']:
         <tr>
-            <td style="width: 35%; padding: 4px 4px 4px 0;">{{item['Domain'].replace('.com', '') if item['Domain'] != 0 else ''}}</td>
-            <td style="text-align: right; width: 20%; padding: 4px 6px 4px 0;">{{humanize(item['Referred Views'])}}</td>
-            <td style="text-align: center; width: 18%; padding: 4px 8px 4px 0;">{{round((item['Referred Views'] / data['pv'])*100,1)}}</td>
-            <td style="width: 30%; padding: 4px 0 4px 8px;">{{item['Referrer Type']}}</td>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: left; padding: 6px 4px 6px 0;">{{item['Domain'].replace('.com', '') if item['Domain'] != 0 else ''}}</td>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; width: 20%; padding: 6px 6px 6px 0;">{{humanize(item['Referred Views'])}}</td>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; width: 18%; padding: 6px 8px 6px 0;">{{round((item['Referred Views'] / data['pv'])*100,1)}}</td>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: left; padding: 6px 0 6px 8px;">{{item['Referrer Type']}}</td>
         </tr>
         % end
     </tbody>
 </table>
+</div>

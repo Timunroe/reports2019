@@ -1,0 +1,71 @@
+<%
+import re
+
+def humanize(value, fraction_point=1):
+    if value != '':
+        if value == 0:
+            return '0'
+        end
+        powers = [10 ** x for x in (12, 9, 6, 3, 0)]
+        human_powers = ('T', 'B', 'M', 'K', '')
+        is_negative = False
+        if not isinstance(value, float):
+            value = float(value)
+        end
+        if value < 0:
+            is_negative = True
+            value = abs(value)
+        end
+        for i, p in enumerate(powers):
+            if value >= p:
+                return_value = str(round(value / (p / (10.0 ** fraction_point)))
+                                   / (10 ** fraction_point)) + human_powers[i]
+                break
+            end
+        end
+        if is_negative:
+            return_value = "-" + return_value
+        end
+        # remove pesky situation where xXX.0 occurs
+        # return_value = return_value.replace('.0', '')
+        # print("Return value is: ", return_value)
+        return_value = re.sub(r'.0$', '', return_value)
+        return return_value.replace('.0K', 'K')
+    else:
+        return '0'
+    end
+end
+%>
+
+<hr>
+<h3 style="font-size: 16px;">TOP SECTIONS: By page views</h3>
+<p><small>Parameters: Content published in period, excludes non-article pages.</small></p>
+<div style="overflow-x:auto;">
+<table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 100%;">
+    <thead>
+        <tr>
+            <th style="font-size: 0.8rem; text-align: left; padding: 6px 4px 4px 0; border-bottom: 1px solid grey;">Section</th>
+            % for header in ['PV %', 'Posts', 'PV/Post', 'Returning Vis. %', 'Avg. Time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
+            <th style="font-size: 0.8rem; text-align: center; padding: 6px 8px 6px 0; border-bottom: 1px solid grey;">{{header}}</th>
+            % end
+        </tr>
+    </thead>
+    <tbody>
+        % for item in data['the_list']:
+        <tr>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: left; padding: 6px 4px 6px 0">{{item['Section'].replace('and you', '').replace('artsentertainment', 'artsent.')}}</td>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; padding: 6px 8px 6px 0;">{{item['PV %']}}</td>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; padding: 6px 8px 6px 0;">{{item['Posts']}}</td>
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; padding: 6px 8px 6px 0;
+            % if item['PV / Post'] > 1000:
+            background-color: #FFFF00;
+            % end
+            ">{{item['PV / Post']}}</td>
+            % for post in ['Returning Vis%', 'Avg. time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
+            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; padding: 6px 8px 6px 0;">{{item[post]}}</td>
+            % end
+        </tr>
+        % end
+    </tbody>
+</table>
+</div>

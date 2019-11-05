@@ -3,6 +3,7 @@ var = {
     'spectator': {
         'daily': {
             'period': 90,
+            'term': 'days',
             'url': 'https://www.thespec.com',
             'files': {
                 'site_csv': 'spectator-site-yesterday.csv',
@@ -13,6 +14,7 @@ var = {
         },
         'weekly': {
             'period': 13,
+            'term': 'weeks',
             'url': 'https://www.thespec.com',
             'files': {
                 'site_csv': 'spectator-site-2019.csv',
@@ -25,24 +27,27 @@ var = {
         },
         'monthly': {
             'period': 3,
+            'term': 'months',
             'url': 'https://www.thespec.com',
             'files': {
                 'site_csv': 'spectator-site-2019.csv',
                 'pages_csv': 'spectator-pages.csv',
                 'referrers': 'spectator-referrers.csv',
                 'long_reads_csv': 'spectator-pages.csv',
-                'top_sections': 'spectator-top-sections.csv',
                 'top_pages': 'spectator-top-pages.csv',
+                'top_sections': 'spectator-sections.csv',
             }
         }
     },
     'record': {
         'daily': {
             'period': 90,
+            'term': 'days',
             'url': 'https://www.therecord.com',
         },
         'weekly': {
             'period': 90,
+            'term': 'weeks',
             'url': 'https://www.therecord.com',
             'files': {
                 'site_csv': 'record-site-2019.csv',
@@ -52,14 +57,15 @@ var = {
         },
         'monthly': {
             'period': 3,
+            'term': 'months',
             'url': 'https://www.therecord.com',
             'files': {
                 'site_csv': 'record-site-2019.csv',
                 'pages_csv': 'record-pages.csv',
                 'referrers': 'record-referrers.csv',
                 'long_reads_csv': 'record-pages.csv',
-                'top_sections': 'record-top-sections.csv',
                 'top_pages': 'record-top-pages.csv',
+                'top_sections': 'record-sections.csv',
             }
         }
     },
@@ -141,7 +147,13 @@ var = {
         'Domain',
         'Referred Views',
     ],
-    
+    # SECTIONS STATS
+    'sections_cols_keep': [
+        "Section", "Posts", "Visitors", "Views", "Engaged minutes", 
+        "Returning vis.", "Avg. views ret. vis.", "Avg. minutes ret. vis.", 
+        "Search refs", "Internal refs", "Other refs", 
+        "Direct refs", "Social refs", "Fb refs", "Social interactions"
+    ],
     # handy helpers
     'newline': '\n',
     'dbline': '\n\n',

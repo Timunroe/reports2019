@@ -44,7 +44,7 @@ var = {
         },
         'monthly': {
             # parsely stats
-            'hp_posts': 47.2,
+            'hp_posts': 47.1,
             'hp_section': 30.5,
             'hp_links': ["therecord.com/waterlooregion-announcements/obituaries-death-notices/ | 77,511","therecord.com/waterlooregion-news/ | 12,393","Tim Louis wins Kitchener-Conestoga after botched paperwork delayed vote count 12 hours | 3,569","therecord.com/waterlooregion-sports/ | 3,469","therecord.com/search/allarticles/ | 3,004","therecord.com/user/login/ | 2,995","therecord.com | 2,328","Waterloo Region couple’s Handmaid’s Tale wedding photo sparks controversy | 2,182","For these families a love triangle is not an obstacle. Polyamorous parents chart their own course | 2,152","therecord.com/waterlooregion-opinion/ | 2,029",],
             # omniture

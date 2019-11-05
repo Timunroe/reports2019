@@ -37,19 +37,21 @@ def humanize(value, fraction_point=1):
 end
 %>
 
-
+<hr>
 <h3 style="font-size: 16px;">SITE HIGHLIGHTS:</h3>
-<p><span style="font-weight: 600;">Page views</span>: {{humanize(site['Views'])}}, <span style="font-weight: 800;">{{f'''{site['Views vs rm%']:+}'''}}%</span> vs rolling avg.<br />
-<span style="font-weight: 600;">Comparison:</span> {{site['Views rank']}}<br />
-<span style="font-weight: 600;">Referrers by PV %:</span> {{site['Referrers report']}}<br />
-<span style="font-weight: 600;">Devices by PV %:</span> {{site['Devices report']}}
+<p>
+    <span style="font-weight: 600;">Page views</span>: {{humanize(data['Views'])}}, 
+    <span style="font-weight: 800;">{{f'''{data['Views vs rm%']:+}'''}}%</span> vs rolling avg.<br />
+<span style="font-weight: 600;">Comparison:</span> {{data['Views rank'].replace('1st', '')}}<br />
+<span style="font-weight: 600;">Referrers by PV %:</span> {{data['Referrers report']}}<br />
+<span style="font-weight: 600;">Devices by PV %:</span> {{data['Devices report']}}
 </p>
-<p>Key shifts in referral views vs rolling avg: {{!site['Referrers change report']}}</p>
-<p><span style="font-weight: 600;">Visitors</span>: {{humanize(site['Visitors'], 0)}}, <span style="font-weight: 800;">{{f'''{site['Visitors vs rm%']:+}'''}}%</span> 
-    vs rolling avg, {{site['Returning vis.%']}}% returning.<br />
-    <span style="font-weight: 600;">Minutes</span>: {{humanize(site['Engaged minutes'], 0)}}, 
-    <span style="font-weight: 800;">{{f'''{site['Engaged minutes vs rm%']:+}'''}}%</span> vs rolling avg. 
+<p>Key shifts in referral views vs rolling avg: {{!data['Referrers change report']}}</p>
+<p><span style="font-weight: 600;">Visitors</span>: {{humanize(data['Visitors'], 0)}}, <span style="font-weight: 800;">{{f'''{data['Visitors vs rm%']:+}'''}}%</span> 
+    vs rolling avg, {{data['Returning vis.%']}}% returning.<br />
+    <span style="font-weight: 600;">Minutes</span>: {{humanize(data['Engaged minutes'], 0)}}, 
+    <span style="font-weight: 800;">{{f'''{data['Engaged minutes vs rm%']:+}'''}}%</span> vs rolling avg. 
 </p>
-<p><span style="font-weight: 600;">Avg time on site:</span> <span style="font-weight: 800;">{{site['site time']}}</span>, {{f'''{site['site time dec vs rm%']:+}%'''}} vs rolling avg.</p>
-<p><span style="font-weight: 600;">New posts:</span> <span style="font-weight: 800;">{{site['New Posts']}}</span>, {{f'''{site['New Posts vs rm%']:+}%'''}} vs. rolling avg.</p>
-<h5>*Rolling avg. covers past 13 weeks.</h5>   
+<p><span style="font-weight: 600;">Avg time on site:</span> <span style="font-weight: 800;">{{data['site time']}}</span>, {{f'''{data['site time dec vs rm%']:+}%'''}} vs rolling avg.</p>
+<p><span style="font-weight: 600;">New posts:</span> <span style="font-weight: 800;">{{data['New Posts']}}</span>, {{f'''{data['New Posts vs rm%']:+}%'''}} vs. rolling avg.</p>
+<h5>*Rolling avg. covers past {{period}} {{freq.replace('daily', 'days').replace('weekly', 'weeks').replace('monthly', 'months')}}.</h5>   
