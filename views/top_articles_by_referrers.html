@@ -1,6 +1,10 @@
 <%
 import re
 
+h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px;"'
+
 def humanize(value, fraction_point=1):
     if value != '':
         if value == 0:
@@ -37,10 +41,10 @@ def humanize(value, fraction_point=1):
 end
 %>
 
-<h3 style="font-size: 16px;">TOP POSTS: By paage views</h3>
+<h3 {{!h3}}>TOP POSTS: By views</h3>
 <ol style="padding-left: 28px; list-style-position: outside;">
     % for article in articles:
-    <li>{{article['title']}}<br />
+    <li style="margin-bottom: 0.5rem; font-size: 0.8rem;">{{article['title']}}<br />
     By {{(article['author']).title()}} in {{article['section'].title()}} | {{(article['date']).split(' ')[0]}} | Asset# <a href="{{article['url']}}">{{article['asset id']}}</a><br />
     PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['avg time']}} min/visitor<br />
     Key referrers %: {{article['Referrers report']}}<br />

@@ -1,6 +1,16 @@
 var = {
     'spectator': {
         'daily': {
+            # parsely stats
+            'hp_posts': 'NA',
+            'hp_section': 'NA',
+            'hp_links': 'NA',
+            # omniture
+            'freq': 'NA',
+            # readerboard
+            'pv/v': 'NA',
+            'min/v': 'NA',
+            'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
             'registration_most_read': [],
         },
         'weekly': {
@@ -44,15 +54,15 @@ var = {
         },
         'monthly': {
             # parsely stats
-            'hp_posts': 47.1,
-            'hp_section': 30.5,
+            'hp_posts': 46.3,
+            'hp_section': 29.3,
             'hp_links': ["therecord.com/waterlooregion-announcements/obituaries-death-notices/ | 77,511","therecord.com/waterlooregion-news/ | 12,393","Tim Louis wins Kitchener-Conestoga after botched paperwork delayed vote count 12 hours | 3,569","therecord.com/waterlooregion-sports/ | 3,469","therecord.com/search/allarticles/ | 3,004","therecord.com/user/login/ | 2,995","therecord.com | 2,328","Waterloo Region couple’s Handmaid’s Tale wedding photo sparks controversy | 2,182","For these families a love triangle is not an obstacle. Polyamorous parents chart their own course | 2,152","therecord.com/waterlooregion-opinion/ | 2,029",],
             # omniture
             'freq': 24.5,
             # readerboard
             'pv/v': 2.05,
             'min/v': 1.32,
-            'registration_last_clicks': ["23 | 16 | news/9629207-waterloo-region-couple-s-handmaid-s-tale-wedding-photo-sparks-controversy", "23 | 16 | news/9663790-new-zoning-rules-allow-tiny-houses-granny-flats-throughout-kitchener", "37 | 14 | news/9655050-voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race", "21 | 11 | news/9644793-cambridge-city-councillor-frank-monteiro-dies", "15 |  9 | news/9644793-cambridge-councillor-frank-monteiro-s-final-public-words-read-at-meeting", "17 |  8 | news/9631566-man-sprays-moviegoers-with-bear-spray-in-kitchener-and-whitby", "22 |  8 | news/9631899-uptown-waterloo-business-merchants-plead-for-patrons-as-part-of-king-st-n-reopens", "19 |  7 | news/9627244-elmira-jewelry-store-gets-letter-of-apology-for-theft-from-the-1970s", "14 |  7 | news/9648864-kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing", " 8 |  7 | news/9662352-waterloo-staff-recommends-keeping-crematorium-open", "14 |  7 | news/9663800-kitchener-family-facing-deportation", "12 |  7 | news/9667971-kitchener-conestoga-s-liberal-rock-star-pulls-outta-here-to-win-", "14 |  7 | news/9669964-waterloo-realtor-denies-vulgar-slur-that-sparks-online-feeding-frenzy-", "12 |  6 | news/9625044-former-silknit-factory-in-cambridge-set-for-overhaul", " 9 |  6 | news/9626779-kitchener-author-up-for-governor-general-s-literary-award", " 7 |  6 | news/9632367-watch-live-the-2019-english-federal-leaders-debate", "22 |  6 | news/9638275-accused-waterloo-region-child-predator-dies", "14 |  6 | news/9642979-graffiti-vandals-target-public-art-mural-in-kitchener-two-years-after-installation", "15 |  6 | news/9655993-tim-louis-wins-kitchener-conestoga-after-botched-paperwork-delayed-vote-count-12-hours", " 8 |  5 | living/9655055-fat-shaming-is-still-an-issue-even-at-health-spas",],
+            'registration_last_clicks': ["22 | 15 | news/9629207-waterloo-region-couple-s-handmaid-s-tale-wedding-photo-sparks-controversy", "35 | 14 | news/9655050-voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race", "18 | 13 | news/9663790-new-zoning-rules-allow-tiny-houses-granny-flats-throughout-kitchener", "21 | 11 | news/9644793-cambridge-city-councillor-frank-monteiro-dies", "15 |  9 | news/9644793-cambridge-councillor-frank-monteiro-s-final-public-words-read-at-meeting", "22 |  8 | news/9631899-uptown-waterloo-business-merchants-plead-for-patrons-as-part-of-king-st-n-reopens", "17 |  7 | news/9627244-elmira-jewelry-store-gets-letter-of-apology-for-theft-from-the-1970s", "16 |  7 | news/9631566-man-sprays-moviegoers-with-bear-spray-in-kitchener-and-whitby", "14 |  7 | news/9648864-kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing", " 8 |  7 | news/9662352-waterloo-staff-recommends-keeping-crematorium-open", "12 |  7 | news/9663800-kitchener-family-facing-deportation",],
             'registration_most_read': [],
         }
     },
@@ -66,19 +76,21 @@ var = {
             'freq': 1,
             'pv/v': 1,
             'min/v': 1,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         },
         'monthly': {
             # parsely stats
-            'hp_posts': 1,
-            'hp_section': 1,
-            'hp_links': [],
+            'hp_posts': 59.2,
+            'hp_section': 32.6,
+            'hp_links': ["niagara-announcements/obituaries-death-notices/ | 135,893","/stcatharines-on-news/ | 28,401","Update: Garbage truck trashes Thorold Tunnel | 7,297","Overnight crashes on Hwy. 406 leave two dead, two others badly injured | 6,672","St. Catharines mourns the loss of 'The Pizza Dude' | 4,253","St. Catharines doctor faces sex abuse allegations | 3,927","Driveway paving scam hits Niagara | 3,488","Retired police officer placed under house arrest | 3,435","Baby’s death leaves Niagara Falls father grieving | 3,335","stcatharinesstandard.ca/stcatharines-on-sports/ | 3,208",],
             # omniture
-            'freq': 1,
+            'freq': 35.,
             # readerboard
-            'pv/v': 1,
-            'min/v': 1,
-            'registration_last_clicks': [],
-            'registration_most_read': [],
+            'pv/v': 2.66,
+            'min/v': 1.73,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         }
     },
     'review': {
@@ -90,44 +102,48 @@ var = {
             'freq': 1,
             'pv/v': 1,
             'min/v': 1,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         },
         'monthly': {
             # parsely stats
-            'hp_posts': 1,
-            'hp_section': 1,
-            'hp_links': [],
+            'hp_posts': 57.7,
+            'hp_section': 33.9,
+            'hp_links': ["niagara-announcements/obituaries-death-notices/ | 86,675","niagarafalls-on-news/ | 17,335","Update: Garbage truck trashes Thorold Tunnel | 4,039","Baby’s death leaves Niagara Falls father grieving | 2,881","Niagara Falls residents rally against illegal vacation rentals in their neighbourhood | 1,983","Driveway paving scam hits Niagara | 1,956","Falls council trashes biweekly garbage collection decision | 1,940","UPDATE: Mother faces first-degree murder charges in death of infant daughter | 1,934","Overnight crashes on Hwy. 406 leave two dead, two others badly injured | 1,896","Retired police officer placed under house arrest | 1,875",],
             # omniture
-            'freq': 1,
+            'freq': 35.2,
             # readerboard
-            'pv/v': 1,
-            'min/v': 1,
-            'registration_last_clicks': [],
-            'registration_most_read': [],
+            'pv/v': 3.12,
+            'min/v': 1.98,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         }
     },
     'tribune': {
         'weekly': {
             # parsely stats
-            'hp_posts': 1,
-            'hp_section': 1,
+            'hp_posts': 0,
+            'hp_section': 0,
             'hp_links': ["/niagara-announcements/obituaries-death-notices/ | 21,278","/welland-on-news/ | 3,815","Remains of Fort Erie teen missing since February found in Welland | 2,490","Photos: Three injured in Port Colborne crash | 2,181","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 2,007","#NiagaraVotes: Niagara doesn’t choose change | 1,277","Fire Marshal, police probe death at site of Thorold fire | 1,270","Photo: Motorcyclist hits deer in Port Colborne | 1,191","Badawey ready to get back to work in Niagara Centre | 1,189","Retired police officer placed under house arrest | 1,141",],
             # omniture
-            'freq': 1,
-            'pv/v': 1,
-            'min/v': 1,
+            'freq': 0,
+            'pv/v': 0,
+            'min/v': 0,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         },
         'monthly': {
             # parsely stats
-            'hp_posts': 1,
-            'hp_section': 1,
-            'hp_links': [],
+            'hp_posts': 58.3,
+            'hp_section': 36.9,
+            'hp_links': ["niagara-announcements/obituaries-death-notices/ | 92,404","welland-on-news/ | 17,579","Drugs, death, and taxes in Port Colborne | 2,684","Update: Garbage truck trashes Thorold Tunnel | 2,510","Remains of Fort Erie teen missing since February found in Welland | 2,491","Overnight crashes on Hwy. 406 leave two dead, two others badly injured | 2,427","Driveway paving scam hits Niagara | 2,373","Welland man killed after being struck by pickup truck | 2,231","Photos: Three injured in Port Colborne crash | 2,181","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 2,127",],
             # omniture
-            'freq': 1,
+            'freq': 37.4,
             # readerboard
-            'pv/v': 1,
-            'min/v': 1,
-            'registration_last_clicks': [],
-            'registration_most_read': [],
+            'pv/v': 3.65,
+            'min/v': 2.24,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         }
     },
     'examiner': {
@@ -140,19 +156,21 @@ var = {
             'freq': 1,
             'pv/v': 1,
             'min/v': 1,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         },
         'monthly': {
             # parsely stats
-            'hp_posts': 1,
-            'hp_section': 1,
-            'hp_links': [],
+            'hp_posts': 59.6,
+            'hp_section': 28.1,
+            'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 90,893","peterborough-on-news/ | 16,842","peterborough-on-sports/ | 5,680","Canada-wide Federal Election Results | 4,695","peterborough-on-opinion/ | 4,237","Monsef re-elected in Peterborough-Kawartha | 3,694","Weapons, drugs seized and 11 people arrested in major bust | 3,559","Coffee seller latest to be evicted from Saturday market in Morrow Park in Peterborough | 2,643","Conservative candidate Michael Skinner says he’s the victim of mudslinging | 2,639","Federal candidate arrested at all-candidates meeting in Peterborough | 2,631",],
             # omniture
-            'freq': 1,
+            'freq': 37.1,
             # readerboard
-            'pv/v': 1,
-            'min/v': 1,
-            'registration_last_clicks': [],
-            'registration_most_read': [],
+            'pv/v': 3.03,
+            'min/v': 1.77,
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
         }
     }
 }

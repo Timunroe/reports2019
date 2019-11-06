@@ -1,6 +1,10 @@
 <%
 import re
 
+h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px;"'
+
 def humanize(value, fraction_point=1):
     if value != '':
         if value == 0:
@@ -36,9 +40,10 @@ def humanize(value, fraction_point=1):
     end
 end
 %>
+
 <hr>
-<h3 style="font-size: 16px;">TOP POSTS: By avg. engaged time</h3>
-<p><small>Parameters: More than 300 visitors.</small></p>
+<h3 {{!h3}}>TOP POSTS: By avg. engaged time</h3>
+<p {{!p}}><small>Parameters: More than 300 visitors.</small></p>
 <ol style="padding-left: 28px; list-style-position: outside;">
     % for article in data['the_list']:
     <li style="margin-bottom: 0.4rem; font-size: 0.8rem;"><span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 1.1rem;">{{article['title']}}</span><br/>

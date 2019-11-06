@@ -1,22 +1,68 @@
-<h3 style="font-size: 16px;">HOME PAGE STATS</h3>
-<p>
+<%
+import re
+
+h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px;"'
+
+def humanize(value, fraction_point=1):
+    if value != '':
+        if value == 0:
+            return '0'
+        end
+        powers = [10 ** x for x in (12, 9, 6, 3, 0)]
+        human_powers = ('T', 'B', 'M', 'K', '')
+        is_negative = False
+        if not isinstance(value, float):
+            value = float(value)
+        end
+        if value < 0:
+            is_negative = True
+            value = abs(value)
+        end
+        for i, p in enumerate(powers):
+            if value >= p:
+                return_value = str(round(value / (p / (10.0 ** fraction_point)))
+                                   / (10 ** fraction_point)) + human_powers[i]
+                break
+            end
+        end
+        if is_negative:
+            return_value = "-" + return_value
+        end
+        # remove pesky situation where xXX.0 occurs
+        # return_value = return_value.replace('.0', '')
+        # print("Return value is: ", return_value)
+        return_value = re.sub(r'.0$', '', return_value)
+        return return_value.replace('.0K', 'K')
+    else:
+        return '0'
+    end
+end
+%>
+
+<hr>
+<h3 {{!h3}}>HOME PAGE STATS</h3>
+<p {{!p}}>
     <span style="font-weight: 600;">Page views</span>: 
-    {{humanize(hp['pv'])}}, {{f'''{hp['pv vs total']}'''}}% of site total.<br />
-    <span style="font-weight: 600;">Avg time:</span> {{hp['avg time']}}<br />
-    <span style="font-weight: 600;">Key referrers by PV %:</span> {{hp['direct pv%']}} direct, {{hp['search pv%']}} search, {{hp['internal pv%']}} internal<br />
-    <span style="font-weight: 600;">Devices by PV %:</span> desktop {{hp['desktop pv%']}}, mobile {{hp['mobile pv%']}}, tablet {{hp['tablet pv%']}}<br />
-    <span style="font-weight: 600;">Visitors:</span> {{hp['returning uv%']}}% returning
+    {{humanize(data['pv'])}}, {{f'''{data['pv vs total']}'''}}% of site total.<br />
+    <span style="font-weight: 600;">Avg time:</span> {{data['avg time']}}<br />
+    <span style="font-weight: 600;">Key referrers by PV %:</span> {{data['direct pv%']}} direct, {{data['search pv%']}} search, {{data['internal pv%']}} internal<br />
+    <span style="font-weight: 600;">Devices by PV %:</span> desktop {{data['desktop pv%']}}, mobile {{data['mobile pv%']}}, tablet {{data['tablet pv%']}}<br />
+    <span style="font-weight: 600;">Visitors:</span> {{data['returning uv%']}}% returning
 </p>
-<h4 style="font-size: 14px;">Activity after viewing home page</h4>
-<p>
-        <span style="font-weight: 600;">{{hp['hp_posts']}}%</span>
-         to posts, <span style="font-weight: 600;">{{hp['hp_section']}}</span>% to index and section pages, 
+% if inputs['hp_section'] != 'NA':
+<h4 {{!h4}}>Activity after viewing home page</h4>
+<p {{!p}}>
+        <span style="font-weight: 600;">{{inputs['hp_posts']}}%</span>
+         to posts, <span style="font-weight: 600;">{{inputs['hp_section']}}</span>% to index and section pages, 
          for a bounce rate of 
-         <span style="font-weight: 600;">{{round(100-(hp['hp_posts'] + hp['hp_section']), 1)}}%</span>
+         <span style="font-weight: 600;">{{round(100-(inputs['hp_posts'] + inputs['hp_section']), 1)}}%</span>
 </p>
-<h4 style="font-size: 14px;">Top pages clicked from home page</h4>
-<p>
-    % for item in hp['hp_links'][:5]:
+<h4 {{!h4}}>Top pages clicked from home page</h4>
+<p {{!p}}>
+    % for item in inputs['hp_links'][:5]:
     <small>{{item}} PV</small></br>
     % end
 </p>
+% end

@@ -6,10 +6,8 @@ var = {
             'term': 'days',
             'url': 'https://www.thespec.com',
             'files': {
-                'site_csv': 'spectator-site-yesterday.csv',
-                'site_archives_csv': 'spectator-site-2019.csv',
-                'pages_csv': 'spectator-pages-yesterday.csv',
-
+                'site_csv': 'spectator-site-2019.csv',
+                'pages_csv': 'spectator-pages.csv',
             }
         },
         'weekly': {
@@ -34,7 +32,6 @@ var = {
                 'pages_csv': 'spectator-pages.csv',
                 'referrers': 'spectator-referrers.csv',
                 'long_reads_csv': 'spectator-pages.csv',
-                'top_pages': 'spectator-top-pages.csv',
                 'top_sections': 'spectator-sections.csv',
             }
         }
@@ -64,22 +61,65 @@ var = {
                 'pages_csv': 'record-pages.csv',
                 'referrers': 'record-referrers.csv',
                 'long_reads_csv': 'record-pages.csv',
-                'top_pages': 'record-top-pages.csv',
                 'top_sections': 'record-sections.csv',
             }
         }
     },
     'examiner': {
-
+        'monthly': {
+            'period': 3,
+            'term': 'months',
+            'url': 'https://www.peterboroughexaminer.com',
+            'files': {
+                'site_csv': 'examiner-site-2019.csv',
+                'pages_csv': 'examiner-pages.csv',
+                'referrers': 'examiner-referrers.csv',
+                'long_reads_csv': 'examiner-pages.csv',
+                'top_sections': 'examiner-sections.csv',
+            }
+        }
     },
     'standard': {
-
+        'monthly': {
+            'period': 3,
+            'term': 'months',
+            'url': 'https://www.stcatharinesstandard.ca',
+            'files': {
+                'site_csv': 'standard-site-2019.csv',
+                'pages_csv': 'standard-pages.csv',
+                'referrers': 'standard-referrers.csv',
+                'long_reads_csv': 'standard-pages.csv',
+                'top_sections': 'standard-sections.csv',
+            }
+        }
     },
     'tribune': {
-
+        'monthly': {
+            'period': 3,
+            'term': 'months',
+            'url': 'https://www.wellandtribune.ca',
+            'files': {
+                'site_csv': 'tribune-site-2019.csv',
+                'pages_csv': 'tribune-pages.csv',
+                'referrers': 'tribune-referrers.csv',
+                'long_reads_csv': 'tribune-pages.csv',
+                'top_sections': 'tribune-sections.csv',
+            }
+        }
     },
     'review': {
-
+        'monthly': {
+            'period': 3,
+            'term': 'months',
+            'url': 'https://www.niagarafallsreview.ca',
+            'files': {
+                'site_csv': 'review-site-2019.csv',
+                'pages_csv': 'review-pages.csv',
+                'referrers': 'review-referrers.csv',
+                'long_reads_csv': 'review-pages.csv',
+                'top_sections': 'review-sections.csv',
+            }
+        }
     },
     # SITE STATS
     'site_cols_keep': [

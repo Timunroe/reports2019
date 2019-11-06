@@ -1,6 +1,10 @@
 <%
 import re
 
+h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px;"'
+
 def humanize(value, fraction_point=1):
     if value != '':
         if value == 0:
@@ -38,8 +42,8 @@ end
 %>
 
 <hr>
-<h3 style="font-size: 16px;">TOP SECTIONS: By page views</h3>
-<p><small>Parameters: Content published in period, excludes non-article pages.</small></p>
+<h3 {{!h3}}>TOP SECTIONS: By page views</h3>
+<p {{!p}}><small>Parameters: Content published in period, excludes non-article pages.</small></p>
 <div style="overflow-x:auto;">
 <table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 100%;">
     <thead>
