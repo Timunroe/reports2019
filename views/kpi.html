@@ -1,9 +1,10 @@
 <%
 import re
 
-h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px;"'
+h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"'
+h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -41,30 +42,44 @@ def humanize(value, fraction_point=1):
 end
 %>
 
-<hr>
-<h3 {{!h3}}>KPI FOR OKR</h3>
-<p {{!p}}>
-<span style="font-weight: 600;">Return frequency (less than 1 day): {{data['input']['freq']}}%</span></br>
-Key Result: Maintain recency of visits that come within the day. Higher is better.</br>
-% if data['site'] == 'spectator':
-KPI/Target level: 28%</br>
-Trend: Better than last week.
-% end
-</p>
-<p {{!p}}>
-<span style="font-weight: 600;">Page views/visitor/day: {{data['input']['pv/v']}} (last 30 days)</span></br>
-Key Result: Increase average number of pages consumed by visitors. Higher is better.</br>
-% if data['site'] == 'spectator':
-KPI/Target level: 2.4</br>
-Trend: xxxx.
-% end
-</p>
-<p {{!p}}>
-<span style="font-weight: 600;">Home page bounce rate: 
-    {{round(100 - (data['input']['hp_posts'] + data['input']['hp_section']),1)}}%</span></br>
-Key Result: Decrease percentage of visitors to the home page who leave without clicking an article or landing page. Lower is better.</br>
-% if data['site'] == 'spectator':
-KPI/Target level: Low-30s</br>
-Trend: xxxx.
-% end
-</p>
+% site = data['site']
+% freq = data['freq']
+
+<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
+    <h2 {{!h2}}>KPI FOR OKR:</h2>
+    % if data['site'] in ['spectator', 'record']:
+    <p {{!p}}>
+    <span style="font-weight: 600;">Return frequency (less than 1 day): {{data['input'][site][freq]['freq']}}%</span></br>
+    Key Result: Maintain recency of visits that come within the day. Higher is better.</br>
+    % if data['site'] == 'spectator':
+    KPI/Target level: 28%</br>
+    Trend: Better than last week.
+    % end
+    </p>
+    <p {{!p}}>
+    <span style="font-weight: 600;">Page views/visitor/day: {{data['input'][site][freq]['pv/v']}} (last 30 days)</span></br>
+    Key Result: Increase average number of pages consumed by visitors. Higher is better.</br>
+    % if data['site'] == 'spectator':
+    KPI/Target level: 2.4</br>
+    Trend: xxxx.
+    % end
+    </p>
+    <p {{!p}}>
+    <span style="font-weight: 600;">Home page bounce rate: 
+        {{round(100 - (data['input'][site][freq]['hp_posts'] + data['input'][site][freq]['hp_section']),1)}}%</span></br>
+    Key Result: Decrease percentage of visitors to the home page who leave without clicking an article or landing page. Lower is better.</br>
+    % if data['site'] == 'spectator':
+    KPI/Target level: Low-30s</br>
+    Trend: xxxx.
+    % end
+    </p>
+    % else:
+    <p {{!p}}>
+    <span style="font-weight: 600;">Page views per visitor:</span> xxx | Target level: 3.5 Standard/3.2 Examiner<br>
+    <span style="font-weight: 600;">Avg. active minutes per visitor:</span> xxx | Target level: 2.5 Standard/1.7 Examiner<br>
+    <span style="font-weight: 600;">Avg. engagement time</span> for top 10 local, non-breaking articles (ranked by engagement time)<br>
+    Last week: xxxx | Target level: 1:25 Standard /1:10 Examiner.<br>
+    Data: 
+    </p>
+    % end
+</div>

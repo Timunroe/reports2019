@@ -1,9 +1,10 @@
 <%
 import re
 
-h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px;"'
+h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"'
+h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -41,28 +42,30 @@ def humanize(value, fraction_point=1):
 end
 %>
 
-<hr>
-<h3 {{!h3}}>HOME PAGE STATS</h3>
-<p {{!p}}>
-    <span style="font-weight: 600;">Page views</span>: 
-    {{humanize(data['pv'])}}, {{f'''{data['pv vs total']}'''}}% of site total.<br />
-    <span style="font-weight: 600;">Avg time:</span> {{data['avg time']}}<br />
-    <span style="font-weight: 600;">Key referrers by PV %:</span> {{data['direct pv%']}} direct, {{data['search pv%']}} search, {{data['internal pv%']}} internal<br />
-    <span style="font-weight: 600;">Devices by PV %:</span> desktop {{data['desktop pv%']}}, mobile {{data['mobile pv%']}}, tablet {{data['tablet pv%']}}<br />
-    <span style="font-weight: 600;">Visitors:</span> {{data['returning uv%']}}% returning
-</p>
-% if inputs['hp_section'] != 'NA':
-<h4 {{!h4}}>Activity after viewing home page</h4>
-<p {{!p}}>
-        <span style="font-weight: 600;">{{inputs['hp_posts']}}%</span>
-         to posts, <span style="font-weight: 600;">{{inputs['hp_section']}}</span>% to index and section pages, 
-         for a bounce rate of 
-         <span style="font-weight: 600;">{{round(100-(inputs['hp_posts'] + inputs['hp_section']), 1)}}%</span>
-</p>
-<h4 {{!h4}}>Top pages clicked from home page</h4>
-<p {{!p}}>
-    % for item in inputs['hp_links'][:5]:
-    <small>{{item}} PV</small></br>
+<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
+    <h2 {{!h2}}>HOME PAGE STATS</h2>
+
+    <p {{!p}}>
+        <span style="font-weight: 600;">Page views</span>: 
+        {{f'''{data['pv vs total']}'''}}% of site total.<br />
+        <span style="font-weight: 600;">Key referrers:</span> {{data['direct pv%']}}% direct, {{data['search pv%']}}% search, {{data['internal pv%']}}% internal<br />
+        <span style="font-weight: 600;">Devices:</span> {{data['desktop pv%']}}% desktop, {{data['mobile pv%']}}% mobile, {{data['tablet pv%']}}% tablet<br />
+        <span style="font-weight: 600;">Avg time:</span> {{data['avg time']}}<br />
+        <span style="font-weight: 600;">Visitors:</span> {{data['returning uv%']}}% returning
+    </p>
+    % if inputs['hp_section'] != 'NA':
+    <h4 {{!h4}}>Activity after viewing home page</h4>
+    <p {{!p}}>
+            <span style="font-weight: 600;">{{inputs['hp_posts']}}%</span>
+            to posts, <span style="font-weight: 600;">{{inputs['hp_section']}}</span>% to index and section pages, 
+            for a bounce rate of 
+            <span style="font-weight: 600;">{{round(100-(inputs['hp_posts'] + inputs['hp_section']), 1)}}%</span>
+    </p>
+    <h4 {{!h4}}>Top pages clicked from home page</h4>
+    <p {{!p}}>
+        % for item in inputs['hp_links'][:5]:
+        <small>{{item}} PV</small></br>
+        % end
+    </p>
     % end
-</p>
-% end
+</div>

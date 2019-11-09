@@ -1,9 +1,10 @@
 <%
 import re
 
-h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px;"'
+h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"'
+h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -50,5 +51,7 @@ end
     </head>
     <body>
         <h2>{{site.title()}} {{freq}} report</h2>
-        <p {{!p}}>PATH TO REGISTRATION: Last 3 clicks in 7 days</p>
-        <p {{!p}}>MOST READ BY REGISTERED USERS (page views)</p>
+        <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
+            <h2 {{!h2}}>PATH TO REGISTRATION: Last 3 clicks in 7 days</h2>
+            <h2 {{!h2}}>MOST READ BY REGISTERED USERS (page views)</h2>
+        </div>

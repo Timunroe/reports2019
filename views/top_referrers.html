@@ -1,9 +1,10 @@
 <%
 import re
 
-h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px;"'
+h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"'
+h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -40,29 +41,29 @@ def humanize(value, fraction_point=1):
     end
 end
 %>
-
-<hr>
-<h3 {{!h3}}>TOP REFERRERS: By views</h3>
-<p {{!p}}>Parameters: Traffic to all pages, including articles and landing pages.</p>
-<div style="overflow-x:auto;">
-<table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 350px;">
-    <thead>
-        <tr>
-            <th style="font-size: 0.8rem; text-align: left; padding: 6px 4px 6px 0; border-bottom: 1px solid grey;">Domain</th>
-            <th style="font-size: 0.8rem; text-align: center; width: 20%; padding: 6px 6px 6px 0; border-bottom: 1px solid grey;">PV</th>
-            <th style="font-size: 0.8rem; text-align: center; width: 18%; padding: 6px 8px 6px 0; border-bottom: 1px solid grey;">%</th>
-            <th style="font-size: 0.8rem; text-align: left; padding: 6px 0 6px 8px; border-bottom: 1px solid grey;">Type</th>
-        </tr>
-    </thead>
-    <tbody>
-        % for item in data['top_referrers']:
-        <tr>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: left; padding: 6px 4px 6px 0;">{{item['Domain'].replace('.com', '') if item['Domain'] != 0 else ''}}</td>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; width: 20%; padding: 6px 6px 6px 0;">{{humanize(item['Referred Views'])}}</td>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; width: 18%; padding: 6px 8px 6px 0;">{{round((item['Referred Views'] / data['pv'])*100,1)}}</td>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: left; padding: 6px 0 6px 8px;">{{item['Referrer Type']}}</td>
-        </tr>
-        % end
-    </tbody>
-</table>
+<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
+    <h2 {{!h2}}>TOP REFERRERS: <span style="font-weight: 300;">By % of site views</span></h2>
+    <div style="overflow-x:auto; margin-top: 8px; margin-bottom: 8px; padding-bottom: 8px;">
+        <table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 340px;">
+            <tbody>
+                % for i in range (0,3):
+                <tr>
+                    <td style="text-align: right; font-weight: 600; padding-right: 8px;">
+                        {{round((data['top_referrers'][i]['Referred Views'] / data['pv'])*100,1)}}
+                    </td>
+                    <td style="font-size: 0.9rem; padding-right: 8px;">
+                        {{data['top_referrers'][i]['Domain'].replace('.com', '').title() if data['top_referrers'][i]['Domain'] != 0 else ''}} / {{data['top_referrers'][i]['Referrer Type']}}
+                    </td>
+                    <td style="text-align: right; font-weight: 600; padding-right: 8px;">
+                        {{round((data['top_referrers'][i+3]['Referred Views'] / data['pv'])*100,1)}}
+                    </td>
+                    <td style="font-size: 0.9rem;">
+                        {{data['top_referrers'][i+3]['Domain'].replace('.com', '').title() if data['top_referrers'][i+3]['Domain'] != 0 else ''}} / {{data['top_referrers'][i+3]['Referrer Type']}}
+                    </td>
+                </tr> 
+                % end
+            </tbody>
+        </table>
+    </div>
+    <p {{!p}}><small>Parameters: Traffic to all pages, including articles and index pages.</small></p>
 </div>

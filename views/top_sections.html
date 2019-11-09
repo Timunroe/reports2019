@@ -1,9 +1,10 @@
 <%
 import re
 
-h3 = 'style="font-size: 16px; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 14px; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px;"'
+h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #333;"'
+h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
+h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
+p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -40,36 +41,36 @@ def humanize(value, fraction_point=1):
     end
 end
 %>
-
-<hr>
-<h3 {{!h3}}>TOP SECTIONS: By page views</h3>
-<p {{!p}}><small>Parameters: Content published in period, excludes non-article pages.</small></p>
-<div style="overflow-x:auto;">
-<table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 100%;">
-    <thead>
-        <tr>
-            <th style="font-size: 0.8rem; text-align: left; padding: 6px 4px 4px 0; border-bottom: 1px solid grey;">Section</th>
-            % for header in ['PV %', 'Posts', 'PV/Post', 'Returning Vis. %', 'Avg. Time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
-            <th style="font-size: 0.8rem; text-align: center; padding: 6px 8px 6px 0; border-bottom: 1px solid grey;">{{header}}</th>
+<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
+    <h2 {{!h2}}>TOP SECTIONS: <span style="font-weight: 300;">By views</span></h2>
+    <p {{!p}}><small>Parameters: Content published in period, excludes non-article pages.</small></p>
+    <div style="overflow-x:auto;">
+    <table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 100%;">
+        <thead>
+            <tr>
+                <th style="font-size: 0.8rem; text-align: left; padding: 6px 4px 4px 0; border-bottom: 1px solid grey;">Section</th>
+                % for header in ['PV %', 'Posts', 'PV/Post', 'Returning Vis. %', 'Avg. Time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
+                <th style="font-size: 0.8rem; text-align: center; padding: 6px 8px 6px 0; border-bottom: 1px solid grey;">{{header}}</th>
+                % end
+            </tr>
+        </thead>
+        <tbody>
+            % for item in data['the_list']:
+            <tr>
+                <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: left; padding: 6px 4px 6px 0">{{item['Section'].replace('and you', '').replace('artsentertainment', 'artsent.')}}</td>
+                <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; padding: 6px 8px 6px 0;">{{item['PV %']}}</td>
+                <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; padding: 6px 8px 6px 0;">{{item['Posts']}}</td>
+                <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; padding: 6px 8px 6px 0;
+                % if item['PV / Post'] > 1000:
+                background-color: #FFFF00;
+                % end
+                ">{{item['PV / Post']}}</td>
+                % for post in ['Returning Vis%', 'Avg. time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
+                <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; padding: 6px 8px 6px 0;">{{item[post]}}</td>
+                % end
+            </tr>
             % end
-        </tr>
-    </thead>
-    <tbody>
-        % for item in data['the_list']:
-        <tr>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: left; padding: 6px 4px 6px 0">{{item['Section'].replace('and you', '').replace('artsentertainment', 'artsent.')}}</td>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; padding: 6px 8px 6px 0;">{{item['PV %']}}</td>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; padding: 6px 8px 6px 0;">{{item['Posts']}}</td>
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: right; padding: 6px 8px 6px 0;
-            % if item['PV / Post'] > 1000:
-            background-color: #FFFF00;
-            % end
-            ">{{item['PV / Post']}}</td>
-            % for post in ['Returning Vis%', 'Avg. time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
-            <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; padding: 6px 8px 6px 0;">{{item[post]}}</td>
-            % end
-        </tr>
-        % end
-    </tbody>
-</table>
+        </tbody>
+    </table>
+    </div>
 </div>
