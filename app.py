@@ -48,7 +48,7 @@ def read_csv(filename, folders=None, cols_to_keep=None):
 
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 def df_to_records(df):
     # convert a dataframe pages subset to list of dicts
@@ -64,7 +64,7 @@ def df_to_records(df):
     ]
     records = df.to_dict(orient='record')
     for record in records:
-        record['Title'] = record['Title'].replace(
+        record['Title'] = record['Title'].title().replace(
             '\'S ', '\'s ').replace('\'T ', '\'t ')
         record['Title'] = record['Title'][:72] + \
             (record['Title'][72:] and '...')
@@ -103,7 +103,7 @@ def df_to_records(df):
         temp[0] = f'''<b>{temp[0]}</b>'''
         record['Devices report'] = ", ".join(temp)
     return {
-        'the_list': sorted(records, key=lambda k: k['Views'], reverse=True)
+        'the_list': records
     }
 
 
@@ -138,22 +138,29 @@ def pages_parse(dflt):
     # fix any columns that may have float data types but should be integers
     for item in key_metrics + device_cols + referral_cols:
         df[item] = df[item].apply(lambda x: int(x))
+    # fix any empty columns that should have strings but are 0
+    for item in ['URL', 'Title', 'Publish date', 'Authors', 'Section', 'Tags']:
+        df[item] = df[item].apply(lambda x: x if x != 0 else 'none')
     # ---- MODIFY DATAFRAME --------
     # add asset ids if relevant to page
     df['asset id'] = df['URL'].apply(
         lambda x: (re.search(
             r'.*(\d{7})-.*', x)).group(1) if re.search(r'.*(\d{7})-.*', x) else 'none'
     )
-    df['Title'] = df['Title'].apply(
-        lambda x: x.title() if x != 0 else 'none'
-    )
     # obits have Pub date and Asset ID, but Title == none
-    # index pages have Title but Pub date == 0 and Asset ID == none
+    # index pages have Title but Pub date == none and Asset ID == none
+    # Ha! Events have Asset ID AND Title, but Pub date = none
+    # static assets are here, with -static in URL
     # true article pages have title != none, Asset Id != none
     # Filter df just for articles
-    df_articles_temp = df[(df['asset id'] != 'none') & (df['Title'] != 'none')]
+    df_articles_temp = df[
+        (df['asset id'] != 'none') & 
+        (df['Title'] != 'none') &
+        ((df['Publish date'] != 'none')) &
+        ((df['URL'].str.contains('-static') == False))
+    ]
     # sort by pub date for following aggregate functions
-    print(df_articles_temp[df_articles_temp['Publish date'] == 0])
+    # print(df_articles_temp[df_articles_temp['Publish date'] == 0])
     df_articles_temp = df_articles_temp.sort_values(by=['Publish date'], ascending=False)
     # aggregate article data by asset ID
     aggregation_functions = {
@@ -195,26 +202,26 @@ def pages_parse(dflt):
         lambda x: x.split('|')[-1] if x != 0 else 'none'
     )
     # convert tags category to string if not already
-    df_articles['Tags'] = df['Tags'].apply(
-        lambda x: str(x) if x == 0 else x
+    df_articles['Tags'] = df_articles['Tags'].apply(
+        lambda x: x if x != 0 else 'none'
     )
     # -- GET TOP ARTICLES BY PAGE VIEWS
-
     # sort by page views
     df_articles = df_articles.sort_values(by=['Views'], ascending=False)
+    # export to CSV for testing
+    # df_articles.to_csv('articles.csv')
     # CHANGE 10 IF MORE/FEWER TOP ARTICLES WANTED
     limit = {'daily': 7, 'weekly': 10, 'monthly': 10}[freq]
-    top_articles = df_articles.head(limit).to_dict(orient='record')
-    data = df_to_records(top_articles)
-    the_html = template('top_articles_by_pv.html', data=data)
+    top_articles = df_articles.head(limit)
+    the_html = template('top_articles_by_pv.html', data=df_to_records(top_articles))
     # -- GET TOP ARTICLES IN SECTIONS OPINION, LIVING, ARTS, OPINION
     sections = ['whatson', 'living', 'sports']
     for section in sections:
         # CHANGE 3 IF DIFFERENT NUMBER OF ARTICLES WANTED
-        section_pages = df_articles[df_articles['Tags'].str.contains(
-            section)].head(3)
-        data = df_to_records(section_pages)
-        the_html += template('top_articles_by_section.html', data=data)
+        section_pages = df_articles[df_articles['Tags'].str.contains(section)].head(3)
+        print('SECTION IS: ', section)
+        pprint.pprint(data)
+        the_html += template('top_articles_by_section.html', data=df_to_records(section_pages), section=section)
     opinion_pages = df_articles[
         (df_articles['Tags'].str.contains('opinion')) &
         (df_articles['Tags'].str.contains(
@@ -222,13 +229,12 @@ def pages_parse(dflt):
     ].head(3)
     # handle top articles in with only opinion as category
     data = df_to_records(opinion_pages)
-    the_html += template('top_articles_by_section.html', data=data)
-    # SHOULD INSERT ARTICLES BY READ TIME HERE
+    the_html += template('top_articles_by_section.html', data=data, section='opinion')
+    # -- GET TOP ARTICLES BY ENGAGED TIME
     visitor_limit = 200
     df_articles = df_articles.sort_values(by=['Avg. time'], ascending=False)
     long_reads = df_articles[df_articles['Visitors'] > visitor_limit].head(5)
-    data = df_to_records(long_reads)
-    the_html += template('top_referrers.html', data=data)
+    the_html += template('top_articles_by_section.html', data=df_to_records(long_reads), section='time', visitor_limit=visitor_limit)
     # -- GET HOME PAGE STATS
     url = dflt['config']['home'][site]
     df_hp = df[df['URL'] == url]
@@ -346,6 +352,8 @@ def site_parse(dflt):
         # so I can compare to other same days
         df['Date'] = pd.to_datetime(df['Date'])
         df['DayOfWeek'] = df['Date'].dt.day_name()
+        # get a list of all x day's pages views, sorted.
+        # then get index of this period's page views int aht list, that's the rank.
 
     data = {}
     # get key metrics for LATEST PERIOD, vs TOTAL PERIOD
@@ -488,7 +496,7 @@ def parse_sections_csv(dflt):
         obj['Direct %'] = u.pct(record['Direct refs'], record['Views'])
         obj['Other %'] = u.pct(record['Other refs'], record['Views'])
         the_list.append(obj)
-    pprint.pprint(the_list)
+    # pprint.pprint(the_list)
     return template('top_sections.html', data={'the_list': the_list})
 
 

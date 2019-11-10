@@ -43,16 +43,26 @@ end
 %>
 
 <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-    <h2 {{!h2}}>TOP POSTS [ <span style="color: black;">{{data['Category'].upper()}}</span> ]: <span style="font-weight: 300;">By views</span></h2>
+    % if section != 'time':
+    <h2 {{!h2}}>TOP POSTS [ <span style="color: black;">{{section.upper()}}</span> ]: <span style="font-weight: 300;">By views</span></h2>
+    % else:
+    <h2 {{!h2}}>TOP POSTS: <span style="font-weight: 300;">By avg. engaged time</span></h2>
+    <p {{!p}}><small>Parameters: More than {{visitor_limit}} visitors.</small></p>
+    % end
     <ol style="padding-left: 28px; list-style-position: outside;">
         % for article in data['the_list']:
         <li style="margin-bottom: 0.5rem; font-size: 0.8rem;"><span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 1.1rem">{{article['Title']}}</span><br />
         By {{(article['Authors']).title()}} in {{article['Subcategory'].title()}} | {{(article['Publish date']).split(' ')[0]}} | Asset <a href="{{article['URL']}}">{{article['asset id']}}</a><br />
-        PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['avg time']}} min/visitor<br />
+        PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['Avg. time formatted']}} min/visitor<br />
         Key referrers %: {{!article['Referrers report']}}<br />
         Devices %: mobile <strong>{{article['Mobile views%']}}</strong>, desktop <strong>{{article['Desktop views%']}}</strong><br />
         Social interactions: {{humanize(article['Social interactions'])}}</li>
         % end
     </ol>
-    <p {{!p}}><small>Articles that include {{data['Category']}} in category tree</small></p>
+    % if section != 'time':
+    <p {{!p}}><small>Articles that include {{section}} in category tree</small></p>
+    % end
 </div>
+
+
+
