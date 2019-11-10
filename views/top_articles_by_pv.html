@@ -50,7 +50,7 @@ end
         By {{(article['Authors']).title()}} in {{article['Section'].title()}} | {{(article['Publish date']).split(' ')[0]}} | Asset <a href="{{article['URL']}}">{{article['asset id']}}</a><br />
         PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['Avg. time formatted']}} min/visitor<br />
         Key referrers %: {{!article['Referrers report']}}<br />
-        Devices %: mobile <strong>{{article['Mobile views%']}}</strong>, desktop <strong>{{article['Desktop views%']}}</strong><br />
+        Devices %: {{!article['Devices report']}}<br />
         Social interactions: {{humanize(article['Social interactions'])}}</li>
         % end
     </ol>

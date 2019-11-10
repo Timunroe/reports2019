@@ -13,10 +13,12 @@ import utils as u
 import config as c
 
 
-ordinal = lambda n: "%d%s" % (n, "tsnrhtdd"[(math.floor(n / 10) % 10 != 1) * (n % 10 < 4) * n % 10::4])
+def ordinal(n): return "%d%s" % (
+    n, "tsnrhtdd"[(math.floor(n / 10) % 10 != 1) * (n % 10 < 4) * n % 10::4])
 
 # TODO: Compare daily stats to same days of week for period, all.
 # TODO: Fold in long reads func into pages parse func
+
 
 def read_csv(filename, folders=None, cols_to_keep=None):
     if folders:
@@ -48,6 +50,62 @@ def read_csv(filename, folders=None, cols_to_keep=None):
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+def df_to_records(df):
+    # convert a dataframe pages subset to list of dicts
+    # for use in templates
+    key_metrics = [
+        'Views', 'Visitors', 'Engaged minutes',
+        'Social interactions'
+    ]
+    device_cols = ['Desktop views', 'Mobile views', 'Tablet views']
+    referral_cols = [
+        'Search refs', 'Internal refs', 'Direct refs',
+        'Social refs', 'Other refs', 'Fb refs', 'Tw refs'
+    ]
+    records = df.to_dict(orient='record')
+    for record in records:
+        record['Title'] = record['Title'].replace(
+            '\'S ', '\'s ').replace('\'T ', '\'t ')
+        record['Title'] = record['Title'][:72] + \
+            (record['Title'][72:] and '...')
+        for item in device_cols + referral_cols:
+            record[f'''{item}%'''] = u.pct(record[item], record['Views'])
+        record['Returning vis.%'] = u.pct(
+            record['Returning vis.'], record['Visitors'])
+        time = round((record['Avg. time']), 2)
+        mins = int(time)
+        seconds = int((time - mins) * 60)
+        record['Avg. time formatted'] = f'''{mins}:{seconds:02d}'''
+        # referrers string
+        temp = []
+        referrers = [
+            ('search', record['Search refs%']
+             ), ('direct', record['Direct refs%']),
+            ('other', record['Other refs%']
+             ), ('internal', record['Internal refs%']),
+            ('Tw', record['Tw refs%']), ('FB', record['Fb refs%'])
+        ]
+        for item in sorted(referrers, key=lambda x: x[1], reverse=True):
+            if item[1] > 9:
+                temp.append(f'''{item[1]}% {item[0]}''')
+        temp[0] = f'''<b>{temp[0]}</b>'''
+        record['Referrers report'] = ", ".join(temp)
+        # devices string
+        temp = []
+        devices_pv = [
+            ('mobile', record['Mobile views%']
+             ), ('desktop', record['Desktop views%']),
+            ('tablet', record['Tablet views%']),
+        ]
+        for item in sorted(devices_pv, key=lambda x: x[1], reverse=True):
+            if item[1] > 9:
+                temp.append(f'''{item[1]}% {item[0]}''')
+        temp[0] = f'''<b>{temp[0]}</b>'''
+        record['Devices report'] = ", ".join(temp)
+    return {
+        'the_list': sorted(records, key=lambda k: k['Views'], reverse=True)
+    }
+
 
 def pages_parse(dflt):
     data = {}
@@ -69,7 +127,8 @@ def pages_parse(dflt):
         folders=['data', freq],
         cols_to_keep=dflt['config']['pages_cols_keep']
     )
-    key_metrics = ['Views', 'Visitors', 'Engaged minutes', 'Social interactions']
+    key_metrics = ['Views', 'Visitors',
+                   'Engaged minutes', 'Social interactions']
     device_cols = ['Desktop views', 'Mobile views', 'Tablet views']
     referral_cols = [
         'Search refs', 'Internal refs', 'Direct refs',
@@ -82,36 +141,28 @@ def pages_parse(dflt):
     # ---- MODIFY DATAFRAME --------
     # add asset ids if relevant to page
     df['asset id'] = df['URL'].apply(
-        lambda x: (re.search(r'.*(\d{7})-.*', x)).group(1) if re.search(r'.*(\d{7})-.*', x) else 'none'
+        lambda x: (re.search(
+            r'.*(\d{7})-.*', x)).group(1) if re.search(r'.*(\d{7})-.*', x) else 'none'
     )
     df['Title'] = df['Title'].apply(
-        lambda x: x.title().replace("’S", "’s ").replace("'S ", "'s ") if x != 0 else 'none'
+        lambda x: x.title() if x != 0 else 'none'
     )
-    # obits have Pub date and Asset ID, but Title == none)
+    # obits have Pub date and Asset ID, but Title == none
     # index pages have Title but Pub date == 0 and Asset ID == none
     # true article pages have title != none, Asset Id != none
-
-    df['Avg. time'] = round(df['Engaged minutes'] / df['Visitors'], 3)
-    df['Category'] = df['Section'].apply(
-        lambda x: x.split('|')[0] if x != 0 else 'none'
-    )
-    df['Subcategory'] = df['Section'].apply(
-        lambda x: x.split('|')[-1] if x != 0 else 'none'
-    )
-    # convert tags category to string if not already
-    df['Tags'] = df['Tags'].apply(
-        lambda x: str(x) if x == 0 else x
-    )
     # Filter df just for articles
     df_articles_temp = df[(df['asset id'] != 'none') & (df['Title'] != 'none')]
+    # sort by pub date for following aggregate functions
+    print(df_articles_temp[df_articles_temp['Publish date'] == 0])
+    df_articles_temp = df_articles_temp.sort_values(by=['Publish date'], ascending=False)
     # aggregate article data by asset ID
     aggregation_functions = {
         'URL': 'first',
         'Title': 'first',
         'Publish date': 'last',
-        'Authors': 'last',
-        'Section': 'last',
-        'Tags': 'last',
+        'Authors': 'first',
+        'Section': 'first',
+        'Tags': 'first',
         'Visitors': 'sum',
         'Views': 'sum',
         'Engaged minutes': 'sum',
@@ -131,100 +182,53 @@ def pages_parse(dflt):
         'Fb interactions': 'sum',
         'Tw interactions': 'sum',
         'asset id': 'first',
-        'Avg. time': 'first',
-        'Category': 'last',
-        'Subcategory': 'last',
     }
-    df_articles = df_articles_temp.groupby(df_articles_temp['asset id']).aggregate(aggregation_functions)
+    df_articles = df_articles_temp.groupby(
+        df_articles_temp['asset id']).aggregate(aggregation_functions)
+    # ADD MORE COLUMNS NEEDED FOR ARTICLES
+    df_articles['Avg. time'] = round(
+        df_articles['Engaged minutes'] / df_articles['Visitors'], 3)
+    df_articles['Category'] = df_articles['Section'].apply(
+        lambda x: x.split('|')[0] if x != 0 else 'none'
+    )
+    df_articles['Subcategory'] = df_articles['Section'].apply(
+        lambda x: x.split('|')[-1] if x != 0 else 'none'
+    )
+    # convert tags category to string if not already
+    df_articles['Tags'] = df['Tags'].apply(
+        lambda x: str(x) if x == 0 else x
+    )
     # -- GET TOP ARTICLES BY PAGE VIEWS
+
     # sort by page views
     df_articles = df_articles.sort_values(by=['Views'], ascending=False)
     # CHANGE 10 IF MORE/FEWER TOP ARTICLES WANTED
     limit = {'daily': 7, 'weekly': 10, 'monthly': 10}[freq]
     top_articles = df_articles.head(limit).to_dict(orient='record')
-    # Now, create collection based on those asset IDs
-    for asset in top_articles:
-        asset['Title'] = asset['Title'][:72] + (asset['Title'][72:] and '...')
-        for item in device_cols + referral_cols:
-            asset[f'''{item}%'''] = u.pct(asset[item], asset['Views'])
-        time = round((asset['Avg. time']), 2)
-        mins = int(time)
-        seconds = int((time - mins) * 60)
-        asset['Avg. time formatted'] = f'''{mins}:{seconds:02d}'''
-        asset['Returning vis.%'] = u.pct(asset['Returning vis.'], asset['Visitors'])
-        temp = []
-        referrers = [
-            ('search', asset['Search refs%']), ('direct', asset['Direct refs%']),
-            ('other', asset['Other refs%']), ('internal', asset['Internal refs%']),
-            ('Tw', asset['Tw refs%']), ('FB', asset['Fb refs%'])
-        ]
-        for item in sorted(referrers, key=lambda x: x[1], reverse=True):
-            if item[1] > 9:
-                temp.append(f'''{item[1]} {item[0]}''')
-        temp[0] = f'''<b>{temp[0]}</b>'''
-        asset['Referrers report'] = ", ".join(temp)
-    data = {'the_list': sorted(top_articles, key=lambda k: k['Views'], reverse=True)}
-    the_html += template('top_articles_by_pv.html', data=data)
-
+    data = df_to_records(top_articles)
+    the_html = template('top_articles_by_pv.html', data=data)
     # -- GET TOP ARTICLES IN SECTIONS OPINION, LIVING, ARTS, OPINION
     sections = ['whatson', 'living', 'sports']
     for section in sections:
         # CHANGE 3 IF DIFFERENT NUMBER OF ARTICLES WANTED
-        section_pages = df_articles[df_articles['Tags'].str.contains(section)].head(3)
-        # filter = df_articles['Category'] == section
-        records = section_pages.to_dict(orient='record')
-        for record in records:
-            record['Title'] = record['Title'][:72] + (record['Title'][72:] and '...')
-            mins = int(record['Avg. time'])
-            seconds = int((record['Avg. time'] - mins) * 60)
-            record['avg time'] = f'''{mins}:{seconds:02d}'''
-            for item in device_cols + referral_cols:
-                record[f'''{item}%'''] = u.pct(record[item], record['Views'])
-            record['Returning vis.%'] = u.pct(record['Returning vis.'], record['Visitors'])
-            temp = []
-            referrers = [
-                ('search', record['Search refs%']), ('direct', record['Direct refs%']),
-                ('other', record['Other refs%']), ('internal', record['Internal refs%']),
-                ('Tw', record['Tw refs%']), ('FB', record['Fb refs%'])
-            ]
-            for item in sorted(referrers, key=lambda x: x[1], reverse=True):
-                if item[1] > 9:
-                    temp.append(f'''{item[1]} {item[0]}''')
-            temp[0] = f'''<b>{temp[0]}</b>'''
-            record['Referrers report'] = ", ".join(temp)
-        data = {'Category': section, 'the_list': sorted(records, key=lambda k: k['Views'], reverse=True)}
+        section_pages = df_articles[df_articles['Tags'].str.contains(
+            section)].head(3)
+        data = df_to_records(section_pages)
         the_html += template('top_articles_by_section.html', data=data)
-        # pprint.pprint(article_list)
     opinion_pages = df_articles[
         (df_articles['Tags'].str.contains('opinion')) &
-        (df_articles['Tags'].str.contains('sports|living|whatson|subcategory:news', regex=True) == False)
+        (df_articles['Tags'].str.contains(
+            'sports|living|whatson|subcategory:news', regex=True) == False)
     ].head(3)
-    records = opinion_pages.to_dict(orient='record')
-    pprint.pprint(records)
-    for record in records:
-        record['Title'] = record['Title'][:72] + (record['Title'][72:] and '...')
-        mins = int(record['Avg. time'])
-        seconds = int((record['Avg. time'] - mins) * 60)
-        record['avg time'] = f'''{mins}:{seconds:02d}'''
-        for item in device_cols + referral_cols:
-            record[f'''{item}%'''] = u.pct(record[item], record['Views'])
-        record['Returning vis.%'] = u.pct(record['Returning vis.'], record['Visitors'])
-        temp = []
-        referrers = [
-            ('search', record['Search refs%']), ('direct', record['Direct refs%']),
-            ('other', record['Other refs%']), ('internal', record['Internal refs%']),
-            ('Tw', record['Tw refs%']), ('FB', record['Fb refs%'])
-        ]
-        for item in sorted(referrers, key=lambda x: x[1], reverse=True):
-            if item[1] > 9:
-                temp.append(f'''{item[1]} {item[0]}''')
-        temp[0] = f'''<b>{temp[0]}</b>'''
-        record['Referrers report'] = ", ".join(temp)
-    data = {'Category': 'Opinion', 'the_list': sorted(records, key=lambda k: k['Views'], reverse=True)}
+    # handle top articles in with only opinion as category
+    data = df_to_records(opinion_pages)
     the_html += template('top_articles_by_section.html', data=data)
-
     # SHOULD INSERT ARTICLES BY READ TIME HERE
-
+    visitor_limit = 200
+    df_articles = df_articles.sort_values(by=['Avg. time'], ascending=False)
+    long_reads = df_articles[df_articles['Visitors'] > visitor_limit].head(5)
+    data = df_to_records(long_reads)
+    the_html += template('top_referrers.html', data=data)
     # -- GET HOME PAGE STATS
     url = dflt['config']['home'][site]
     df_hp = df[df['URL'] == url]
@@ -236,7 +240,8 @@ def pages_parse(dflt):
     )
     df_site = df_site.sort_values(by=['Date'], ascending=False)
     pv_total = df_site.tail(1)['Views'].values[0]
-    time = round((df_hp['Engaged minutes'].values[0] / df_hp['Visitors'].values[0]), 2)
+    time = round((df_hp['Engaged minutes'].values[0] /
+                  df_hp['Visitors'].values[0]), 2)
     mins = int(time)
     seconds = int((time - mins) * 60)
     data_hp = {
@@ -245,20 +250,39 @@ def pages_parse(dflt):
         'pv vs total': u.pct(df_hp['Views'].values[0], pv_total),
         'uv': df_hp['Visitors'].values[0],
         'min': df_hp['Engaged minutes'].values[0],
-        'returning uv%': u.pct(df_hp['Returning vis.'].values[0], df_hp['Visitors'].values[0]),
+        'returning uv%': u.pct(
+            df_hp['Returning vis.'].values[0], df_hp['Visitors'].values[0]
+            ),
         'mobile pv': df_hp['Mobile views'].values[0],
         'desktop pv': df_hp['Desktop views'].values[0],
         'tablet pv': df_hp['Tablet views'].values[0],
-        'mobile pv%': u.pct(df_hp['Mobile views'].values[0], df_hp['Views'].values[0]),
-        'desktop pv%': u.pct(df_hp['Desktop views'].values[0], df_hp['Views'].values[0]),
-        'tablet pv%': u.pct(df_hp['Tablet views'].values[0], df_hp['Views'].values[0]),
-        'search pv%': u.pct(df_hp['Search refs'].values[0], df_hp['Views'].values[0]),
-        'direct pv%': u.pct(df_hp['Direct refs'].values[0], df_hp['Views'].values[0]),
-        'internal pv%': u.pct(df_hp['Internal refs'].values[0], df_hp['Views'].values[0]),
-        'social pv%': u.pct(df_hp['Social refs'].values[0], df_hp['Views'].values[0]),
-        'other pv%': u.pct(df_hp['Other refs'].values[0], df_hp['Views'].values[0]),
+        'mobile pv%': u.pct(
+            df_hp['Mobile views'].values[0], df_hp['Views'].values[0]
+            ),
+        'desktop pv%': u.pct(
+            df_hp['Desktop views'].values[0], df_hp['Views'].values[0]
+            ),
+        'tablet pv%': u.pct(
+            df_hp['Tablet views'].values[0], df_hp['Views'].values[0]
+            ),
+        'search pv%': u.pct(
+            df_hp['Search refs'].values[0], df_hp['Views'].values[0]
+            ),
+        'direct pv%': u.pct(
+            df_hp['Direct refs'].values[0], df_hp['Views'].values[0]
+            ),
+        'internal pv%': u.pct(
+            df_hp['Internal refs'].values[0], df_hp['Views'].values[0]
+            ),
+        'social pv%': u.pct(
+            df_hp['Social refs'].values[0], df_hp['Views'].values[0]
+            ),
+        'other pv%': u.pct(
+            df_hp['Other refs'].values[0], df_hp['Views'].values[0]
+            ),
     }
-    the_html += template('home_page.html', data=data_hp, inputs=c.var['inputs'][site][freq])
+    the_html += template('home_page.html', data=data_hp,
+                         inputs=c.var['inputs'][site][freq])
     return the_html
 
 
@@ -284,65 +308,6 @@ def top_referrers_parse(dflt):
     }
     the_html = template('top_referrers.html', data=data)
     return the_html
-
-
-def long_reads_parse(dflt):
-    visitor_limit = 200
-    # read in pages csv, add 'avg time' column, sort on that
-    key_metrics = ['Views', 'Visitors', 'Engaged minutes', 'Social interactions']
-    device_cols = ['Desktop views', 'Mobile views', 'Tablet views']
-    referral_cols = [
-        'Search refs', 'Internal refs', 'Direct refs',
-        'Social refs', 'Other refs', 'Fb refs', 'Tw refs'
-    ]
-    # site = dflt['site']
-    freq = dflt['freq']
-    # period = dflt['defaults']['period']
-    df = read_csv(
-        filename=f'''{site}-pages.csv''',
-        folders=['data', freq],
-        cols_to_keep=dflt['config']['pages_cols_keep']
-    )
-    df['asset id'] = df[df['Publish date'] != '0']['URL'].apply(
-        lambda x: (re.search(r'.*(\d{7})-.*', x)).group(1) if re.search(r'.*(\d{7})-.*', x) else 'none'
-    )
-    df['Avg. time'] = round(df['Engaged minutes'] / df['Visitors'], 3)
-    df_articles = df[df['asset id'] != 'none']
-    df_articles = df_articles.sort_values(by=['Avg. time'], ascending=False)
-    the_list = []
-    # Now, create collection based on those asset IDs
-    for article in df_articles[df_articles['Visitors'] > visitor_limit].head(5).to_dict(orient='record'):
-        obj = {}
-        obj['url'] = article['URL']
-        obj['asset id'] = article['asset id']
-        title = article['Title'].title().replace("’S ", "’s ")
-        obj['title'] = title[:72] + (title[72:] and '...')
-        obj['author'] = article['Authors'].title()
-        obj['section'] = article['Section'].split('|')[-1]
-        obj['date'] = article['Publish date']
-        for item in key_metrics:
-            obj[item] = article[item]
-        for item in device_cols + referral_cols:
-            obj[item] = article[item]
-            obj[f'''{item}%'''] = u.pct(obj[item], obj['Views'])
-        obj['Returning vis.%'] = u.pct(article['Returning vis.'], article['Visitors'])
-        time = article['Avg. time']
-        mins = int(time)
-        seconds = int(round((time - mins) * 60, 0))
-        obj['avg time'] = f'''{mins}:{seconds:02d}'''
-        the_list.append(obj)
-        temp = []
-        referrers = [
-            ('search', obj['Search refs%']), ('direct', obj['Direct refs%']),
-            ('other', obj['Other refs%']), ('internal', obj['Internal refs%']),
-            ('Tw', obj['Tw refs%']), ('FB', obj['Fb refs%'])
-        ]
-        for item in sorted(referrers, key=lambda x: x[1], reverse=True):
-            if item[1] > 9:
-                temp.append(f'''{item[1]} {item[0]}''')
-        obj['Referrers report'] = ", ".join(temp)
-
-    return template('long_reads.html', data={'the_list': the_list}, visitor_limit=visitor_limit)
 
 
 def site_parse(dflt):
@@ -400,7 +365,11 @@ def site_parse(dflt):
         this_pv_period_rank = (period_pv.index(this_pv)) + 1
         all_pv = sorted(list(df['Views'].values), reverse=True)
         this_pv_all_rank = (all_pv.index(this_pv)) + 1
-        data['Views rank'] = f'''Was {ordinal(this_pv_period_rank)} best {freq.replace('ly', '').replace('dai', 'day')} in last {period}, {ordinal(this_pv_all_rank)} best in last {total_count}'''
+        data['Views rank'] = (
+            f'''Was {ordinal(this_pv_period_rank)} best '''
+            f'''{dflt['config'][freq]['term']} in last {period}, '''
+            f'''{ordinal(this_pv_all_rank)} best in last {total_count}'''
+        )
 
     # Get period avg, so I can use for 'key changes'
     # in report. ie if a change is > 5% of rm
@@ -408,19 +377,28 @@ def site_parse(dflt):
     # get percentages of key metrics
     for item in device_cols + referral_cols:
         # What's the ratio of this stat to latest period's views?
-        data[f'''{item + '%'}'''] = u.pct(new[item].values[0], new['Views'].values[0])
+        data[f'''{item + '%'}'''] = u.pct(new[item].values[0],
+                                          new['Views'].values[0])
         # difference between new stat and total avg stat
-        data[f'''{item + ' diff vs rm'}'''] = new[item].values[0] - round(total[item].mean(), 0)
+        data[f'''{item + ' diff vs rm'}'''] = new[item].values[0] - \
+            round(total[item].mean(), 0)
         # percentage of difference between new stat and total avg stat
-        data[f'''{item + ' vs rm%'}'''] = u.vs_rm_pct(new[item].values[0], total[item].mean())
+        data[f'''{item + ' vs rm%'}'''] = u.vs_rm_pct(
+            new[item].values[0], total[item].mean())
 
     # percentage of visitors who are returning
-    data['Returning vis.%'] = u.pct(new['Returning vis.'].values[0], new['Visitors'].values[0])
+    data['Returning vis.%'] = u.pct(
+        new['Returning vis.'].values[0], new['Visitors'].values[0])
     # percentage of difference between new 'Returninv vis.' and total avg
-    data['Returning vis. vs rm%'] = u.vs_rm_pct(new['Returning vis.'].values[0], total['Returning vis.'].mean())
+    data['Returning vis. vs rm%'] = u.vs_rm_pct(
+        new['Returning vis.'].values[0], total['Returning vis.'].mean())
     # get avg time on site (in decimal format. Can covert to mm:ss in report)
-    data['site time dec'] = round(data['Engaged minutes'] / data['Visitors'], 2)
-    data['site time'] = f'''{int(data['site time dec'])}:{int(round((data['site time dec'] - int(data['site time dec']))*60,0))}'''
+    data['site time dec'] = round(
+        data['Engaged minutes'] / data['Visitors'], 2)
+    data['site time'] = (
+        f'''{int(data['site time dec'])}:'''
+        f'''{int(round((data['site time dec'] - int(data['site time dec']))*60,0))}'''
+    )
     data['site time dec vs rm%'] = u.vs_rm_pct(
         data['site time dec'],
         total['Engaged minutes'].mean() / total['Visitors'].mean()
@@ -460,12 +438,22 @@ def site_parse(dflt):
     for item in sorted(referral_changes, key=lambda x: x[1], reverse=True):
         if abs(item[1]) > (0.01 * data['Views rm']):
             if item[1] < 0:
-                temp.append(f'''<span style="color: #8B0000; font-weight: 700;">{(u.humanize(value=item[1]))}</span> {item[0]}''')
+                temp.append((
+                    f'''<span style="color: #8B0000; font-weight: 700;">'''
+                    f'''{(u.humanize(value=item[1]))}</span> {item[0]}'''
+                ))
             else:
-                temp.append(f'''<span style="color: #006400; font-weight: 700;">{u.humanize(value=item[1], sign=True)}</span> {item[0]}''')
+                temp.append((
+                    f'''<span style="color: #006400; font-weight: 700;">'''
+                    f'''{u.humanize(value=item[1], sign=True)}'''
+                    f'''</span> {item[0]}'''
+                    ))
     data['Referrers change report'] = ", ".join(temp)
     # pprint.pprint(data)
-    return template('site_highlights.html', data=data, site=site, freq=freq, period=period, term=dflt['config'][freq]['term'])
+    return template(
+        'site_highlights.html',
+        data=data, site=site, freq=freq,
+        period=period, term=dflt['config'][freq]['term'])
 
 
 def parse_sections_csv(dflt):
@@ -488,7 +476,8 @@ def parse_sections_csv(dflt):
         obj['PV %'] = u.pct(record['Views'], views_sum)
         obj['PV / Post'] = int(record['PV / post'])
         obj['UV %'] = u.pct(record['Visitors'], visitors_sum)
-        obj['Returning Vis%'] = u.pct(record['Returning vis.'], record['Visitors'])
+        obj['Returning Vis%'] = u.pct(
+            record['Returning vis.'], record['Visitors'])
         time = record['Avg. Time']
         mins = int(time)
         seconds = int(round((time - mins) * 60, 0))
@@ -510,37 +499,22 @@ report = ''
 data = {}
 
 # get command parameters
-if len(sys.argv) > 2 and (sys.argv)[1] in ['daily', 'weekly', 'monthly'] and (sys.argv)[2] \
-        in ['spectator', 'record', 'standard', 'examiner', 'tribune', 'review', 'star']:
+if (len(sys.argv) > 2
+    and (sys.argv)[1] in ['daily', 'weekly', 'monthly']
+    and (sys.argv)[2] in [
+        'spectator', 'record', 'standard', 'examiner',
+        'tribune', 'review', 'star'
+        ]):
     freq = (sys.argv)[1]
     site = (sys.argv)[2]
 else:
     print(
-        "Requires 2 parameters:\n[daily/weekly/monthly]\n[spectator/record/examiner/star]")
+        "Requires 2 parameters:\n[daily/weekly/monthly]" +
+        "\n[spectator/record/examiner/star]"
+    )
     sys.exit()
 
 # read in CSV, only keeping columns we want
-'''
-df_pages = read_parsely_csv(
-    c.var[freq][site]['pages_csv'],
-    ['data', freq],
-    c.var['pages_cols_keep']
-)
-data['pages'] = parse_pages_csv(df_pages, data['site'])
-hp = data['pages']['hp'].update(m.var[site][freq])
-
-df_referrers = read_parsely_csv(
-    c.var[freq][site]['referrers'],
-    ['data', freq]
-)
-top_referrers = parse_referrers_csv(df_referrers)
-
-df_long_reads = read_parsely_csv(
-    c.var[freq][site]['long_reads'],
-    ['data', freq]
-)
-top_long_reads = parse_long_reads_csv(df_long_reads)
-'''
 
 header = template('header.html', site=site, freq=freq)
 footer = template('footer.html')
@@ -554,14 +528,6 @@ site_stats = site_parse(
 )
 
 top_articles = pages_parse(
-    {
-        'site': site,
-        'freq': freq,
-        'config': c.var,
-    }
-)
-
-long_reads = long_reads_parse(
     {
         'site': site,
         'freq': freq,
@@ -585,7 +551,7 @@ if freq != 'daily':
         {
             'site': site,
             'freq': freq,
-            'defaults': c.var,
+            'config': c.var,
         }
     )
 
@@ -593,15 +559,16 @@ if freq != 'daily':
         {
             'site': site,
             'freq': freq,
-            'defaults': c.var,
+            'config': c.var,
         }
     )
 
-    stuff = header + kpi + site_stats + top_articles + long_reads + top_sections + top_referrers + footer
+    stuff = header + kpi + site_stats + top_articles + \
+        top_sections + top_referrers + footer
 
 else:
 
-    stuff = header + site_stats + top_articles + long_reads + footer
+    stuff = header + site_stats + top_articles + footer
 
 
 u.write_file(stuff, f'''{site}_{freq}.html''', ['reports'])
