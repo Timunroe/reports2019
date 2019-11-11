@@ -46,7 +46,7 @@ end
     <h2 {{!h2}}>TOP POSTS: <span style="font-weight: 300;">By views</span></h2>
     <ol style="padding-left: 28px; list-style-position: outside;">
         % for article in data['the_list']:
-        <li style="margin-bottom: 0.5rem; font-size: 0.8rem;"><span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 1.1rem;">{{article['Title']}}</span><br />
+        <li style="margin-bottom: 0.5rem; font-size: 0.8rem; line-height: 1.2rem;"><span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 1.1rem;">{{article['Title']}}</span><br />
         By {{(article['Authors']).title()}} in {{article['Section'].title()}} | {{(article['Publish date']).split(' ')[0]}} | Asset <a href="{{article['URL']}}">{{article['asset id']}}</a><br />
         PV <strong>{{humanize(article['Views'])}}</strong> | visitors: <strong>{{humanize(article['Visitors'])}}</strong>, {{article['Returning vis.%']}}% returning | {{article['Avg. time formatted']}} min/visitor<br />
         Key referrers %: {{!article['Referrers report']}}<br />

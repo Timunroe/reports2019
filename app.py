@@ -65,7 +65,8 @@ def df_to_records(df):
     records = df.to_dict(orient='record')
     for record in records:
         record['Title'] = record['Title'].title().replace(
-            '\'S ', '\'s ').replace('\'T ', '\'t ')
+            '\'S ', '\'s ').replace(
+                '\'T ', '\'t ').replace('’S', '’s')
         record['Title'] = record['Title'][:72] + \
             (record['Title'][72:] and '...')
         for item in device_cols + referral_cols:
@@ -209,7 +210,7 @@ def pages_parse(dflt):
     # sort by page views
     df_articles = df_articles.sort_values(by=['Views'], ascending=False)
     # export to CSV for testing
-    # df_articles.to_csv('articles.csv')
+    df_articles.to_csv('articles.csv')
     # CHANGE 10 IF MORE/FEWER TOP ARTICLES WANTED
     limit = {'daily': 7, 'weekly': 10, 'monthly': 10}[freq]
     top_articles = df_articles.head(limit)
@@ -354,62 +355,79 @@ def site_parse(dflt):
         df['DayOfWeek'] = df['Date'].dt.day_name()
         # get a list of all x day's pages views, sorted.
         # then get index of this period's page views int aht list, that's the rank.
-
+    # export to CSV for testing-validation
+    df.to_csv('site-test.csv')
     data = {}
-    # get key metrics for LATEST PERIOD, vs TOTAL PERIOD
+    # get key metrics for LATEST, vs Period, vs ALL
     new = df.tail(1)
-    total = df.tail(period)
+    roll_avg = df.tail(period)
+    if freq == 'daily':
+        this_day = new['DayOfWeek'].values[0]
+        roll_avg = roll_avg[roll_avg['DayOfWeek'] == this_day]
+        all = df[df['DayOfWeek'] == this_day]
+    else:
+        roll_avg = df.tail(period)
+        all = df
+    this_pv = new['Views'].values[0]
     for item in key_metrics:
         data[item] = new[item].values[0]
         # print(f'{item[0 ]} RM value ', total[item[1]].mean())
         data[f"{item + ' vs rm%'}"] = u.vs_rm_pct(
-            new[item].values[0], total[item].mean()
+            new[item].values[0], roll_avg[item].mean()
         )
     # ---COMPARE THIS PERIOD TO OTHERS
-    if freq == 'weekly' or 'monthly':
-        this_pv = df.tail(1)['Views'].values[0]
-        total_count = len(list(df['Views'].values))
-        period_pv = sorted(list(df.tail(period)['Views'].values), reverse=True)
-        this_pv_period_rank = (period_pv.index(this_pv)) + 1
-        all_pv = sorted(list(df['Views'].values), reverse=True)
-        this_pv_all_rank = (all_pv.index(this_pv)) + 1
+    # by period and total
+    roll_avg_pv_list = sorted(list(roll_avg['Views'].values), reverse=True)
+    roll_avg_count = len(roll_avg_pv_list)
+    print("roll avg count: ", roll_avg_count)
+    this_pv_roll_avg_rank = (roll_avg_pv_list.index(this_pv)) + 1
+    all_pv_list = sorted(list(all['Views'].values), reverse=True)
+    all_count = len(all_pv_list)
+    this_pv_all_rank = (all_pv_list.index(this_pv)) + 1
+    if freq == 'daily':
         data['Views rank'] = (
-            f'''Was {ordinal(this_pv_period_rank)} best '''
-            f'''{dflt['config'][freq]['term']} in last {period}, '''
-            f'''{ordinal(this_pv_all_rank)} best in last {total_count}'''
+            f'''Was {ordinal(this_pv_roll_avg_rank)} best '''
+            f'''{this_day} in last {roll_avg_count}, '''
+            f'''{ordinal(this_pv_all_rank)} best in last {all_count}'''
+        )
+    else:
+        data['Views rank'] = (
+            f'''Was {ordinal(this_pv_roll_avg_rank)} best '''
+            f'''{dflt['config'][freq]['term']} in last {roll_avg_count}, '''
+            f'''{ordinal(this_pv_all_rank)} best in last {all_count}'''
         )
 
     # Get period avg, so I can use for 'key changes'
     # in report. ie if a change is > 5% of rm
-    data['Views rm'] = round(total['Views'].mean(), 0)
+    data['Views rm'] = round(roll_avg['Views'].mean(), 0)
     # get percentages of key metrics
     for item in device_cols + referral_cols:
         # What's the ratio of this stat to latest period's views?
         data[f'''{item + '%'}'''] = u.pct(new[item].values[0],
                                           new['Views'].values[0])
-        # difference between new stat and total avg stat
+        # difference between new stat and period avg stat
         data[f'''{item + ' diff vs rm'}'''] = new[item].values[0] - \
-            round(total[item].mean(), 0)
-        # percentage of difference between new stat and total avg stat
+            round(roll_avg[item].mean(), 0)
+        # percentage of difference between new stat and roll_avg stat
         data[f'''{item + ' vs rm%'}'''] = u.vs_rm_pct(
-            new[item].values[0], total[item].mean())
+            new[item].values[0], roll_avg[item].mean())
 
     # percentage of visitors who are returning
     data['Returning vis.%'] = u.pct(
         new['Returning vis.'].values[0], new['Visitors'].values[0])
-    # percentage of difference between new 'Returninv vis.' and total avg
+    # percentage of difference between new 'Returninv vis.' and period avg
     data['Returning vis. vs rm%'] = u.vs_rm_pct(
-        new['Returning vis.'].values[0], total['Returning vis.'].mean())
+        new['Returning vis.'].values[0], roll_avg['Returning vis.'].mean())
     # get avg time on site (in decimal format. Can covert to mm:ss in report)
     data['site time dec'] = round(
         data['Engaged minutes'] / data['Visitors'], 2)
-    data['site time'] = (
-        f'''{int(data['site time dec'])}:'''
-        f'''{int(round((data['site time dec'] - int(data['site time dec']))*60,0))}'''
-    )
+    time = round((data['site time dec']), 2)
+    mins = int(time)
+    seconds = int((time - mins) * 60)
+    data['site time formatted'] = f'''{mins}:{seconds:02d}'''
     data['site time dec vs rm%'] = u.vs_rm_pct(
         data['site time dec'],
-        total['Engaged minutes'].mean() / total['Visitors'].mean()
+        roll_avg['Engaged minutes'].mean() / roll_avg['Visitors'].mean()
     )
     # produce devices breakdown report string
     devices = [

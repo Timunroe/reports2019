@@ -17,14 +17,14 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 54.8,
-                'hp_section': 17.0,
-                'hp_links': ["thespec.com/hamilton-announcements/obituaries-death-notices/  | 14,638","thespec.com/hamilton-news/  | 6,876","Burlington’s Paletta family, the $400-million Hollywood blockbuster deal and the alleged tax ‘sham’  | 4,790","One of three Hamilton teenagers charged with murder of fellow teen released on bail  | 4,009","Hamilton City Centre sale pending: $700-million condo complex planned for mall site  | 3,469","‘Everything went to hell’: Mother of Devan Selvey details events leading up to stabbing  | 3,158","thespec.com  | 2,558","Long-suffering Locke St. businesses have end of road construction in sight  | 2,532","Man driving nearly 50 km/h over speed limit in Burlington with open cans of beer as his passenger  | 2,490","Mom dies of overdose; son stuck with $35,000 city bill  | 2,435",],
+                'hp_posts': 52.0,
+                'hp_section': 15.0,
+                'hp_links': ["hamilton-announcements/obituaries-death-notices/ | 14,227","hamilton-news/ | 6,684","Hamilton police probing whether drugs were ‘significant factor’ in double homicide; suspect found dead | 6,364","Police seeking ‘armed and dangerous’ suspect in double homicide probe on Hamilton Mountain | 5,088","Dispute over debt led to double homicide: Hamilton police | 3,831","user/login/ | 2,247","Hamilton residents hit big with $1M lotto win | 2,239","Hamilton homes have toxic lead pipes carrying water to taps | 1,930","Mom angry her 21-year-old special needs son booted from Swoop flight in Hamilton | 1,839","The days of sharing your Netflix password are numbered | 1,689",],
                 # omniture
-                'freq': 27.3,
+                'freq': 28.9,
                 # readerboard
-                'pv/v': 2.02,
-                'min/v': 1.33,
+                'pv/v': 2.06,
+                'min/v': 0,
                 'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
                 'registration_most_read': [],
             },
@@ -43,32 +43,59 @@ var = {
             }
         },
         'record': {
+            'daily': {
+                # parsely stats
+                'hp_posts': 'NA',
+                'hp_section': 'NA',
+                'hp_links': 'NA',
+                # omniture
+                'freq': 'NA',
+                # readerboard
+                'pv/v': 'NA',
+                'min/v': 'NA',
+                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
+                'registration_most_read': 'NA',
+            },
             'weekly': {
                 # parsely stats
                 'hp_posts': 48.9,
                 'hp_section': 28.1,
                 'hp_links': [],
                 # omniture
-                'freq': 26.5,
-                'pv/v': 2.07,
-                'min/v': 1.32,
+                'freq': 24.9,
+                # readerboard
+                'pv/v': 0,
+                'min/v': 0,
                 'registration_last_clicks': [(10, 'voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race'), (6, 'joseph-garreffa-speaks-out-about-leaving-kitchener-rangers'), (5, 'liberal-leadership-hopeful-alvin-tedjo-promising-to-end-catholic-school-funding'), (5, 'major-waterloo-rec-centre-expansion-slated-for-completion-in-2022'), (4, 'live-updates-2019-federal-election-results'), (3, 'region-voters-stick-with-liberal-incumbents-in-four-ridings'), (2, 'virus-found-in-carp-from-alder-lake-in-new-dundee'), (3, 'driver-charged-after-collision-with-ion-train-in-kitchener'), (2, 'fence-goes-up-around-kitchener-eyesore-'), (2, 'kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing'), (3, 'therecord-contact-us')]
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 46.3,
-                'hp_section': 29.3,
+                'hp_posts': 0,
+                'hp_section': 0,
                 'hp_links': ["therecord.com/waterlooregion-announcements/obituaries-death-notices/ | 77,511","therecord.com/waterlooregion-news/ | 12,393","Tim Louis wins Kitchener-Conestoga after botched paperwork delayed vote count 12 hours | 3,569","therecord.com/waterlooregion-sports/ | 3,469","therecord.com/search/allarticles/ | 3,004","therecord.com/user/login/ | 2,995","therecord.com | 2,328","Waterloo Region couple’s Handmaid’s Tale wedding photo sparks controversy | 2,182","For these families a love triangle is not an obstacle. Polyamorous parents chart their own course | 2,152","therecord.com/waterlooregion-opinion/ | 2,029",],
                 # omniture
-                'freq': 24.5,
+                'freq': 0,
                 # readerboard
-                'pv/v': 2.05,
-                'min/v': 1.32,
+                'pv/v': 0,
+                'min/v': 0,
                 'registration_last_clicks': ["22 | 15 | news/9629207-waterloo-region-couple-s-handmaid-s-tale-wedding-photo-sparks-controversy", "35 | 14 | news/9655050-voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race", "18 | 13 | news/9663790-new-zoning-rules-allow-tiny-houses-granny-flats-throughout-kitchener", "21 | 11 | news/9644793-cambridge-city-councillor-frank-monteiro-dies", "15 |  9 | news/9644793-cambridge-councillor-frank-monteiro-s-final-public-words-read-at-meeting", "22 |  8 | news/9631899-uptown-waterloo-business-merchants-plead-for-patrons-as-part-of-king-st-n-reopens", "17 |  7 | news/9627244-elmira-jewelry-store-gets-letter-of-apology-for-theft-from-the-1970s", "16 |  7 | news/9631566-man-sprays-moviegoers-with-bear-spray-in-kitchener-and-whitby", "14 |  7 | news/9648864-kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing", " 8 |  7 | news/9662352-waterloo-staff-recommends-keeping-crematorium-open", "12 |  7 | news/9663800-kitchener-family-facing-deportation",],
                 'registration_most_read': [],
             }
         },
         'standard': {
+            'daily': {
+                # parsely stats
+                'hp_posts': 'NA',
+                'hp_section': 'NA',
+                'hp_links': 'NA',
+                # omniture
+                'freq': 'NA',
+                # readerboard
+                'pv/v': 'NA',
+                'min/v': 'NA',
+                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
+                'registration_most_read': 'NA',
+            },
             'weekly': {
                 # parsely stats
                 'hp_posts': 1,
@@ -96,6 +123,19 @@ var = {
             }
         },
         'review': {
+            'daily': {
+                # parsely stats
+                'hp_posts': 'NA',
+                'hp_section': 'NA',
+                'hp_links': 'NA',
+                # omniture
+                'freq': 'NA',
+                # readerboard
+                'pv/v': 'NA',
+                'min/v': 'NA',
+                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
+                'registration_most_read': 'NA',
+            },
             'weekly': {
                 'hp_posts': 1,
                 'hp_section': 1,
@@ -109,19 +149,32 @@ var = {
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 57.7,
-                'hp_section': 33.9,
+                'hp_posts': 0,
+                'hp_section': 0,
                 'hp_links': ["niagara-announcements/obituaries-death-notices/ | 86,675","niagarafalls-on-news/ | 17,335","Update: Garbage truck trashes Thorold Tunnel | 4,039","Baby’s death leaves Niagara Falls father grieving | 2,881","Niagara Falls residents rally against illegal vacation rentals in their neighbourhood | 1,983","Driveway paving scam hits Niagara | 1,956","Falls council trashes biweekly garbage collection decision | 1,940","UPDATE: Mother faces first-degree murder charges in death of infant daughter | 1,934","Overnight crashes on Hwy. 406 leave two dead, two others badly injured | 1,896","Retired police officer placed under house arrest | 1,875",],
                 # omniture
-                'freq': 35.2,
+                'freq': 0,
                 # readerboard
-                'pv/v': 3.12,
-                'min/v': 1.98,
+                'pv/v': 0,
+                'min/v': 0,
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             }
         },
         'tribune': {
+            'daily': {
+                # parsely stats
+                'hp_posts': 'NA',
+                'hp_section': 'NA',
+                'hp_links': 'NA',
+                # omniture
+                'freq': 'NA',
+                # readerboard
+                'pv/v': 'NA',
+                'min/v': 'NA',
+                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
+                'registration_most_read': 'NA',
+            },
             'weekly': {
                 # parsely stats
                 'hp_posts': 0,
@@ -149,6 +202,19 @@ var = {
             }
         },
         'examiner': {
+            'daily': {
+                # parsely stats
+                'hp_posts': 'NA',
+                'hp_section': 'NA',
+                'hp_links': 'NA',
+                # omniture
+                'freq': 'NA',
+                # readerboard
+                'pv/v': 'NA',
+                'min/v': 'NA',
+                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
+                'registration_most_read': 'NA',
+            },
             'weekly': {
                 # parsely stats
                 'hp_posts': 1,
@@ -187,7 +253,7 @@ var = {
     },
     'daily': {
         'period': 90,
-        'term': 'days', 
+        'term': 'day', 
         'files': {
             'site': 'site-2019.csv',
             'pages': 'pages.csv',
@@ -195,7 +261,7 @@ var = {
     },
     'weekly': {
         'period': 13,
-        'term': 'weeks',
+        'term': 'week',
         'files': {
             'site': 'site-2019.csv',
             'pages': 'pages-last-week.csv',
@@ -205,7 +271,7 @@ var = {
     },
     'monthly': {
         'period': 3,
-        'term': 'months',
+        'term': 'month',
         'files': {
             'site': 'site-2019.csv',
             'pages': 'pages.csv',
