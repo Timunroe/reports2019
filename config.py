@@ -24,9 +24,9 @@ var = {
                 'freq': 28.9,
                 # readerboard
                 'pv/v': 2.06,
-                'min/v': 0,
-                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
-                'registration_most_read': [],
+                'min/v': '1:39',
+                'registration_last_clicks': ["7 | suspect-wanted-in-hamilton-double-homicide-found-dead-in-brantford-hotel-room","5 | -let-us-sleep-parkview-residents-bring-noise-pollution-complaints-to-hamilton-city-hall","5 | dispute-over-debt-led-to-double-homicide-hamilton-police","5 | the-days-of-sharing-your-netflix-password-are-numbered","3 | hamilton-homes-have-toxic-lead-pipes-carrying-water-to-taps","4 | nowhere-to-go-will-hsr-bus-drivers-strike-over-bathroom-breaks-","4 | police-seeking-armed-and-dangerous-suspect-in-double-homicide-probe-on-hamilton-mountain","3 | burlington-s-paletta-family-the-400-million-hollywood-blockbuster-deal-and-the-alleged-tax-sham-","3 | kevin-dickman-died-a-broken-man-homeless-and-alone-in-a-city-grappling-with-a-housing-crisis"],
+                'registration_most_read': 'NA',
             },
             'monthly': {
                 # parsely stats
@@ -37,7 +37,7 @@ var = {
                 'freq': 28.2,
                 # readerboard
                 'pv/v': 2.04,
-                'min/v': 1.32,
+                'min/v': '1:32',
                 'registration_last_clicks': [],
                 'registration_most_read': [],
             }
@@ -58,14 +58,14 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 48.9,
-                'hp_section': 28.1,
-                'hp_links': [],
+                'hp_posts': 47.1,
+                'hp_section': 31.2,
+                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 18,961","waterlooregion-news/ | 3,039","Crash victim is 22-year-old woman from Heidelberg | 2,607","Developer wants to build 10-storey condo on the former Tim Hortons site on Frederick Street in Kitchener | 1,761","Move to tiny house led to big lifestyle change | 1,501","Kitchener trucker caught with $3.9 million in cocaine at border gets 10 years in prison | 1,396","VIDEO: Doorbell camera catches Waterloo students in Halloween act of kindness | 1,370","Mill Street highrise in Kitchener would raze Hall of Famer’s house, heritage group says | 1,253","Cyclist hit by Ion train has ‘significant head and leg injuries’ | 1,079","Cambridge man charged after fatal crash | 896"],
                 # omniture
                 'freq': 24.9,
                 # readerboard
-                'pv/v': 0,
-                'min/v': 0,
+                'pv/v': 2.03,
+                'min/v': '1:35',
                 'registration_last_clicks': [(10, 'voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race'), (6, 'joseph-garreffa-speaks-out-about-leaving-kitchener-rangers'), (5, 'liberal-leadership-hopeful-alvin-tedjo-promising-to-end-catholic-school-funding'), (5, 'major-waterloo-rec-centre-expansion-slated-for-completion-in-2022'), (4, 'live-updates-2019-federal-election-results'), (3, 'region-voters-stick-with-liberal-incumbents-in-four-ridings'), (2, 'virus-found-in-carp-from-alder-lake-in-new-dundee'), (3, 'driver-charged-after-collision-with-ion-train-in-kitchener'), (2, 'fence-goes-up-around-kitchener-eyesore-'), (2, 'kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing'), (3, 'therecord-contact-us')]
             },
             'monthly': {
@@ -98,13 +98,13 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 1,
-                'hp_section': 1,
-                'hp_links': ["/niagara-announcements/obituaries-death-notices/ | 29,497","/stcatharines-on-news/ | 6,069","Beamsville cannabis operation closes, 100 staff laid off | 3,053","Remains of Fort Erie teen missing since February found in Welland | 2,752","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 2,667","Retired police officer placed under house arrest | 2,587","Fire Marshal, police probe death at site of Thorold fire | 2,150","#NiagaraVotes: Niagara doesn’t choose change | 2,109","$134,000 misappropriated from family law practice; Niagara Falls woman arrested | 2,109","NIAGARA VOTES 2019: Live election results broadcast | 2,055",],
+                'hp_posts': 62.1,
+                'hp_section': 31.2,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 28,905","stcatharines-on-news/ | 6,513","Dental office manager stole $420,000 for vehicle, trips, kids’ education, gambling | 3,050","Welland collision claims life of 17-year-old male | 2,577","The Wolf in Priest’s Clothing follow up: Catholic diocese was told of Grecco’s sex abuse, alleges victim | 2,466","Teen posted topless pics of the 14-year-old mother of his child on social media after they broke up | 2,357","Photos: Garage fire spreads to south-end home | 2,062","Shots fired in Thorold | 2,021","Six managers in the NPCA’s $100,000 club | 2,020","Driver arrested during St. Catharines RIDE check | 1,972"],
                 # omniture
-                'freq': 1,
-                'pv/v': 1,
-                'min/v': 1,
+                'freq': 34.7,
+                'pv/v': 2.67,
+                'min/v': '2:29',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
@@ -141,8 +141,8 @@ var = {
                 'hp_section': 1,
                 'hp_links': ["/niagara-announcements/obituaries-death-notices/ | 19,595","/niagarafalls-on-news/ | 3,663","Niagara Falls residents rally against illegal vacation rentals in their neighbourhood | 1,978","Falls council trashes biweekly garbage collection decision | 1,937","Remains of Fort Erie teen missing since February found in Welland | 1,723","#NiagaraVotes: Niagara doesn’t choose change | 1,637","Retired police officer placed under house arrest | 1,447","Construction contract for new Niagara Fire fire station approved | 1,347","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 1,287","Former paramedic jailed for accessing child porn | 1,284",],
                 # omniture
-                'freq': 1,
-                'pv/v': 1,
+                'freq': 36.3,
+                'pv/v': 3.06,
                 'min/v': 1,
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
@@ -181,8 +181,8 @@ var = {
                 'hp_section': 0,
                 'hp_links': ["/niagara-announcements/obituaries-death-notices/ | 21,278","/welland-on-news/ | 3,815","Remains of Fort Erie teen missing since February found in Welland | 2,490","Photos: Three injured in Port Colborne crash | 2,181","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 2,007","#NiagaraVotes: Niagara doesn’t choose change | 1,277","Fire Marshal, police probe death at site of Thorold fire | 1,270","Photo: Motorcyclist hits deer in Port Colborne | 1,191","Badawey ready to get back to work in Niagara Centre | 1,189","Retired police officer placed under house arrest | 1,141",],
                 # omniture
-                'freq': 0,
-                'pv/v': 0,
+                'freq': 38.2,
+                'pv/v': 3.56,
                 'min/v': 0,
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
@@ -217,21 +217,22 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 1,
-                'hp_section': 1,
-                'hp_links': ["/kawartha-announcements/obituaries-death-notices/ | 18,922","Canada-wide Federal Election Results | 4,691","Monsef re-elected in Peterborough-Kawartha | 3,688","/peterborough-on-news/ | 3,512","Bank of Montreal building in downtown Peterborough sold | 1,809","Tent city attracted homeless from out of town, two Peterborough city councillors say | 1,803","New grocery store for Peterborough gets the green light after appeal | 1,718","UPDATE: Northcrest Arena open again after unexpected maintenance | 1,495","Former Kawartha Lakes acting paramedics chief charged with fraud | 1,485","George Street Tim Hortons outlet closed for a month | 1,457",],
+                'hp_posts': 62.2,
+                'hp_section': 27.1,
+                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 19,522","peterborough-on-news/ | 4,072","Peterborough-Kawartha MP announces engagement to former Fredericton MP | 2,682","Norwood man charged with arson in connection to Peterborough fires | 2,435","Peterborough mayor, half of city councillors get failing grade from Peterborough Ratepayers Association. | 2,406","Man arrested in Peterborough for violent sexual assault has history of sexual crimes | 2,309","Cellular, internet connections broken in Peterborough | 1,587","Blue box pickup missed in some Peterborough neighbourhoods | 1,534","Stuart Harrison: Wiskel new owner of Dan Joyce Classic Clothing | 1,477","Man accused of causing damage in local store | 1,464"],
                 # omniture
-                'freq': 1,
-                'pv/v': 1,
-                'min/v': 1,
+                'freq': 37.3,
+                # readerboard
+                'pv/v': 2.98,
+                'min/v': '2:20',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 59.6,
-                'hp_section': 28.1,
-                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 90,893","peterborough-on-news/ | 16,842","peterborough-on-sports/ | 5,680","Canada-wide Federal Election Results | 4,695","peterborough-on-opinion/ | 4,237","Monsef re-elected in Peterborough-Kawartha | 3,694","Weapons, drugs seized and 11 people arrested in major bust | 3,559","Coffee seller latest to be evicted from Saturday market in Morrow Park in Peterborough | 2,643","Conservative candidate Michael Skinner says he’s the victim of mudslinging | 2,639","Federal candidate arrested at all-candidates meeting in Peterborough | 2,631",],
+                'hp_posts': 62.2,
+                'hp_section': 27.1,
+                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 19,522","peterborough-on-news/ | 4,072","Peterborough-Kawartha MP announces engagement to former Fredericton MP | 2,682","Norwood man charged with arson in connection to Peterborough fires | 2,435","Peterborough mayor, half of city councillors get failing grade from Peterborough Ratepayers Association. | 2,406","Man arrested in Peterborough for violent sexual assault has history of sexual crimes | 2,309","Cellular, internet connections broken in Peterborough | 1,587","Blue box pickup missed in some Peterborough neighbourhoods | 1,534","Stuart Harrison: Wiskel new owner of Dan Joyce Classic Clothing | 1,477","Man accused of causing damage in local store | 1,464"],
                 # omniture
                 'freq': 37.1,
                 # readerboard
@@ -246,7 +247,7 @@ var = {
     'home': {
         'spectator': 'https://www.thespec.com',
         'record': 'https://www.therecord.com',
-        'examiner': 'https://www.peterboroughexaminer.com',
+        'examiner': 'https://www.thepeterboroughexaminer.com',
         'tribune': 'https://www.wellandtribune.ca',
         'review': 'https://www.niagarafallsreview.ca',
         'standard': 'https://www.stcatharinesstandard.ca'
@@ -264,9 +265,9 @@ var = {
         'term': 'week',
         'files': {
             'site': 'site-2019.csv',
-            'pages': 'pages-last-week.csv',
-            'referrers': 'referrers-last-week.csv',
-            'sections': 'top-sections-last-week.csv',
+            'pages': 'pages.csv',
+            'referrers': 'referrers.csv',
+            'sections': 'sections.csv',
         }
     },
     'monthly': {

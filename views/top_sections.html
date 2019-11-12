@@ -42,14 +42,14 @@ def humanize(value, fraction_point=1):
 end
 %>
 <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-    <h2 {{!h2}}>TOP SECTIONS: <span style="font-weight: 300;">By views</span></h2>
-    <p {{!p}}><small>Parameters: Content published in period, excludes non-article pages.</small></p>
+    <h2 {{!h2}}>TOP SECTIONS: <span style="font-weight: 300;">By % of site views</span></h2>
+    <p {{!p}}><small>Parameters: Content published by site in period, excludes non-article pages.</small></p>
     <div style="overflow-x:auto;">
     <table style="white-space: nowrap; border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
             <tr>
                 <th style="font-size: 0.8rem; text-align: left; padding: 6px 4px 4px 0; border-bottom: 1px solid grey;">Section</th>
-                % for header in ['PV %', 'Posts', 'PV/Post', 'Returning Vis. %', 'Avg. Time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
+                % for header in ['PV %', 'Posts', 'PV/Post', 'Returning Vis. %', 'Avg. Time']:
                 <th style="font-size: 0.8rem; text-align: center; padding: 6px 8px 6px 0; border-bottom: 1px solid grey;">{{header}}</th>
                 % end
             </tr>
@@ -65,7 +65,7 @@ end
                 background-color: #FFFF00;
                 % end
                 ">{{item['PV / Post']}}</td>
-                % for post in ['Returning Vis%', 'Avg. time', 'Search %', 'Internal %', 'Social %', 'Direct %', 'Other %']:
+                % for post in ['Returning Vis%', 'Avg. time']:
                 <td style="border: 1px solid #dddddd; font-size: 0.9rem; text-align: center; padding: 6px 8px 6px 0;">{{item[post]}}</td>
                 % end
             </tr>

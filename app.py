@@ -65,8 +65,9 @@ def df_to_records(df):
     records = df.to_dict(orient='record')
     for record in records:
         record['Title'] = record['Title'].title().replace(
-            '\'S ', '\'s ').replace(
-                '\'T ', '\'t ').replace('’S', '’s')
+            '\'S ', '’s ').replace('\'T ', '’t ').replace(
+                '’S', '’s').replace('’T', '’t').replace('’M', '’m').replace(
+                'Hsr', 'HSR').replace('Ndp', 'NDP').replace('Mcmaster', 'McMaster')
         record['Title'] = record['Title'][:72] + \
             (record['Title'][72:] and '...')
         for item in device_cols + referral_cols:
@@ -155,14 +156,15 @@ def pages_parse(dflt):
     # true article pages have title != none, Asset Id != none
     # Filter df just for articles
     df_articles_temp = df[
-        (df['asset id'] != 'none') & 
+        (df['asset id'] != 'none') &
         (df['Title'] != 'none') &
         ((df['Publish date'] != 'none')) &
         ((df['URL'].str.contains('-static') == False))
     ]
     # sort by pub date for following aggregate functions
     # print(df_articles_temp[df_articles_temp['Publish date'] == 0])
-    df_articles_temp = df_articles_temp.sort_values(by=['Publish date'], ascending=False)
+    df_articles_temp = df_articles_temp.sort_values(
+        by=['Publish date'], ascending=False)
     # aggregate article data by asset ID
     aggregation_functions = {
         'URL': 'first',
@@ -214,15 +216,18 @@ def pages_parse(dflt):
     # CHANGE 10 IF MORE/FEWER TOP ARTICLES WANTED
     limit = {'daily': 7, 'weekly': 10, 'monthly': 10}[freq]
     top_articles = df_articles.head(limit)
-    the_html = template('top_articles_by_pv.html', data=df_to_records(top_articles))
+    the_html = template('top_articles_by_pv.html',
+                        data=df_to_records(top_articles))
     # -- GET TOP ARTICLES IN SECTIONS OPINION, LIVING, ARTS, OPINION
     sections = ['whatson', 'living', 'sports']
     for section in sections:
         # CHANGE 3 IF DIFFERENT NUMBER OF ARTICLES WANTED
-        section_pages = df_articles[df_articles['Tags'].str.contains(section)].head(3)
+        section_pages = df_articles[df_articles['Tags'].str.contains(
+            section)].head(3)
         print('SECTION IS: ', section)
         pprint.pprint(data)
-        the_html += template('top_articles_by_section.html', data=df_to_records(section_pages), section=section)
+        the_html += template('top_articles_by_section.html',
+                             data=df_to_records(section_pages), section=section)
     opinion_pages = df_articles[
         (df_articles['Tags'].str.contains('opinion')) &
         (df_articles['Tags'].str.contains(
@@ -230,12 +235,14 @@ def pages_parse(dflt):
     ].head(3)
     # handle top articles in with only opinion as category
     data = df_to_records(opinion_pages)
-    the_html += template('top_articles_by_section.html', data=data, section='opinion')
+    the_html += template('top_articles_by_section.html',
+                         data=data, section='opinion')
     # -- GET TOP ARTICLES BY ENGAGED TIME
     visitor_limit = 200
     df_articles = df_articles.sort_values(by=['Avg. time'], ascending=False)
     long_reads = df_articles[df_articles['Visitors'] > visitor_limit].head(5)
-    the_html += template('top_articles_by_section.html', data=df_to_records(long_reads), section='time', visitor_limit=visitor_limit)
+    the_html += template('top_articles_by_section.html', data=df_to_records(
+        long_reads), section='time', visitor_limit=visitor_limit)
     # -- GET HOME PAGE STATS
     url = dflt['config']['home'][site]
     df_hp = df[df['URL'] == url]
@@ -259,34 +266,34 @@ def pages_parse(dflt):
         'min': df_hp['Engaged minutes'].values[0],
         'returning uv%': u.pct(
             df_hp['Returning vis.'].values[0], df_hp['Visitors'].values[0]
-            ),
+        ),
         'mobile pv': df_hp['Mobile views'].values[0],
         'desktop pv': df_hp['Desktop views'].values[0],
         'tablet pv': df_hp['Tablet views'].values[0],
         'mobile pv%': u.pct(
             df_hp['Mobile views'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
         'desktop pv%': u.pct(
             df_hp['Desktop views'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
         'tablet pv%': u.pct(
             df_hp['Tablet views'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
         'search pv%': u.pct(
             df_hp['Search refs'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
         'direct pv%': u.pct(
             df_hp['Direct refs'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
         'internal pv%': u.pct(
             df_hp['Internal refs'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
         'social pv%': u.pct(
             df_hp['Social refs'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
         'other pv%': u.pct(
             df_hp['Other refs'].values[0], df_hp['Views'].values[0]
-            ),
+        ),
     }
     the_html += template('home_page.html', data=data_hp,
                          inputs=c.var['inputs'][site][freq])
@@ -298,12 +305,12 @@ def top_referrers_parse(dflt):
     df = read_csv(
         filename=f'''{site}-referrers.csv''',
         folders=['data', freq],
-        cols_to_keep=dflt['defaults']['referrers_cols_keep']
+        cols_to_keep=dflt['config']['referrers_cols_keep']
     )
     df_site = read_csv(
         filename=f'''{site}-site-2019.csv''',
         folders=['data', freq],
-        cols_to_keep=dflt['defaults']['site_cols_keep']
+        cols_to_keep=dflt['config']['site_cols_keep']
     )
     # Sort DF so most recent item is first
     df_site = df_site.sort_values(by=['Date'], ascending=False)
@@ -473,7 +480,7 @@ def site_parse(dflt):
                     f'''<span style="color: #006400; font-weight: 700;">'''
                     f'''{u.humanize(value=item[1], sign=True)}'''
                     f'''</span> {item[0]}'''
-                    ))
+                ))
     data['Referrers change report'] = ", ".join(temp)
     # pprint.pprint(data)
     return template(
@@ -483,6 +490,7 @@ def site_parse(dflt):
 
 
 def parse_sections_csv(dflt):
+    section_limit = 15
     df = read_csv(
         filename=f'''{site}-sections.csv''',
         folders=['data', dflt['freq']],
@@ -495,7 +503,7 @@ def parse_sections_csv(dflt):
     df['Avg. Time'] = round(df['Engaged minutes'] / df['Visitors'], 3)
     # Create record, add to list
     the_list = []
-    for record in df.head(20).to_dict(orient='record'):
+    for record in df.head(section_limit).to_dict(orient='record'):
         obj = {}
         obj['Section'] = record['Section']
         obj['Posts'] = record['Posts']
@@ -530,7 +538,7 @@ if (len(sys.argv) > 2
     and (sys.argv)[2] in [
         'spectator', 'record', 'standard', 'examiner',
         'tribune', 'review', 'star'
-        ]):
+]):
     freq = (sys.argv)[1]
     site = (sys.argv)[2]
 else:
