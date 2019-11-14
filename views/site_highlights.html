@@ -47,7 +47,7 @@ end
     <p {{!p}}>
         <span style="font-weight: 600;">Page views</span>: {{humanize(data['Views'])}}, 
         <span style="font-weight: 800;">{{f'''{data['Views vs rm%']:+}'''}}%</span><br />
-    <span style="font-weight: 600;">Comparison:</span> {{!data['Views rank'].replace('1st', '')}}<br />
+    <span style="font-weight: 600;">Comparison:</span> {{!data['Views rank'].replace(' 1st', ' ')}}<br />
     <span style="font-weight: 600;">Referrers:</span> {{data['Referrers report']}}<br />
     <span style="font-weight: 600;">Devices:</span> {{data['Devices report']}}
     </p>

@@ -67,7 +67,8 @@ def df_to_records(df):
         record['Title'] = record['Title'].title().replace(
             '\'S ', '’s ').replace('\'T ', '’t ').replace(
                 '’S', '’s').replace('’T', '’t').replace('’M', '’m').replace(
-                'Hsr', 'HSR').replace('Ndp', 'NDP').replace('Mcmaster', 'McMaster')
+                'Hsr', 'HSR').replace('Ndp', 'NDP').replace('Mcmaster', 'McMaster').replace(
+                    'Lrt', 'LRT').replace('Cfl', 'CFL')
         record['Title'] = record['Title'][:72] + \
             (record['Title'][72:] and '...')
         for item in device_cols + referral_cols:
