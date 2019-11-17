@@ -244,6 +244,8 @@ def pages_parse(dflt):
     long_reads = df_articles[df_articles['Visitors'] > visitor_limit].head(5)
     the_html += template('top_articles_by_section.html', data=df_to_records(
         long_reads), section='time', visitor_limit=visitor_limit)
+    # -- GET TOP LOCAL ARTICLES BY ENGAGED TIME  
+    #   long_reads = df_articles[df_articles['Tags'].str.contains(paper)].head(10)
     # -- GET HOME PAGE STATS
     url = dflt['config']['home'][site]
     df_hp = df[df['URL'] == url]

@@ -17,14 +17,14 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 52.0,
-                'hp_section': 15.0,
-                'hp_links': ["hamilton-announcements/obituaries-death-notices/ | 14,227","hamilton-news/ | 6,684","Hamilton police probing whether drugs were ‘significant factor’ in double homicide; suspect found dead | 6,364","Police seeking ‘armed and dangerous’ suspect in double homicide probe on Hamilton Mountain | 5,088","Dispute over debt led to double homicide: Hamilton police | 3,831","user/login/ | 2,247","Hamilton residents hit big with $1M lotto win | 2,239","Hamilton homes have toxic lead pipes carrying water to taps | 1,930","Mom angry her 21-year-old special needs son booted from Swoop flight in Hamilton | 1,839","The days of sharing your Netflix password are numbered | 1,689",],
+                'hp_posts': 48.9,
+                'hp_section': 15.4,
+                'hp_links': ["hamilton-announcements/obituaries-death-notices/ | 15,069","hamilton-news/ | 6,511","STORM CLOSURES: Hamilton area cancellations and updates | 4,523","Owners take on loud, obnoxious teens at Waterdown shopping plaza | 3,220","STORM WATCH: Traffic slows to a crawl on highways, city streets in ‘snow event’ | 2,786","Bullied to death: Parents demand action after two deaths in eight years at Hamilton high school | 2,295","STORM WATCH: What you need to know about today’s winter walloping | 2,268","user/login/ | 2,093","Doug Ford comments about Hamilton prompt protest at MPP Donna Skelly’s office | 2,013","The big dump: Hamilton sets a pair of snowfall records | 1,784",],
                 # omniture
-                'freq': 28.9,
+                'freq': 28.2,
                 # readerboard
-                'pv/v': 2.06,
-                'min/v': '1:39',
+                'pv/v': 2.03,
+                'min/v': '1:29',
                 'registration_last_clicks': ["7 | suspect-wanted-in-hamilton-double-homicide-found-dead-in-brantford-hotel-room","5 | -let-us-sleep-parkview-residents-bring-noise-pollution-complaints-to-hamilton-city-hall","5 | dispute-over-debt-led-to-double-homicide-hamilton-police","5 | the-days-of-sharing-your-netflix-password-are-numbered","3 | hamilton-homes-have-toxic-lead-pipes-carrying-water-to-taps","4 | nowhere-to-go-will-hsr-bus-drivers-strike-over-bathroom-breaks-","4 | police-seeking-armed-and-dangerous-suspect-in-double-homicide-probe-on-hamilton-mountain","3 | burlington-s-paletta-family-the-400-million-hollywood-blockbuster-deal-and-the-alleged-tax-sham-","3 | kevin-dickman-died-a-broken-man-homeless-and-alone-in-a-city-grappling-with-a-housing-crisis"],
                 'registration_most_read': 'NA',
             },
@@ -58,11 +58,11 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 47.1,
-                'hp_section': 31.2,
-                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 18,961","waterlooregion-news/ | 3,039","Crash victim is 22-year-old woman from Heidelberg | 2,607","Developer wants to build 10-storey condo on the former Tim Hortons site on Frederick Street in Kitchener | 1,761","Move to tiny house led to big lifestyle change | 1,501","Kitchener trucker caught with $3.9 million in cocaine at border gets 10 years in prison | 1,396","VIDEO: Doorbell camera catches Waterloo students in Halloween act of kindness | 1,370","Mill Street highrise in Kitchener would raze Hall of Famer’s house, heritage group says | 1,253","Cyclist hit by Ion train has ‘significant head and leg injuries’ | 1,079","Cambridge man charged after fatal crash | 896"],
+                'hp_posts': 47.7,
+                'hp_section': 28.3,
+                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 17,413","waterlooregion-news/ | 2,703","Train collides with pedestrians in Kitchener | 2,604","Woman hit by train works at Kitchener centre providing autism therapy | 2,038","Slippery roads caused accidents and at least one near miss in Waterloo Region’s first big snowfall of the season | 1,182","Stray bullet shot through window in St. Jacobs home | 948","waterlooregion-sports/ | 926","Toronto developer buys former Electrohome site in Kitchener | 891","Kevin Dickman died a broken man, homeless and alone in a city grappling with a housing crisis | 835","Kitchener company’s stolen trailer found a day later, with all the tools inside | 782",],
                 # omniture
-                'freq': 24.9,
+                'freq': 26.1,
                 # readerboard
                 'pv/v': 2.03,
                 'min/v': '1:35',
@@ -98,13 +98,13 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 62.1,
+                'hp_posts': 58.9,
                 'hp_section': 31.2,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 28,905","stcatharines-on-news/ | 6,513","Dental office manager stole $420,000 for vehicle, trips, kids’ education, gambling | 3,050","Welland collision claims life of 17-year-old male | 2,577","The Wolf in Priest’s Clothing follow up: Catholic diocese was told of Grecco’s sex abuse, alleges victim | 2,466","Teen posted topless pics of the 14-year-old mother of his child on social media after they broke up | 2,357","Photos: Garage fire spreads to south-end home | 2,062","Shots fired in Thorold | 2,021","Six managers in the NPCA’s $100,000 club | 2,020","Driver arrested during St. Catharines RIDE check | 1,972"],
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 28,110","stcatharines-on-news/ | 6,345","Niagara woman uses stolen, forged cheque to pay off debt with pay day loan company | 2,925","Worker dies after Welland retirement home construction site mishap | 2,698","Smoke inhalation claimed life of 52-year-old homeless man called ‘Frank’ | 2,365","Battle with Lyme disease an education for St. Catharines Grade 3 teacher | 2,201","Region approves deal for new trash collectors | 2,165","Snowstorm forces tunnel closure, keeps plows busy across Niagara | 2,089","Snowfall warning issued for Niagara | 1,997","Tunnel troubles abound in Thorold | 1,992",],
                 # omniture
-                'freq': 34.7,
+                'freq': 34.2,
                 'pv/v': 2.67,
-                'min/v': '2:29',
+                'min/v': '2:14',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
@@ -137,13 +137,13 @@ var = {
                 'registration_most_read': 'NA',
             },
             'weekly': {
-                'hp_posts': 1,
-                'hp_section': 1,
-                'hp_links': ["/niagara-announcements/obituaries-death-notices/ | 19,595","/niagarafalls-on-news/ | 3,663","Niagara Falls residents rally against illegal vacation rentals in their neighbourhood | 1,978","Falls council trashes biweekly garbage collection decision | 1,937","Remains of Fort Erie teen missing since February found in Welland | 1,723","#NiagaraVotes: Niagara doesn’t choose change | 1,637","Retired police officer placed under house arrest | 1,447","Construction contract for new Niagara Fire fire station approved | 1,347","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 1,287","Former paramedic jailed for accessing child porn | 1,284",],
+                'hp_posts': 56.8,
+                'hp_section': 33.2,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 18,757","niagarafalls-on-news/ | 3,918","72-storey hotel, residential development approved in Niagara Falls | 2,260","Snowstorm forces tunnel closure, keeps plows busy across Niagara | 1,909","Snowfall warning issued for Niagara | 1,638","Worker dies after Welland retirement home construction site mishap | 1,422","Tunnel troubles abound in Thorold | 1,413","What's going on here? Highway 20 bridge closure | 1,343","Region approves deal for new trash collectors | 1,197","Niagara woman uses stolen, forged cheque to pay off debt with pay day loan company | 856",],
                 # omniture
-                'freq': 36.3,
-                'pv/v': 3.06,
-                'min/v': 1,
+                'freq': 35.4,
+                'pv/v': 3.09,
+                'min/v': '2:28',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
@@ -177,13 +177,13 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 0,
-                'hp_section': 0,
-                'hp_links': ["/niagara-announcements/obituaries-death-notices/ | 21,278","/welland-on-news/ | 3,815","Remains of Fort Erie teen missing since February found in Welland | 2,490","Photos: Three injured in Port Colborne crash | 2,181","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 2,007","#NiagaraVotes: Niagara doesn’t choose change | 1,277","Fire Marshal, police probe death at site of Thorold fire | 1,270","Photo: Motorcyclist hits deer in Port Colborne | 1,191","Badawey ready to get back to work in Niagara Centre | 1,189","Retired police officer placed under house arrest | 1,141",],
+                'hp_posts': 59.4,
+                'hp_section': 35.6,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 20,074","welland-on-news/ | 4,009","Worker dies after Welland retirement home construction site mishap | 3,184","Garbage, recycling bins banned from Welland front porches | 2,091","Snowfall warning issued for Niagara | 1,489","Ministry names companies conducting work at site of fatal accident in Welland | 1,389","Rogers Hometown Hockey shows off Welland | 1,375","What's going on here? Highway 20 bridge closure | 1,310","Concrete crushed worker at Welland job site | 1,305","Sentencing delayed for driver who struck and killed Welland man | 1,264",],
                 # omniture
-                'freq': 38.2,
-                'pv/v': 3.56,
-                'min/v': 0,
+                'freq': 39.4,
+                'pv/v': 3.50,
+                'min/v': '2:44',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
@@ -217,14 +217,14 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 62.2,
-                'hp_section': 27.1,
-                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 19,522","peterborough-on-news/ | 4,072","Peterborough-Kawartha MP announces engagement to former Fredericton MP | 2,682","Norwood man charged with arson in connection to Peterborough fires | 2,435","Peterborough mayor, half of city councillors get failing grade from Peterborough Ratepayers Association. | 2,406","Man arrested in Peterborough for violent sexual assault has history of sexual crimes | 2,309","Cellular, internet connections broken in Peterborough | 1,587","Blue box pickup missed in some Peterborough neighbourhoods | 1,534","Stuart Harrison: Wiskel new owner of Dan Joyce Classic Clothing | 1,477","Man accused of causing damage in local store | 1,464"],
+                'hp_posts': 59.2,
+                'hp_section': 26.6,
+                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 18,723","peterborough-on-news/ | 3,873","Bus crashes during first storm of winter in Peterborough | 2,929","Demolition of former Peterborough Sears store set to begin | 1,667","Tow truck driver dubbed ‘Mayor of Port Perry’ killed helping motorist | 1,423","More blue-box pickups missed in Peterborough | 1,372","Movie shoot takes over Hunter Street neighbourhood | 1,345","Ren’s Pets among new stores planned for former Peterborough Sears site | 1,241","peterborough-on-sports/ | 1,169","Northcrest: Coywolves making themselves known in urban areas | 1,136",],
                 # omniture
-                'freq': 37.3,
+                'freq': 36.1,
                 # readerboard
-                'pv/v': 2.98,
-                'min/v': '2:20',
+                'pv/v': 2.95,
+                'min/v': '2:02',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
