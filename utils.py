@@ -170,6 +170,15 @@ def pct(part, total, fraction_point=0):
         return 0
 
 
+def pct_diff(new, old, fraction_point=0):
+    # compares difference of new, old values as percentage
+    result = round(((float(new) - float(old)) / float(old)) * 100, fraction_point)
+    if fraction_point == 0:
+        return int(result)
+    else:
+        return result
+
+
 def vs_rm_pct(new, avg):
     # print("New value: ", humanize_number(new))
     # print("Avg value: ", humanize_number(daily_avg, 0))

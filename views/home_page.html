@@ -42,6 +42,7 @@ def humanize(value, fraction_point=1):
 end
 %>
 
+% if data != 'NA':
 <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
     <h2 {{!h2}}>HOME PAGE STATS</h2>
 
@@ -69,3 +70,4 @@ end
     </p>
     % end
 </div>
+% end

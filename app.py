@@ -248,56 +248,61 @@ def pages_parse(dflt):
     #   long_reads = df_articles[df_articles['Tags'].str.contains(paper)].head(10)
     # -- GET HOME PAGE STATS
     url = dflt['config']['home'][site]
-    df_hp = df[df['URL'] == url]
-    # *** need to access site csv here
-    df_site = read_csv(
-        filename=f'''{site}-site-2019.csv''',
-        folders=['data', freq],
-        cols_to_keep=dflt['config']['site_cols_keep']
-    )
-    df_site = df_site.sort_values(by=['Date'], ascending=False)
-    pv_total = df_site.tail(1)['Views'].values[0]
-    time = round((df_hp['Engaged minutes'].values[0] /
-                  df_hp['Visitors'].values[0]), 2)
-    mins = int(time)
-    seconds = int((time - mins) * 60)
-    data_hp = {
-        'avg time': f'''{mins}:{seconds:02d}''',
-        'pv': df_hp['Views'].values[0],
-        'pv vs total': u.pct(df_hp['Views'].values[0], pv_total),
-        'uv': df_hp['Visitors'].values[0],
-        'min': df_hp['Engaged minutes'].values[0],
-        'returning uv%': u.pct(
-            df_hp['Returning vis.'].values[0], df_hp['Visitors'].values[0]
-        ),
-        'mobile pv': df_hp['Mobile views'].values[0],
-        'desktop pv': df_hp['Desktop views'].values[0],
-        'tablet pv': df_hp['Tablet views'].values[0],
-        'mobile pv%': u.pct(
-            df_hp['Mobile views'].values[0], df_hp['Views'].values[0]
-        ),
-        'desktop pv%': u.pct(
-            df_hp['Desktop views'].values[0], df_hp['Views'].values[0]
-        ),
-        'tablet pv%': u.pct(
-            df_hp['Tablet views'].values[0], df_hp['Views'].values[0]
-        ),
-        'search pv%': u.pct(
-            df_hp['Search refs'].values[0], df_hp['Views'].values[0]
-        ),
-        'direct pv%': u.pct(
-            df_hp['Direct refs'].values[0], df_hp['Views'].values[0]
-        ),
-        'internal pv%': u.pct(
-            df_hp['Internal refs'].values[0], df_hp['Views'].values[0]
-        ),
-        'social pv%': u.pct(
-            df_hp['Social refs'].values[0], df_hp['Views'].values[0]
-        ),
-        'other pv%': u.pct(
-            df_hp['Other refs'].values[0], df_hp['Views'].values[0]
-        ),
-    }
+
+    try:
+        df_hp = df[df['URL'] == url]
+        # *** need to access site csv here
+        df_site = read_csv(
+            filename=f'''{site}-site-2019.csv''',
+            folders=['data', freq],
+            cols_to_keep=dflt['config']['site_cols_keep']
+        )
+        df_site = df_site.sort_values(by=['Date'], ascending=False)
+        pv_total = df_site.tail(1)['Views'].values[0]
+        time = round((df_hp['Engaged minutes'].values[0] /
+                    df_hp['Visitors'].values[0]), 2)
+        mins = int(time)
+        seconds = int((time - mins) * 60)
+        data_hp = {
+            'avg time': f'''{mins}:{seconds:02d}''',
+            'pv': df_hp['Views'].values[0],
+            'pv vs total': u.pct(df_hp['Views'].values[0], pv_total),
+            'uv': df_hp['Visitors'].values[0],
+            'min': df_hp['Engaged minutes'].values[0],
+            'returning uv%': u.pct(
+                df_hp['Returning vis.'].values[0], df_hp['Visitors'].values[0]
+            ),
+            'mobile pv': df_hp['Mobile views'].values[0],
+            'desktop pv': df_hp['Desktop views'].values[0],
+            'tablet pv': df_hp['Tablet views'].values[0],
+            'mobile pv%': u.pct(
+                df_hp['Mobile views'].values[0], df_hp['Views'].values[0]
+            ),
+            'desktop pv%': u.pct(
+                df_hp['Desktop views'].values[0], df_hp['Views'].values[0]
+            ),
+            'tablet pv%': u.pct(
+                df_hp['Tablet views'].values[0], df_hp['Views'].values[0]
+            ),
+            'search pv%': u.pct(
+                df_hp['Search refs'].values[0], df_hp['Views'].values[0]
+            ),
+            'direct pv%': u.pct(
+                df_hp['Direct refs'].values[0], df_hp['Views'].values[0]
+            ),
+            'internal pv%': u.pct(
+                df_hp['Internal refs'].values[0], df_hp['Views'].values[0]
+            ),
+            'social pv%': u.pct(
+                df_hp['Social refs'].values[0], df_hp['Views'].values[0]
+            ),
+            'other pv%': u.pct(
+                df_hp['Other refs'].values[0], df_hp['Views'].values[0]
+            ),
+        }
+    except:
+        data_hp = 'NA'
+        
     the_html += template('home_page.html', data=data_hp,
                          inputs=c.var['inputs'][site][freq])
     return the_html
