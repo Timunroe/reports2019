@@ -85,7 +85,7 @@ def site_parse(site):
     # export to CSV for testing-validation
     df.to_csv('site-test.csv')
     data = {}
-    for day in ['Saturday', 'Sunday']:
+    for day in ['Monday', 'Wednesday', 'Saturday', 'Sunday']:
         df_temp = df.iloc[-21:]
         data[f'''{day}PV_3weeks'''] = df_temp[df_temp['DayOfWeek'] == day]['Views'].mean()
         df_temp = df.iloc[-105: -21]
@@ -94,10 +94,11 @@ def site_parse(site):
         data[f'''{day}PV_24weeks'''] = df_temp[df_temp['DayOfWeek'] == day]['Views'].mean()
     return data
 
+
 # --[ MAIN ]---------
 
 sites = ['spectator', 'record', 'standard', 'review', 'tribune', 'examiner']
-days = ['Saturday', 'Sunday']
+days = ['Monday', 'Wednesday', 'Saturday', 'Sunday']
 data = {}
 for site in sites:
     data[f'''{site}'''] = site_parse(site)

@@ -30,13 +30,13 @@ var = {
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 53.9,
-                'hp_section': 18.1,
-                'hp_links': ["thespec.com/hamilton-announcements/obituaries-death-notices/ | 69,326","thespec.com/hamilton-news/ | 31,662","Boy, 14, fatally stabbed in front of his mother outside Hamilton school | 16,184","thespec.com | 15,213","thespec.com/user/login/ | 10,800","Hamilton high school stabbing victim ‘just wanted people to be happy’ | 7,795","Two charged with first-degree murder, two others arrested in Sir Winston Churchill school stabbing | 7,553","Hamilton police allege that knife was wielded by youngest accused in Devan Bracci-Selvey homicide | 7,322","thespec.com/search/allarticles/ | 6,982","Hamilton police identify Boulevard Billiards homicide victim | 6,878",],
+                'hp_posts': 52.2,
+                'hp_section': 16.2,
+                'hp_links': ["hamilton-announcements/obituaries-death-notices/ | 65,277","hamilton-news/ | 29,157","user/login/ | 9,259","Hamilton police probing whether drugs were ‘significant factor’ in double homicide; suspect found dead | 6,374","hamilton-sports/ | 6,313","search/allarticles/ | 6,212","Police seeking ‘armed and dangerous’ suspect in double homicide probe on Hamilton Mountain | 5,093","Dispute over debt led to double homicide: Hamilton police | 4,561","STORM CLOSURES: Hamilton area cancellations and updates | 4,525","Cannabis-induced psychosis blamed in beheading of father at Muskoka cottage | 3,982",],
                 # omniture
                 'freq': 28.6,
                 # readerboard
-                'pv/v': 2.04,
+                'pv/v': 2.05,
                 'min/v': '1:23',
                 'registration_last_clicks': [],
                 'registration_most_read': [],
@@ -70,9 +70,9 @@ var = {
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 0,
-                'hp_section': 0,
-                'hp_links': ["therecord.com/waterlooregion-announcements/obituaries-death-notices/ | 77,511","therecord.com/waterlooregion-news/ | 12,393","Tim Louis wins Kitchener-Conestoga after botched paperwork delayed vote count 12 hours | 3,569","therecord.com/waterlooregion-sports/ | 3,469","therecord.com/search/allarticles/ | 3,004","therecord.com/user/login/ | 2,995","therecord.com | 2,328","Waterloo Region couple’s Handmaid’s Tale wedding photo sparks controversy | 2,182","For these families a love triangle is not an obstacle. Polyamorous parents chart their own course | 2,152","therecord.com/waterlooregion-opinion/ | 2,029",],
+                'hp_posts': 48.7,
+                'hp_section': 28.3,
+                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 74,412","waterlooregion-news/ | 11,906","Kitchener man found dead on the side of the highway | 7,777","waterlooregion-sports/ | 3,319","search/allarticles/ | 2,965","One person dead in crash near Elmira | 2,798","Train collides with pedestrians in Kitchener | 2,722","Family of man killed in fatal shooting are ‘shocked and heartbroken’ | 2,718","Crash victim is 22-year-old woman from Heidelberg | 2,613","user/login/ | 2,460",],
                 # omniture
                 'freq': 25.5,
                 # readerboard
@@ -110,9 +110,9 @@ var = {
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 59.2,
-                'hp_section': 32.6,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 135,893","/stcatharines-on-news/ | 28,401","Update: Garbage truck trashes Thorold Tunnel | 7,297","Overnight crashes on Hwy. 406 leave two dead, two others badly injured | 6,672","St. Catharines mourns the loss of 'The Pizza Dude' | 4,253","St. Catharines doctor faces sex abuse allegations | 3,927","Driveway paving scam hits Niagara | 3,488","Retired police officer placed under house arrest | 3,435","Baby’s death leaves Niagara Falls father grieving | 3,335","stcatharinesstandard.ca/stcatharines-on-sports/ | 3,208",],
+                'hp_posts': 63.2,
+                'hp_section': 30.2,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 119,800","stcatharines-on-news/ | 28,134","Hamilton woman dies when car smashes into St. Catharines business; man charged with impaired driving | 6,528","St. Catharines hospital demolition reveals hidden tunnels, underground swimming pool | 4,298","Death of Hamilton woman haunting for Good Samaritan following St. Catharines storefront crash | 4,089","Police investigating St. Catharines shooting | 3,905","Charges dropped against officer in cop-on-cop shooting | 3,251","'What happened?': 2 Burlington men dead in bizarre crash at Queenston-Lewiston Bridge | 3,226","Hamilton woman killed by allegedly impaired driver in St. Catharines was a compassionate businesswoman | 3,175","Driver arrested during St. Catharines RIDE check | 3,084",],
                 # omniture
                 'freq': 34.1,
                 # readerboard
@@ -149,9 +149,9 @@ var = {
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 0,
-                'hp_section': 0,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 86,675","niagarafalls-on-news/ | 17,335","Update: Garbage truck trashes Thorold Tunnel | 4,039","Baby’s death leaves Niagara Falls father grieving | 2,881","Niagara Falls residents rally against illegal vacation rentals in their neighbourhood | 1,983","Driveway paving scam hits Niagara | 1,956","Falls council trashes biweekly garbage collection decision | 1,940","UPDATE: Mother faces first-degree murder charges in death of infant daughter | 1,934","Overnight crashes on Hwy. 406 leave two dead, two others badly injured | 1,896","Retired police officer placed under house arrest | 1,875",],
+                'hp_posts': 60.6,
+                'hp_section': 31.8,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 78,878","niagarafalls-on-news/ | 17,144","Body discovered in Carl Road workshop blaze in Niagara Falls | 2,691","'What happened?': 2 Burlington men dead in bizarre crash at Queenston-Lewiston Bridge | 2,623","72-storey hotel, residential development approved in Niagara Falls | 2,271","Niagara Falls woman upset by response after Jeep ransacked in casino parking garage | 2,197","Thundering Waters land for sale | 2,163","Snowfall warning issued for Niagara | 1,961","Dental office manager stole $420,000 for vehicle, trips, kids’ education, gambling | 1,920","Snowstorm forces tunnel closure, keeps plows busy across Niagara | 1,912",],
                 # omniture
                 'freq': 35.8,
                 # readerboard
@@ -189,9 +189,9 @@ var = {
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 58.3,
-                'hp_section': 36.9,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 92,404","welland-on-news/ | 17,579","Drugs, death, and taxes in Port Colborne | 2,684","Update: Garbage truck trashes Thorold Tunnel | 2,510","Remains of Fort Erie teen missing since February found in Welland | 2,491","Overnight crashes on Hwy. 406 leave two dead, two others badly injured | 2,427","Driveway paving scam hits Niagara | 2,373","Welland man killed after being struck by pickup truck | 2,231","Photos: Three injured in Port Colborne crash | 2,181","Welland man walks free after $200,000 theft of bronze vases from Pleasantview Cemetery | 2,127",],
+                'hp_posts': 61.6,
+                'hp_section': 34.2,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 85,404","welland-on-news/ | 18,156","Welland driver dies in wrong-way crash into transport truck on Hwy. 406 | 3,265","Worker dies after Welland retirement home construction site mishap | 3,191","Welland collision claims life of 17-year-old male | 3,138","Police identify man who died in wrong-way Highway 406 crash | 2,528","Storm batters Wainfleet and Port Colborne | 2,257","Garbage, recycling bins banned from Welland front porches | 2,096","Residents take stock of storm damage | 2,084","Former Welland restaurant manager jailed for sexually assaulting developmentally delayed employee | 2,008",],
                 # omniture
                 'freq': 39.9,
                 # readerboard
@@ -230,9 +230,9 @@ var = {
             },
             'monthly': {
                 # parsely stats
-                'hp_posts': 62.2,
-                'hp_section': 27.1,
-                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 19,522","peterborough-on-news/ | 4,072","Peterborough-Kawartha MP announces engagement to former Fredericton MP | 2,682","Norwood man charged with arson in connection to Peterborough fires | 2,435","Peterborough mayor, half of city councillors get failing grade from Peterborough Ratepayers Association. | 2,406","Man arrested in Peterborough for violent sexual assault has history of sexual crimes | 2,309","Cellular, internet connections broken in Peterborough | 1,587","Blue box pickup missed in some Peterborough neighbourhoods | 1,534","Stuart Harrison: Wiskel new owner of Dan Joyce Classic Clothing | 1,477","Man accused of causing damage in local store | 1,464"],
+                'hp_posts': 61.9,
+                'hp_section': 26.7,
+                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 81,497","peterborough-on-news/ | 16,711","peterborough-on-sports/ | 4,847","peterborough-on-opinion/ | 4,280","Bus crashes during first storm of winter in Peterborough | 2,934","Peterborough-Kawartha MP announces engagement to former Fredericton MP | 2,691","Peterborough recycling provider Emterra dropped by Niagara Region as new waste contracts awarded | 2,545","Cellular, internet connections broken in Peterborough | 2,499","Norwood man charged with arson in connection to Peterborough fires | 2,441","‘Go back to where you came from you … immigrant’ | 2,423",],
                 # omniture
                 'freq': 36.7,
                 # readerboard
