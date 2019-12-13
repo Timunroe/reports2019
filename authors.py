@@ -21,10 +21,10 @@ params = {
         'spectator': {
             'name': 'spectator',
             'authors': [
-                'Buist', 'Clairmont', 'Clarke', 'Coward', 'Dreschel',
+                'Berton', 'Buist', 'Clairmont', 'Clarke', 'Coward', 'Dreschel',
                 'Fragomeni', 'Frketich', 'Gardner', 'Gray', 'Grover',
                 'Hogue', 'MacKay', 'Mahoney', 'McNeil', 'Milton', 'Moore',
-                'Moro', 'O\'Reilly', 'Paddon', 'Pecoskie', 'Radley', 'Reilly',
+                'Moro', 'Nolan', 'O\'Reilly', 'Paddon', 'Pecoskie', 'Radley', 'Reilly',
                 'Rennison', 'Rockingham', 'Van Dongen', 'Wells', 'Yokoyama'
             ]
         },
@@ -231,12 +231,14 @@ def authors_parse(fn, name, site_name):
 def output(data):
     d = data
     s = ''
-    s += f'''{d['name']},{d['posts']},{d['views mean']},{d['views median']},{d['avg. time']}'''
-    # s += f'''{d['posts_id']}'''
+    s += f'''{d['name']}'''
     if 'clicks' in data:
         s += f''',{d['clicks']['last click']}'''
         s += f''',{d['clicks']['last 3 clicks']}'''
+    s += f''',{d['posts']},{d['pv']},'''
+    # s += f'''{d['posts_id']}'''
     return s
+
 
 
 def clicks_parse(fn, ids):
@@ -276,7 +278,7 @@ def clicks_parse(fn, ids):
 # --[ MAIN ]---------
 for key, value in params['sites'].items():
     site_name = value['name']
-    print('Author, Posts, Views Mean, Views Median, Avg. Time, Last Clicks, Last 3 Clicks')
+    print('Author, Last Clicks, Last 3 Clicks, Posts, Views Total, UV')
     for author in value['authors']:
         author_name = author.lower().replace(' ', '').replace('\'', '')
         file_name = f'{site_name}-{author_name}.csv'
