@@ -17,14 +17,14 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 54.2,
-                'hp_section': 17.2,
-                'hp_links': ["hamilton-announcements/obituaries-death-notices/ | 15,391","hamilton-news/ | 6,861","Cannabis-induced psychosis blamed in beheading of father at Muskoka cottage | 3,982","Steve Milton: On the biggest stage, the Ticats never got to play their game | 2,625","’Tis the season ... to fall prey to a scam | 2,406","UPDATE: Man killed in overnight crash on Highway 403 in Ancaster | 2,275","user/login/ | 2,106","Dale King found not guilty in shooting death of Yosif Al-Hasnawi | 2,044","UPDATE: Senior surrenders to Hamilton police after deadly east end hit-and-run | 1,938","Disciplinary committee finds Hamilton social worker emotionally abused clients | 1,850",],
+                'hp_posts': 58.1,
+                'hp_section': 15.5,
+                'hp_links': ["hamilton-announcements/obituaries-death-notices/ | 15,357","hamilton-news/ | 6,879","“She just kept yelling, ‘He’s trying to kill us’”: Neighbours who rescued teen girl carrying injured toddler | 6,617","STORM CLOSURES: Hamilton area cancellations and updates | 3,572","Freezing rain warning ended for Hamilton | 3,458","Driver with nine distracted-driving convictions charged for 10th time by Burlington OPP | 2,800","Lottery ticket worth $2.5 million sold in Hamilton | 2,768","Fatal crash closes QEW after freezing rain hits Niagara | 2,606","Over 100 Hamilton households without power | 2,548","Travelling to the U.S.? Watch out: Ontario is about to scrap out-of-country emergency health care coverage. Here’s what you need to know. | 2,270",],
                 # omniture
-                'freq': 28.7,
+                'freq': 29.3,
                 # readerboard
-                'pv/v': 2.05,
-                'min/v': '1:23',
+                'pv/v': 2.04,
+                'min/v': '1.36',
                 'registration_last_clicks': ["7 | suspect-wanted-in-hamilton-double-homicide-found-dead-in-brantford-hotel-room","5 | -let-us-sleep-parkview-residents-bring-noise-pollution-complaints-to-hamilton-city-hall","5 | dispute-over-debt-led-to-double-homicide-hamilton-police","5 | the-days-of-sharing-your-netflix-password-are-numbered","3 | hamilton-homes-have-toxic-lead-pipes-carrying-water-to-taps","4 | nowhere-to-go-will-hsr-bus-drivers-strike-over-bathroom-breaks-","4 | police-seeking-armed-and-dangerous-suspect-in-double-homicide-probe-on-hamilton-mountain","3 | burlington-s-paletta-family-the-400-million-hollywood-blockbuster-deal-and-the-alleged-tax-sham-","3 | kevin-dickman-died-a-broken-man-homeless-and-alone-in-a-city-grappling-with-a-housing-crisis"],
                 'registration_most_read': 'NA',
             },
@@ -58,14 +58,14 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 52.3,
-                'hp_section': 25.1,
-                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 16,183","Kitchener man found dead on the side of the highway | 5,478","waterlooregion-news/ | 2,801","Family of man killed in fatal shooting are ‘shocked and heartbroken’ | 2,718","Suspects in fatal shooting in Kitchener knew victim, police say | 1,943","Hwy 7/8 closed for police investigation | 1,647","Waterloo Region transit hub will force Duke Street closure | 1,280","Cambridge man guilty of attempted murder after being told to keep dog off lawn | 1,111","A Canadian vanishes from a Mexican resort town. His daughter unearths disturbing details | 1,106","Celebrity chef Gary Rhodes dies at 59 with wife by his side | 936",],
+                'hp_posts': 44.8,
+                'hp_section': 29.0,
+                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 17,824","waterlooregion-news/ | 2,772","‘I killed my baby’: Kitchener woman admits to criminal negligence in toddler’s carfentanil death | 1,386","Travelling to the U.S.? Watch out: Ontario is about to scrap out-of-country emergency health care coverage. Here’s what you need to know. | 1,277","‘Calculus Dave’ juggles priorities as king of personal finance | 1,116","Kitchener lodging house licence revoked after years of complaints | 930","Supreme Court won’t hear appeal from former member of Nazi death squad | 924","Delayed 12 years, River Road extension in Kitchener may face more delay | 901","Residents oppose 10-storey condo project in downtown Kitchener | 889","Victim’s mother crushed by decision to drop murder charge in Cambridge homicide | 880",],
                 # omniture
-                'freq': 26.5,
+                'freq': 25.6,
                 # readerboard
                 'pv/v': 2.02,
-                'min/v': '1:15',
+                'min/v': '1.25',
                 'registration_last_clicks': [(10, 'voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race'), (6, 'joseph-garreffa-speaks-out-about-leaving-kitchener-rangers'), (5, 'liberal-leadership-hopeful-alvin-tedjo-promising-to-end-catholic-school-funding'), (5, 'major-waterloo-rec-centre-expansion-slated-for-completion-in-2022'), (4, 'live-updates-2019-federal-election-results'), (3, 'region-voters-stick-with-liberal-incumbents-in-four-ridings'), (2, 'virus-found-in-carp-from-alder-lake-in-new-dundee'), (3, 'driver-charged-after-collision-with-ion-train-in-kitchener'), (2, 'fence-goes-up-around-kitchener-eyesore-'), (2, 'kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing'), (3, 'therecord-contact-us')]
             },
             'monthly': {
@@ -98,13 +98,13 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 61.4,
-                'hp_section': 29.8,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 27,210","stcatharines-on-news/ | 6,689","St. Catharines hospital demolition reveals hidden tunnels, underground swimming pool | 4,298","Police investigating St. Catharines shooting | 3,905","Neighbour upset over police silence following body discovery in Thorold | 2,841","Two women charged after body left for ‘prolonged period of time’ in Thorold home | 2,596","Police looking for witness after distressed man dies in hospital | 1,962","Body discovered in Carl Road workshop blaze in Niagara Falls | 1,936","‘Bad gas’ in Welland leaves Fort Erie woman fuming | 1,742","‘Wrong man - the victim - going to trial’: Parker’s lawyer | 1,590",],
+                'hp_posts': 63.0,
+                'hp_section': 29.4,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 30,368","Fatal crash closes QEW after freezing rain hits Niagara | 8,034","stcatharines-on-news/ | 7,855","Criminal investigation into 2016 CAO hiring warranted, say ex-RCMP regional councillors | 2,470","Impaired church leader drove wrong way on the QEW | 2,412","‘Beautiful twist of fate’ helps save free Christmas dinner in St. Catharines | 2,158","Gambling roofing contractor jailed for fraud | 2,091","Five males arrested in Niagara Falls firearm incident | 1,996","Welland woman convicted in $80,000 bank/social media fraud | 1,890","Pelham woman dies after being struck by car | 1,875",],
                 # omniture
-                'freq': 33.6,
-                'pv/v': 2.56,
-                'min/v': '1:42',
+                'freq': 36.6,
+                'pv/v': 2.53,
+                'min/v': '1.67',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
@@ -137,13 +137,13 @@ var = {
                 'registration_most_read': 'NA',
             },
             'weekly': {
-                'hp_posts': 59.1,
-                'hp_section': 30.9,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 17,689","niagarafalls-on-news/ | 3,895","Body discovered in Carl Road workshop blaze in Niagara Falls | 2,691","Two women charged after body left for ‘prolonged period of time’ in Thorold home | 1,671","Falls family tradition to support children in need | 1,329","Niagara Falls fire victim was 53-year-old man: police | 1,209","‘Wrong man - the victim - going to trial’: Parker’s lawyer | 1,193","Guests invited to wine and dine inside their very own Niagara Falls snow globe | 1,142","New Mewburn Road bridge links NOTL, Niagara Falls | 1,076","Police looking for witness after distressed man dies in hospital | 940",],
+                'hp_posts': 62.6,
+                'hp_section': 29.2,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 18,614","niagarafalls-on-news/ | 4,269","Fatal crash closes QEW after freezing rain hits Niagara | 3,473","Five males arrested in Niagara Falls firearm incident | 2,826","Impaired church leader drove wrong way on the QEW | 1,784","Discarded syringes littering his property frustrating Niagara Falls man | 1,639","SIU investigating after man falls from bridge in Fort Erie | 1,485","Gambling roofing contractor jailed for fraud | 1,444","More people coming forward with ‘bad gas’ stories | 1,261","Parkinson’s crusader and famed NHLer Steve Ludzik in urgent need of liver transplant | 1,190",],
                 # omniture
-                'freq': 34.9,
-                'pv/v': 3.07,
-                'min/v': '1:58',
+                'freq': 36.2,
+                'pv/v': 3.06,
+                'min/v': '1.94',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
@@ -177,13 +177,13 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 59.2,
-                'hp_section': 34.6,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 19,463","welland-on-news/ | 4,111","Body discovered in Carl Road workshop blaze in Niagara Falls | 1,893","‘Bad gas’ in Welland leaves Fort Erie woman fuming | 1,602","‘This is the biggest fine I have seen,’ Welland fire chief says of supportive living home case | 1,496","Armed person call leads to drug bust in Welland | 1,273","Welland man says cold water therapy works for him | 1,235","Two women charged after body left for ‘prolonged period of time’ in Thorold home | 1,083","‘Wrong man - the victim - going to trial’: Parker’s lawyer | 945","Police looking for witness after distressed man dies in hospital | 933",],
+                'hp_posts': 63.9,
+                'hp_section': 32.9,
+                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 21,427","welland-on-news/ | 4,699","More people coming forward with ‘bad gas’ stories | 3,233","Fatal crash closes QEW after freezing rain hits Niagara | 2,461","Pelham woman dies after being struck by car | 2,224","Welland woman convicted in $80,000 bank/social media fraud | 1,870","Welland bar owner says many in local industry ‘would love to get out’ | 1,846","Fire in abandoned Welland building under investigation | 1,767","Police investigating after woman suffers life-threatening injuries in Welland | 1,523","Jail for Welland man who sexually assaulted girlfriend’s granddaughter | 1,427",],
                 # omniture
-                'freq': 42.7,
-                'pv/v': 3.39,
-                'min/v': '2:10',
+                'freq': 40.7,
+                'pv/v': 3.42,
+                'min/v': '2.19',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },
@@ -217,14 +217,14 @@ var = {
             },
             'weekly': {
                 # parsely stats
-                'hp_posts': 60.3,
-                'hp_section': 28.0,
-                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 19,770","peterborough-on-news/ | 3,801","No one hurt as another tent goes up in flames | 2,207","Subway lawsuit against Trent University can proceed | 1,984","10-vehicle crash causes chaos on Hwy. 401 in Whitby Saturday evening | 1,972","Peterborough woman one of seven young people suing the Ontario government over lack of action on climate change | 1,878","Peterborough man accused of hate crime | 1,868","Developer wants to tear down former United Canadian Malt building | 1,758","Charge laid after drink poured over woman’s head at Peterborough bar | 1,730","City council wants answers on recycling pickup delays | 1,638",],
+                'hp_posts': 60.2,
+                'hp_section': 26.7,
+                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 19,844","peterborough-on-news/ | 4,061","Updated: Demolition begins as Peterborough council discusses saving Canadian Malt building | 3,088","Predator snared by Peterborough police undercover operation | 1,622","Peterborough store-to-restaurant rezoning decision on hold | 1,466","Concerned Peterborough County mom happy ‘dangerous’ bus stop moved | 1,459","Toll Highway 407 link to Peterborough opens Monday | 1,349","Cavan Monaghan buys 77 acres along Highway 115 | 1,341","Ridesharing service in the works for Peterborough: Therrien | 1,249","peterborough-on-sports/ | 1,100",],
                 # omniture
-                'freq': 37.4,
+                'freq': 39.0,
                 # readerboard
-                'pv/v': 2.88,
-                'min/v': '1:41',
+                'pv/v': 2.94,
+                'min/v': '1.68',
                 'registration_last_clicks': 'NA',
                 'registration_most_read': 'NA',
             },

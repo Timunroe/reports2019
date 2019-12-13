@@ -20,7 +20,6 @@ import config as c
 # applies to both Saturdays and weeks. 
 
 
-
 def read_csv(filename, folders=None, cols_to_keep=None):
     if folders:
         if not isinstance(folders, list):
