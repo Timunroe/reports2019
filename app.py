@@ -16,8 +16,17 @@ import config as c
 def ordinal(n): return "%d%s" % (
     n, "tsnrhtdd"[(math.floor(n / 10) % 10 != 1) * (n % 10 < 4) * n % 10::4])
 
-# TODO: Compare daily stats to same days of week for period, all.
-# TODO: Fold in long reads func into pages parse func
+# style = {
+#     'h2': 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"',
+#     'h3': 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"',
+#     'h4': 'style="font-size: 0.9rem; margin-bottom: 12px;"',
+#     'p': 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"',
+# }
+
+
+# TODO: Store archive stats in S3/Google Sheet
+#       Safer, pull down stats, add line, reupload
+# TODO: Create long reads option for primary pub
 
 
 def read_csv(filename, folders=None, cols_to_keep=None):
@@ -218,17 +227,9 @@ def pages_parse(dflt):
     limit = {'daily': 7, 'weekly': 10, 'monthly': 10}[freq]
     top_articles = df_articles.head(limit)
     the_html = template('top_articles_by_pv.html',
-                        data=df_to_records(top_articles))
+                        data=df_to_records(top_articles),
+                        )
     # -- GET TOP ARTICLES IN SECTIONS OPINION, LIVING, ARTS, OPINION
-    sections = ['whatson', 'living', 'sports']
-    for section in sections:
-        # CHANGE 3 IF DIFFERENT NUMBER OF ARTICLES WANTED
-        section_pages = df_articles[df_articles['Tags'].str.contains(
-            section)].head(3)
-        print('SECTION IS: ', section)
-        pprint.pprint(data)
-        the_html += template('top_articles_by_section.html',
-                             data=df_to_records(section_pages), section=section)
     opinion_pages = df_articles[
         (df_articles['Tags'].str.contains('opinion')) &
         (df_articles['Tags'].str.contains(
@@ -237,14 +238,29 @@ def pages_parse(dflt):
     # handle top articles in with only opinion as category
     data = df_to_records(opinion_pages)
     the_html += template('top_articles_by_section.html',
-                         data=data, section='opinion')
+                         data=data,
+                         section='opinion',
+                         )
+    sections = ['living', 'whatson', 'sports']
+    for section in sections:
+        # CHANGE 3 IF DIFFERENT NUMBER OF ARTICLES WANTED
+        section_pages = df_articles[df_articles['Tags'].str.contains(
+            section)].head(3)
+        print('SECTION IS: ', section)
+        # pprint.pprint(data)
+        the_html += template('top_articles_by_section.html',
+                             data=df_to_records(section_pages),
+                             section=section,
+                             )
     # -- GET TOP ARTICLES BY ENGAGED TIME
     visitor_limit = 200
     df_articles = df_articles.sort_values(by=['Avg. time'], ascending=False)
     long_reads = df_articles[df_articles['Visitors'] > visitor_limit].head(5)
-    the_html += template('top_articles_by_section.html', data=df_to_records(
-        long_reads), section='time', visitor_limit=visitor_limit)
-    # -- GET TOP LOCAL ARTICLES BY ENGAGED TIME  
+    the_html += template('top_articles_by_section.html',
+                         data=df_to_records(long_reads),
+                         section='time',
+                         visitor_limit=visitor_limit)
+    # -- GET TOP LOCAL ARTICLES BY ENGAGED TIME
     #   long_reads = df_articles[df_articles['Tags'].str.contains(paper)].head(10)
     # -- GET HOME PAGE STATS
     url = dflt['config']['home'][site]
@@ -260,7 +276,7 @@ def pages_parse(dflt):
         df_site = df_site.sort_values(by=['Date'], ascending=False)
         pv_total = df_site.tail(1)['Views'].values[0]
         time = round((df_hp['Engaged minutes'].values[0] /
-                    df_hp['Visitors'].values[0]), 2)
+                      df_hp['Visitors'].values[0]), 2)
         mins = int(time)
         seconds = int((time - mins) * 60)
         data_hp = {
@@ -302,8 +318,8 @@ def pages_parse(dflt):
         }
     except:
         data_hp = 'NA'
-        
-    the_html += template('home_page.html', data=data_hp,
+    the_html += template('home_page.html',
+                         data=data_hp,
                          inputs=c.var['inputs'][site][freq])
     return the_html
 
@@ -411,7 +427,6 @@ def site_parse(dflt):
             f'''{dflt['config'][freq]['term']} in last {roll_avg_count}, '''
             f'''{ordinal(this_pv_all_rank)} best in last {all_count}'''
         )
-
     # Get period avg, so I can use for 'key changes'
     # in report. ie if a change is > 5% of rm
     data['Views rm'] = round(roll_avg['Views'].mean(), 0)
@@ -491,10 +506,14 @@ def site_parse(dflt):
                 ))
     data['Referrers change report'] = ", ".join(temp)
     # pprint.pprint(data)
+
     return template(
         'site_highlights.html',
-        data=data, site=site, freq=freq,
-        period=period, term=dflt['config'][freq]['term'])
+        data=data, site=site,
+        freq=freq,
+        period=period,
+        term=dflt['config'][freq]['term'],
+    )
 
 
 def parse_sections_csv(dflt):
@@ -531,7 +550,9 @@ def parse_sections_csv(dflt):
         obj['Other %'] = u.pct(record['Other refs'], record['Views'])
         the_list.append(obj)
     # pprint.pprint(the_list)
-    return template('top_sections.html', data={'the_list': the_list})
+    return template('top_sections.html',
+                    data={'the_list': the_list},
+                    )
 
 
 # MAIN
@@ -542,24 +563,27 @@ data = {}
 
 # get command parameters
 if (len(sys.argv) > 2
-    and (sys.argv)[1] in ['daily', 'weekly', 'monthly']
+    and (sys.argv)[1] in ['daily', 'weekly', 'monthly', 'yearly']
     and (sys.argv)[2] in [
         'spectator', 'record', 'standard', 'examiner',
-        'tribune', 'review', 'star'
+        'tribune', 'review',
 ]):
     freq = (sys.argv)[1]
     site = (sys.argv)[2]
 else:
     print(
-        "Requires 2 parameters:\n[daily/weekly/monthly]" +
+        "Requires 2 parameters:\n[daily/weekly/monthly/yearly]" +
         "\n[spectator/record/examiner/star]"
     )
     sys.exit()
 
 # read in CSV, only keeping columns we want
 
-header = template('header.html', site=site, freq=freq)
-footer = template('footer.html')
+header = template('header.html',
+                  site=site,
+                  freq=freq,
+                  )
+footer = template('footer.html', )
 
 site_stats = site_parse(
     {
@@ -586,7 +610,7 @@ if freq != 'daily':
             'site': site,
             'freq': freq,
             'input': c.var['inputs']
-        }
+        },
     )
 
     top_referrers = top_referrers_parse(
@@ -609,7 +633,6 @@ if freq != 'daily':
         top_sections + top_referrers + footer
 
 else:
-
     stuff = header + site_stats + top_articles + footer
 
 

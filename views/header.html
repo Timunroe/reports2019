@@ -1,10 +1,6 @@
 <%
 import re
 
-h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"'
-h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -40,6 +36,13 @@ def humanize(value, fraction_point=1):
         return '0'
     end
 end
+
+style = {
+    'h2': 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"',
+    'h3': 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"',
+    'h4': 'style="font-size: 0.9rem; margin-bottom: 12px;"',
+    'p': 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"',
+}
 %>
 
 <html>
@@ -52,6 +55,6 @@ end
     <body>
         <h2>{{site.title()}} {{freq}} report</h2>
         <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-            <h2 {{!h2}}>PATH TO REGISTRATION: Last 3 clicks in 7 days</h2>
-            <h2 {{!h2}}>MOST READ BY REGISTERED USERS (page views)</h2>
+            <h2 {{!style["h2"]}}>PATH TO REGISTRATION: Last 3 clicks in 7 days</h2>
+            <h2 {{!style["h2"]}}>MOST READ BY REGISTERED USERS (page views)</h2>
         </div>

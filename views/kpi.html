@@ -1,10 +1,6 @@
 <%
 import re
 
-h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"'
-h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -40,15 +36,22 @@ def humanize(value, fraction_point=1):
         return '0'
     end
 end
+
+style = {
+    'h2': 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"',
+    'h3': 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"',
+    'h4': 'style="font-size: 0.9rem; margin-bottom: 12px;"',
+    'p': 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"',
+}
 %>
 
 % site = data['site']
 % freq = data['freq']
 
 <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-    <h2 {{!h2}}>KPI FOR OKR:</h2>
+    <h2 {{!style["h2"]}}>KPI FOR OKR:</h2>
     % if data['site'] in ['spectator', 'record']:
-    <p {{!p}}>
+    <p {{!style["p"]}}>
     <span style="font-weight: 600;">Return frequency (less than 1 day): {{data['input'][site][freq]['freq']}}%</span></br>
     Key Result: Maintain recency of visits that come within the day. Higher is better.</br>
     % if data['site'] == 'spectator':
@@ -56,7 +59,7 @@ end
     Trend: Better than last week.
     % end
     </p>
-    <p {{!p}}>
+    <p {{!style["p"]}}>
     <span style="font-weight: 600;">Page views/visitor/day: {{data['input'][site][freq]['pv/v']}} (last 30 days)</span></br>
     Key Result: Increase average number of pages consumed by visitors. Higher is better.</br>
     % if data['site'] == 'spectator':
@@ -64,7 +67,7 @@ end
     Trend: xxxx.
     % end
     </p>
-    <p {{!p}}>
+    <p {{!style["p"]}}>
     <span style="font-weight: 600;">Home page bounce rate: 
         {{round(100 - (data['input'][site][freq]['hp_posts'] + data['input'][site][freq]['hp_section']),1)}}%</span></br>
     Key Result: Decrease percentage of visitors to the home page who leave without clicking an article or landing page. Lower is better.</br>
@@ -74,7 +77,7 @@ end
     % end
     </p>
     % else:
-    <p {{!p}}>
+    <p {{!style["p"]}}>
     <span style="font-weight: 600;">Page views per visitor:</span> {{data['input'][site][freq]['pv/v']}} | Target level: 3:5 Standard/3:2 Examiner<br>
     <span style="font-weight: 600;">Avg. active minutes per visitor:</span> {{data['input'][site][freq]['min/v']}}  | Target level: 2:30 Standard/1:42 Examiner<br>
     <span style="font-weight: 600;">Avg. engagement time</span> for top 10 local, non-breaking articles (ranked by engagement time)<br>

@@ -1,10 +1,6 @@
 <%
 import re
 
-h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"'
-h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem; line-height: 1.2rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -40,28 +36,35 @@ def humanize(value, fraction_point=1):
         return '0'
     end
 end
-%>
 
+style = {
+    'h2': 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"',
+    'h3': 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"',
+    'h4': 'style="font-size: 0.9rem; margin-bottom: 12px;"',
+    'p': 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"',
+}
+%>
+% print('Site highlights template')
 <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-    <h2 {{!h2}}>SITE HIGHLIGHTS:</h2>
-    <p {{!p}}>
+    <h2 {{!style['h2']}}>SITE HIGHLIGHTS:</h2>
+    <p {{!style["p"]}}>
         <span style="font-weight: 600;">Page views</span>: {{humanize(data['Views'])}}, 
         <span style="font-weight: 800;">{{f'''{data['Views vs rm%']:+}'''}}%</span><br />
     <span style="font-weight: 600;">Comparison:</span> {{!data['Views rank'].replace(' 1st', ' ')}}<br />
     <span style="font-weight: 600;">Referrers:</span> {{data['Referrers report']}}<br />
     <span style="font-weight: 600;">Devices:</span> {{data['Devices report']}}
     </p>
-    <p {{!p}}>Key shifts in referral views: {{!data['Referrers change report']}}</p>
-    <p {{!p}}><span style="font-weight: 600;">Visitors</span>: {{humanize(data['Visitors'], 0)}}, <span style="font-weight: 800;">{{f'''{data['Visitors vs rm%']:+}'''}}%</span>, {{data['Returning vis.%']}}% returning.<br />
+    <p {{!style["p"]}}>Key shifts in referral views: {{!data['Referrers change report']}}</p>
+    <p {{!style["p"]}}><span style="font-weight: 600;">Visitors</span>: {{humanize(data['Visitors'], 0)}}, <span style="font-weight: 800;">{{f'''{data['Visitors vs rm%']:+}'''}}%</span>, {{data['Returning vis.%']}}% returning.<br />
         <span style="font-weight: 600;">Minutes</span>: {{humanize(data['Engaged minutes'], 0)}}, 
         <span style="font-weight: 800;">{{f'''{data['Engaged minutes vs rm%']:+}'''}}%</span> 
     </p>
-    <p {{!p}}><span style="font-weight: 600;">Avg time on site:</span> <span style="font-weight: 800;">{{data['site time formatted']}}</span>, {{f'''{data['site time dec vs rm%']:+}%'''}}</p>
-    <p {{!p}}><span style="font-weight: 600;">New posts:</span> <span style="font-weight: 800;">{{data['New Posts']}}</span>, {{f'''{data['New Posts vs rm%']:+}%'''}}</p>
+    <p {{!style["p"]}}><span style="font-weight: 600;">Avg time on site:</span> <span style="font-weight: 800;">{{data['site time formatted']}}</span>, {{f'''{data['site time dec vs rm%']:+}%'''}}</p>
+    <p {{!style["p"]}}><span style="font-weight: 600;">New posts:</span> <span style="font-weight: 800;">{{data['New Posts']}}</span>, {{f'''{data['New Posts vs rm%']:+}%'''}}</p>
     % if freq == 'daily':
-    <p {{!p}}><small>NB: +/- percentages relate to averages of same day-of-week  in {{period}} {{term + 's'}}.</small></p>
+    <p {{!style["p"]}}><small>NB: +/- percentages relate to averages of same day-of-week  in {{period}} {{term + 's'}}.</small></p>
     % else:
-    <p {{!p}}><small>NB: +/- percentages relate to rolling avg. ({{period}} {{term + 's'}}).</small></p>
+    <p {{!style["p"]}}><small>NB: +/- percentages relate to rolling avg. ({{period}} {{term + 's'}}).</small></p>
     % end
 
 </div>

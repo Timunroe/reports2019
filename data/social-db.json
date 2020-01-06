@@ -1,0 +1,40 @@
+{
+    "date": "2018-04-03",
+    "stats": [
+        {
+            "fb": 42754,
+            "site": "TheSpec",
+            "tco": 109474
+        },
+        {
+            "fb": 17801,
+            "site": "TheRecord",
+            "tco": 80706
+        },
+        {
+            "fb": 6788,
+            "site": "MercTribune",
+            "tco": 17027
+        },
+        {
+            "fb": 20817,
+            "site": "STC Standard",
+            "tco": 15771
+        },
+        {
+            "fb": 11795,
+            "site": "Ptbo Examiner",
+            "tco": 20812
+        },
+        {
+            "fb": 36298,
+            "site": "NF Review",
+            "tco": 13629
+        },
+        {
+            "fb": 13167,
+            "site": "W Tribune",
+            "tco": 8558
+        }
+    ]
+}

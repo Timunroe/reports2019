@@ -1,10 +1,6 @@
 <%
 import re
 
-h2 = 'style="font-size: 1rem; margin-top: 0; margin-bottom: 8px; color: #505050;"'
-h3 = 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"'
-h4 = 'style="font-size: 0.9rem; margin-bottom: 12px;"'
-p = 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"'
 
 def humanize(value, fraction_point=1):
     if value != '':
@@ -40,13 +36,20 @@ def humanize(value, fraction_point=1):
         return '0'
     end
 end
+
+style = {
+    'h2': 'style="font-size: 1rem; margin-top: 0; margin-bottom: 4px; color: #505050;"',
+    'h3': 'style="font-size: 1rem; margin-top: 10px; margin-bottom: 12px"',
+    'h4': 'style="font-size: 0.9rem; margin-bottom: 12px;"',
+    'p': 'style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem;"',
+}
 %>
+% print('Home Page template')
 
 % if data != 'NA':
 <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-    <h2 {{!h2}}>HOME PAGE STATS</h2>
-
-    <p {{!p}}>
+    <h2 {{!style["h2"]}}>HOME PAGE STATS</h2>
+    <p {{!style["p"]}}>
         <span style="font-weight: 600;">Page views</span>: 
         {{f'''{data['pv vs total']}'''}}% of site total.<br />
         <span style="font-weight: 600;">Key referrers:</span> {{data['direct pv%']}}% direct, {{data['search pv%']}}% search, {{data['internal pv%']}}% internal<br />
@@ -55,15 +58,15 @@ end
         <span style="font-weight: 600;">Visitors:</span> {{data['returning uv%']}}% returning
     </p>
     % if inputs['hp_section'] != 'NA':
-    <h4 {{!h4}}>Activity after viewing home page</h4>
-    <p {{!p}}>
+    <h4 {{!style["h4"]}}>Activity after viewing home page</h4>
+    <p {{!style["p"]}}>
             <span style="font-weight: 600;">{{inputs['hp_posts']}}%</span>
             to posts, <span style="font-weight: 600;">{{inputs['hp_section']}}</span>% to index and section pages, 
             for a bounce rate of 
             <span style="font-weight: 600;">{{round(100-(inputs['hp_posts'] + inputs['hp_section']), 1)}}%</span>
     </p>
-    <h4 {{!h4}}>Top pages clicked from home page</h4>
-    <p {{!p}}>
+    <h4 {{!style["h4"]}}>Top pages clicked from home page</h4>
+    <p {{!style["p"]}}>
         % for item in inputs['hp_links'][:5]:
         <small>{{item}} PV</small></br>
         % end
