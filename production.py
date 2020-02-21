@@ -1,5 +1,6 @@
 from bottle import template
 import pandas as pd
+import matplotlib.pyplot as plt
 # standard
 import json
 import pprint
@@ -13,38 +14,10 @@ import config as c
 
 site_cols_keep = [
     'Date',
-    'Posts',
+    'Posts Published',
     'Visitors',
-    'Views',
-    'Engaged minutes',
-    'Social interactions',
-    'Fb interactions',
-    'Tw interactions',
-    'Pi interactions',
-    'Desktop views',
-    'Mobile views',
-    'Tablet views',
-    'Search refs',
-    'Internal refs',
-    'Other refs',
-    'Direct refs',
-    'Social refs',
-    'Fb refs',
-    'Tw refs',
-    'New vis.',
-    'Views new vis.',
-    'Avg. views new vis.',
-    'Minutes New Vis.',
-    'Avg. minutes new vis.',
-    'Returning vis.',
-    'Views ret. vis.',
-    'Avg. views ret. vis.',
-    'Minutes Ret. Vis.',
-    'Avg. minutes ret. vis.',
+    'Views'
 ]
-
-
-
 
 
 def read_parsely_csv(filename, folders=None, cols_to_keep=None):
@@ -75,15 +48,9 @@ def read_parsely_csv(filename, folders=None, cols_to_keep=None):
 
 
 def parse_site_csv(df, file):
-    key_metrics = ['Views', 'Visitors', 'Posts', 'Engaged minutes', 'Social interactions']
-    device_cols = ['Desktop views', 'Mobile views', 'Tablet views']
-    referral_cols = [
-        'Search refs', 'Internal refs', 'Direct refs',
-        'Social refs', 'Other refs', 'Fb refs', 'Tw refs'
-    ]
     # ---- FIX DATAFRAME --------
     # fix any columns that may have float data types but should be integers
-    for item in key_metrics + device_cols + referral_cols:
+    for item in ['Posts Published', 'Visitors', 'Views']:
         df[item] = df[item].apply(lambda x: int(x))
     # reverse sort on Date because that's how Pandas likes to roll
     # this means for latest data we'll pull 'last' or tail items
@@ -98,25 +65,24 @@ def parse_site_csv(df, file):
         'Thursday', 'Friday', 'Saturday', 'Sunday'
     ]
     print(file)
-    df_30 = df.tail(28)
+    df_30 = df.tail(180)
     for day in days:
-        new_posts = int(round(df_30[df_30['DayOfWeek'] == day]['Posts'].mean(), 0))
+        new_posts = int(round(df_30[df_30['DayOfWeek'] == day]['Posts Published'].mean(), 0))
         views = int(round(df_30[df_30['DayOfWeek'] == day]['Views'].mean(), 0))
         visitors = int(round(df_30[df_30['DayOfWeek'] == day]['Visitors'].mean(), 0))
-        print(f'''{day}: total posts: {new_posts} Views: {u.humanize(views, 0)} Visitors: {u.humanize(visitors, 0)}''')
+        # print(f'''{day}: total posts: {new_posts} Views: {u.humanize(views, 0)} Visitors: {u.humanize(visitors, 0)}''')
+        print(f'''{day}: {new_posts}''')
     return data
 
 
 
 for item in [
-    'spectator_posts_local.csv', 
-    'spectator_posts_primarypub.csv',
-    'spectator_posts_total.csv'
+    'examiner-posts.csv', 'record-posts.csv', 'spectator-posts.csv', 'standard-posts.csv'
 ]:
 
     df = read_parsely_csv(
         item,
-        ['data', 'daily'],
+        ['data', 'production'],
         site_cols_keep,
     )
     data = parse_site_csv(df, item)

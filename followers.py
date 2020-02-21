@@ -4,14 +4,16 @@ import random
 import re
 import json
 from datetime import date
-import utils
+import utils as u
 import time
+import secret
+import tweepy
 
 sites = [
     {
         'site': 'TS',
         'fb': 'https://www.facebook.com/torontostar/',
-        'tw': 'https://twitter.com/TorontoStar',
+        'tw': 'TorontoStar',
         'yt': 'https://www.youtube.com/TorontoStar',
         'ig': 'https://www.instagram.com/thetorontostar/?hl=en',
         'pi': 'https://www.pinterest.ca/torontostar/',
@@ -20,7 +22,7 @@ sites = [
     {
         'site': 'HS',
         'fb': 'https://www.facebook.com/hamiltonspectator/',
-        'tw': 'https://twitter.com/TheSpec',
+        'tw': 'TheSpec',
         'yt': 'https://www.youtube.com/thespecvideo',
         'ig': 'https://www.instagram.com/hamiltonspectator/?hl=en',
         'pi': 'https://www.pinterest.ca/thespectator/',
@@ -29,7 +31,7 @@ sites = [
     {
         'site': 'WRR',
         'fb': 'https://www.facebook.com/waterlooregionrecord/',
-        'tw': 'https://twitter.com/WR_Record',
+        'tw': 'WR_Record',
         'yt': 'https://www.youtube.com/phototherecord',
         'ig': 'https://www.instagram.com/waterlooregionrecord/?hl=en',
         'pi': 'https://www.pinterest.ca/WRrecord/',
@@ -38,7 +40,7 @@ sites = [
     {
         'site': 'SCS',
         'fb': 'https://www.facebook.com/stcatharinesstandard/',
-        'tw': 'https://twitter.com/StCatStandard',
+        'tw': 'StCatStandard',
         'yt': 'https://www.youtube.com/channel/UCcAzUYgemMC1igVHQwyw4uA',
         'ig': 'https://www.instagram.com/stcatharinesstandard/',
         'pi': '',
@@ -47,7 +49,7 @@ sites = [
     {
         'site': 'NFR',
         'fb': 'https://www.facebook.com/niagarafallsreview/',
-        'tw': 'https://twitter.com/NiaFallsReview',
+        'tw': 'NiaFallsReview',
         'yt': '',
         'ig': '',
         'pi': '',
@@ -56,7 +58,7 @@ sites = [
     {
         'site': 'WT',
         'fb': 'https://www.facebook.com/wellandtribune/',
-        'tw': 'https://twitter.com/WellandTribune',
+        'tw': 'WellandTribune',
         'yt': 'https://www.youtube.com/channel/UCVClY5BoeVYaj834JOKLZUw',
         'ig': 'https://www.instagram.com/thetribune/',
         'pi': '',
@@ -65,7 +67,7 @@ sites = [
     {
         'site': 'PE',
         'fb': 'https://www.facebook.com/PeterboroughExaminer/',
-        'tw': 'https://twitter.com/PtboExaminer',
+        'tw': 'PtboExaminer',
         'yt': 'https://www.youtube.com/channel/UC9RwlcrujYFt_GRVayVt3_g',
         'ig': 'https://www.instagram.com/pboroexaminer/',
         'pi': '',
@@ -111,7 +113,7 @@ def ig_followers(url):
 
 
 def yt_followers(url):
-    print('Starting YT section')
+    print('Starting YouTube section')
     '''
     Data is added dynamically via script.
     Find script with desired phrase, regex out subscribers
@@ -129,17 +131,19 @@ def yt_followers(url):
         return '0'
 
 
-def tw_followers(url):
-    print('Starting TW section')
-    '''
-    #page-container > div.ProfileCanopy.ProfileCanopy--withNav.ProfileCanopy--large.js-variableHeightTopBar > div > div.ProfileCanopy-navBar.u-boxShadow > div > div > div.Grid-cell.u-size2of3.u-lg-size3of4 > div > div > ul > li.ProfileNav-item.ProfileNav-item--followers > a > span.ProfileNav-value
-    '''
-    session = HTMLSession()
-    r = session.get(url)
-    r.html.render()
-    result = r.html.find('#page-container > div.ProfileCanopy.ProfileCanopy--withNav.ProfileCanopy--large.js-variableHeightTopBar > div > div.ProfileCanopy-navBar.u-boxShadow > div > div > div.Grid-cell.u-size2of3.u-lg-size3of4 > div > div > ul > li.ProfileNav-item.ProfileNav-item--followers > a > span.ProfileNav-value', first=True)
-    followers = result.attrs['data-count']
-    return followers.strip()
+def tw_followers(handle):
+    print('Starting Twitter section')
+    twitter_consumer_key = secret.KEYS['twitter']['consumer_key']
+    twitter_consumer_secret = secret.KEYS['twitter']['consumer_secret']
+    twitter_token_key = secret.KEYS['twitter']['access_token_key']
+    twitter_token_secret = secret.KEYS['twitter']['access_token_secret']
+
+    auth = tweepy.OAuthHandler(twitter_consumer_key, twitter_consumer_secret)
+    auth.set_access_token(twitter_token_key, twitter_token_secret)
+
+    api = tweepy.API(auth)
+    user = api.get_user(handle)
+    return user.followers_count
 
 
 def fb_followers(url):
@@ -147,7 +151,7 @@ def fb_followers(url):
     #PagesProfileHomeSecondaryColumnPagelet > div > div:nth-child(1) > div > div._4-u2._6590._3xaf._4-u8 > div:nth-child(4) > div > div._4bl9 > div
     <div>21,582 people follow this</div>
     '''
-    print('Starting FB section')
+    print('Starting Facebook section')
     session = HTMLSession()
     r = session.get(url)
     results = r.html.find('div._4bl9 > div')
@@ -159,7 +163,7 @@ def fb_followers(url):
 
 
 def pi_followers(url):
-    print('Starting PI section')
+    print('Starting Pinterest section')
     if url:
         session = HTMLSession()
         r = session.get(url)
@@ -174,42 +178,34 @@ def pi_followers(url):
 def main():
     report = f'''SOCIAL MEDIA FOLLOWERS
 Week No. {date.today().isocalendar()[1]}, {date.today().isocalendar()[0]}
-=============================================
-SITE     FB      TW    YT     IG    PI     LI
----------------------------------------------
+==============================================
+SITE      FB      TW    YT      IG    PI    LI
 '''
     for site in sites:
         print(f'''Processing {site['site']}''')
         fb = fb_followers(site['fb'])
         print('fb followers: ', fb)
-        time.sleep(random.randint(3,5))
+        time.sleep(random.randint(3, 7))
         tw = tw_followers(site['tw'])
         print('tw followers: ', tw)
-        time.sleep(random.randint(3,5))
+        time.sleep(random.randint(3, 7))
         yt = yt_followers(site['yt'])
         print('yt followers: ', yt)
-        time.sleep(random.randint(3,5))
+        time.sleep(random.randint(3, 7))
         ig = ig_followers(site['ig'])
         print('ig followers: ', ig)
-        time.sleep(random.randint(3,5))
+        time.sleep(random.randint(3, 7))
         pi = pi_followers(site['pi'])
         print('pi followers: ', pi)
         # li = li_followers(site['li'])
         report += f'''\
------------------------------------------
-{site['site'].ljust(3)}  \
-{(utils.humanize(fb)).rjust(6)} \
-{(utils.humanize(tw)).rjust(7)} \
-{yt.rjust(5)} \
-{(utils.humanize(ig)).rjust(6)} \
-{(utils.humanize(pi)).rjust(6)}
------------------------------------------
+----------------------------------------------
 {site['site'].ljust(3)}  \
 {str(fb).rjust(7)} \
-{str(tw).rjust(8)} \
-{str(yt).rjust(6)} \
+{str(tw).rjust(7)} \
+{str(yt).rjust(5)} \
 {str(ig).rjust(7)} \
-{str(pi).rjust(7)}
+{str(pi).rjust(5)}
 '''
     print(report)
 

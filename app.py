@@ -1,5 +1,6 @@
 from bottle import template
 import pandas as pd
+import matplotlib.pyplot as plt
 # standard
 # import json
 import pprint
@@ -318,9 +319,12 @@ def pages_parse(dflt):
         }
     except:
         data_hp = 'NA'
-    the_html += template('home_page.html',
-                         data=data_hp,
-                         inputs=c.var['inputs'][site][freq])
+    the_html += template(
+        'home_page.html',
+        data=data_hp,
+        inputs=c.var['inputs'][site],
+        freq=freq
+    )
     return the_html
 
 
@@ -583,7 +587,7 @@ header = template('header.html',
                   site=site,
                   freq=freq,
                   )
-footer = template('footer.html', )
+footer = template('footer.html', freq=freq)
 
 site_stats = site_parse(
     {

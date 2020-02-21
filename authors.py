@@ -21,11 +21,18 @@ params = {
         'spectator': {
             'name': 'spectator',
             'authors': [
-                'Berton', 'Buist', 'Clairmont', 'Clarke', 'Coward', 'Dreschel',
-                'Fragomeni', 'Frketich', 'Gardner', 'Gray', 'Grover',
-                'Hogue', 'MacKay', 'Mahoney', 'McNeil', 'Milton', 'Moore',
-                'Moro', 'Nolan', 'O\'Reilly', 'Paddon', 'Pecoskie', 'Radley', 'Reilly',
-                'Rennison', 'Rockingham', 'Van Dongen', 'Wells', 'Yokoyama'
+                'Benedetti', 'Berton', 'Buist', 'Canning', 'Clairmont', 
+                'Clarke', 'Convery', 'Coward', 'Dreschel', 'Dyer', 
+                'Fragomeni', 'Frketich', 'Furster', 'Galambos', 'Gardner', 
+                'Gray', 'Grover', 'Haggo', 'Hogue', 'Howard', 'Hunter', 'Kemeny',
+                'Little', 'MacKay', 'Mahoney', 'McKay', 'McNeil', 'Miller', 'Milton', 
+                'Moore', 'Moro', 'Nadler', 'Nolan', 'O\'Reilly', 'Paddon', 'Pecoskie', 
+                'Pike', 'Radley', 'Reilly', 'Rennison', 'Renwald', 
+                'Rockingham', 'Schramayr', 'Shkimba', 'Smith', 'Sommerfeld', 
+                'Stevens', 'Turnevicius', 'Van Dongen', 'Wells', 'Wilson', 'Yokoyama', 
+                'Cohn', 'Mallick', 'Teitel', 'Menon', 'Tesher', 'Donovan', 'Potter', 'Burman', 
+                'Walkom', 'Hebert', 'Delacourt', 'Scoffield', 'Hepburn', 'Salutin', 'Charlebois', 
+                'Howe'
             ]
         },
         'record': {
@@ -34,7 +41,9 @@ params = {
                 'Monteiro', 'Davis', 'Paul', 'Booth', 'Outhit',
                 'Thompson', 'Jackson', 'Mercer', 'Desmond', 'Rubinoff',
                 'Pender', 'Latif', 'D\'Amato', 'Weidner', 'Hicks',
-                'Hill', 'Brown', 'Bryson',
+                'Hill', 'Brown', 'Bryson', 'DeGroot', 'Hobson', 'Milloy',
+                'Mills', 'Thoman', 'Bielak', 'Stevens', 'Taylor', 'Andrews', 
+                'Walneck', 'Mangalaseril', 'CBrown', 'Edwards'
             ]
         },
         'niagara': {
@@ -48,7 +57,12 @@ params = {
         'examiner': {
             'name': 'examiner',
             'authors': [
-                'Kovach', 'Nyznik', 'Bain', 'Davies', 'Skarstedt'
+                'Kovach', 'Nyznik', 'Bain', 'Davies', 'Skarstedt', 
+                'Anderson', 'Arnold', 'Barrie', 'Campbell', 'Clysdale',
+                'Culley', 'Dornan', 'Elson', 'Ganley', 'Gardiner', 'Gordon',
+                'Harrison', 'Hickey', 'Jones', 'McConnell', 'Monkman',
+                'O\'Grady', 'Peeters', 'Peterman', 'Saitz', 'Savage',
+                'Taylor', 'Thompson', 'Vandonk', 'Watson'
             ]
         },
     }
@@ -212,9 +226,12 @@ def authors_parse(fn, name, site_name):
     data['name'] = name
     data['pv'] = df_articles['Views'].sum()
     data['vis'] = df_articles['Visitors'].sum()
-    data['vis_returning%'] = round(100 * (df_articles['Returning vis.'].sum() / df_articles['Views'].sum()), 1)
+    data['search %'] = int(round(100 * (df_articles['Search refs'].sum() / df_articles['Views'].sum()), 0))
+    data['social %'] = int(round(100 * (df_articles['Social refs'].sum() / df_articles['Views'].sum()), 0))
+    # data['vis_returning%'] = round(100 * (df_articles['Returning vis.'].sum() / df_articles['Views'].sum()), 1)
     time = df_articles['Engaged minutes'].sum() / df_articles['Visitors'].sum()
     mins = int(time)
+    data['minutes'] = df_articles['Engaged minutes'].sum()
     seconds = int(round((time - mins) * 60, 0))
     data['avg. time'] = f'''{mins}:{seconds:02d}'''
     data['posts'] = df_articles['asset id'].count()
@@ -225,20 +242,29 @@ def authors_parse(fn, name, site_name):
         data['clicks'] = clicks_parse('spectator-last-clicks.csv', data['posts_id'])
     elif site_name == 'record':
         data['clicks'] = clicks_parse('record-last-clicks.csv', data['posts_id'])
+    elif site_name == 'examiner':
+        data['clicks'] = clicks_parse('examiner-last-clicks.csv', data['posts_id'])
     return data
 
 
 def output(data):
     d = data
     s = ''
-    s += f'''{d['name']}'''
+    s += f'''{d['name']},'''
+    s += f'''{d['posts']},'''
+    s += f'''{d['views median']},{d['avg. time']},'''
     if 'clicks' in data:
-        s += f''',{d['clicks']['last click']}'''
-        s += f''',{d['clicks']['last 3 clicks']}'''
-    s += f''',{d['posts']},{d['pv']},'''
+        s += f'''{d['clicks']['last click']},'''
+        s += f'''{d['clicks']['last 3 clicks']},'''
+        s += f'''{round(1000 * (d['clicks']['last click'] / d['vis']), 2)},'''
+        s += f'''{round(1000 * (d['clicks']['last 3 clicks'] / d['vis']), 2)},''' 
+    else:
+        s += f''',,,,'''
+    s += f'''{d['social %']},{d['search %']},'''
+    s += f'''{d['pv']},'''
+    s += f'''{d['minutes']}'''
     # s += f'''{d['posts_id']}'''
     return s
-
 
 
 def clicks_parse(fn, ids):
@@ -278,7 +304,7 @@ def clicks_parse(fn, ids):
 # --[ MAIN ]---------
 for key, value in params['sites'].items():
     site_name = value['name']
-    print('Author, Last Clicks, Last 3 Clicks, Posts, Views Total, UV')
+    print('Author, Posts, Views Median, Avg. Time, Last Clicks, Last 3 Clicks, Last Click / 1000 visitors, Last 3 Clicks / 1000 visitors, Social %, Search %, Views, Minutes')
     for author in value['authors']:
         author_name = author.lower().replace(' ', '').replace('\'', '')
         file_name = f'{site_name}-{author_name}.csv'

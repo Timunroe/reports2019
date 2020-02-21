@@ -2,249 +2,105 @@ var = {
     # --[ DYNAMIC DATA ]
     'inputs': {
         'spectator': {
-            'daily': {
-                # parsely stats
-                'hp_posts': 'NA',
-                'hp_section': 'NA',
-                'hp_links': 'NA',
-                # omniture
-                'freq': 'NA',
-                # readerboard
-                'pv/v': 'NA',
-                'min/v': 'NA',
-                'registration_last_clicks': [],
-                'registration_most_read': 'NA',
-            },
-            'weekly': {
-                # parsely stats
-                'hp_posts': 43.7,
-                'hp_section': 17.2,
-                'hp_links': ["hamilton-announcements/obituaries-death-notices/ | 12,317","hamilton-news/ | 6,027","Fantastic under-$7 sandwiches and where to find them in Hamilton | 2,210","New owner of Hamilton City Centre drawing up construction site plan for landmark | 2,067","Mob violence, a $600M lawsuit and squalid Hamilton rentals — must read stories of 2019: Part 2 | 1,991","user/login/ | 1,832","Human trafficking and sexual assault charges laid after Burlington restaurant raided and shut down | 1,817","Ontario Ministry of Transportation employee suspended after arrest in Hells Angels gambling bust | 1,636","22-year-old man hurt in Oriole Crescent shooting | 1,611","‘Do you want to live or die’: Son forced to interpret for his deaf parents at Hamilton Health Sciences | 1,502",],
-                # omniture
-                'freq': 29.1,
-                # readerboard
-                'pv/v': 2.02,
-                'min/v': '1.31',
-                'registration_last_clicks': ["7 | suspect-wanted-in-hamilton-double-homicide-found-dead-in-brantford-hotel-room","5 | -let-us-sleep-parkview-residents-bring-noise-pollution-complaints-to-hamilton-city-hall","5 | dispute-over-debt-led-to-double-homicide-hamilton-police","5 | the-days-of-sharing-your-netflix-password-are-numbered","3 | hamilton-homes-have-toxic-lead-pipes-carrying-water-to-taps","4 | nowhere-to-go-will-hsr-bus-drivers-strike-over-bathroom-breaks-","4 | police-seeking-armed-and-dangerous-suspect-in-double-homicide-probe-on-hamilton-mountain","3 | burlington-s-paletta-family-the-400-million-hollywood-blockbuster-deal-and-the-alleged-tax-sham-","3 | kevin-dickman-died-a-broken-man-homeless-and-alone-in-a-city-grappling-with-a-housing-crisis"],
-                'registration_most_read': 'NA',
-            },
-            'monthly': {
-                # parsely stats
-                'hp_posts': 54.5,
-                'hp_section': 15.8,
-                'hp_links': ["/hamilton-announcements/obituaries-death-notices/ | 63,148","/hamilton-news/ | 28,987","/user/login/ | 9,411","A ‘betrayal’ of the City of Hamilton — Ontario pulls out of LRT | 8,043","Teen apprehended after toddler injured in Mountain home | 7,881","Neighbours say Hamilton father shot and killed in front of his West 4th home was a ‘good man’ | 6,834","“She just kept yelling, ‘He’s trying to kill us’”: Neighbours who rescued teen girl carrying injured toddler | 6,646","Hamilton Mountain shooting victim was targeted, say police | 6,211","Police name Hamilton homicide victim from Friday’s shooting | 5,402","'Unsettling and concerning': Heavily-armed Halton police raid luxury home in Burlington neighbourhood and shut down restaurant | 5,092",],
-                # omniture
-                'freq': 28.8,
-                # readerboard
-                'pv/v': 2.02,
-                'min/v': 1.32,
-                'registration_last_clicks': [],
-                'registration_most_read': [],
-            }
-        },
-        'record': {
-            'daily': {
-                # parsely stats
-                'hp_posts': 'NA',
-                'hp_section': 'NA',
-                'hp_links': 'NA',
-                # omniture
-                'freq': 'NA',
-                # readerboard
-                'pv/v': 'NA',
-                'min/v': 'NA',
-                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
-                'registration_most_read': 'NA',
-            },
-            'weekly': {
-                # parsely stats
-                'hp_posts': 42.0,
-                'hp_section': 28.0,
-                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 13,267","waterlooregion-news/ | 1,905","Ontario Ministry of Transportation employee suspended after arrest in Hells Angels gambling bust | 1,688","Kitchener man identified as victim of single-vehicle crash near Breslau | 1,611","Waterloo family competes on Family Feud Canada | 1,430","Victims identified in fatal 401 crash | 1,212","Waterloo Region death notices for Friday | 1,120","D’Amato: Homeless welcome at temporary shelter in vacant Kitchener coffee shop | 1,034","A love affair with Waterloo | 1,013","Sisters honour late father by delivering meals to locals in need | 841",],
-                # omniture
-                'freq': 24.4,
-                # readerboard
-                'pv/v': 1.99,
-                'min/v': '1.22',
-                'registration_last_clicks': [(10, 'voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race'), (6, 'joseph-garreffa-speaks-out-about-leaving-kitchener-rangers'), (5, 'liberal-leadership-hopeful-alvin-tedjo-promising-to-end-catholic-school-funding'), (5, 'major-waterloo-rec-centre-expansion-slated-for-completion-in-2022'), (4, 'live-updates-2019-federal-election-results'), (3, 'region-voters-stick-with-liberal-incumbents-in-four-ridings'), (2, 'virus-found-in-carp-from-alder-lake-in-new-dundee'), (3, 'driver-charged-after-collision-with-ion-train-in-kitchener'), (2, 'fence-goes-up-around-kitchener-eyesore-'), (2, 'kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing'), (3, 'therecord-contact-us')]
-            },
-            'monthly': {
-                # parsely stats
-                'hp_posts': 46.3,
-                'hp_section': 27.9,
-                'hp_links': ["waterlooregion-announcements/obituaries-death-notices/ | 70,892","waterlooregion-news/ | 11,273","waterlooregion-sports/ | 2,675","search/allarticles/ | 2,655","user/login/ | 2,513","Police identify 19-year-old killed in Sunday’s shooting in Kitchener | 2,219","‘Pop, pop, pop, pop, pop’: Man shot to death in Kitchener; two others injured | 2,168","Victims identified in fatal 401 crash | 2,106","waterlooregion-opinion/ | 1,706","Ontario Ministry of Transportation employee suspended after arrest in Hells Angels gambling bust | 1,690",],
-                # omniture
-                'freq': 25.1,
-                # readerboard
-                'pv/v': 1.99,
-                'min/v': 1.21,
-                'registration_last_clicks': ["22 | 15 | news/9629207-waterloo-region-couple-s-handmaid-s-tale-wedding-photo-sparks-controversy", "35 | 14 | news/9655050-voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race", "18 | 13 | news/9663790-new-zoning-rules-allow-tiny-houses-granny-flats-throughout-kitchener", "21 | 11 | news/9644793-cambridge-city-councillor-frank-monteiro-dies", "15 |  9 | news/9644793-cambridge-councillor-frank-monteiro-s-final-public-words-read-at-meeting", "22 |  8 | news/9631899-uptown-waterloo-business-merchants-plead-for-patrons-as-part-of-king-st-n-reopens", "17 |  7 | news/9627244-elmira-jewelry-store-gets-letter-of-apology-for-theft-from-the-1970s", "16 |  7 | news/9631566-man-sprays-moviegoers-with-bear-spray-in-kitchener-and-whitby", "14 |  7 | news/9648864-kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing", " 8 |  7 | news/9662352-waterloo-staff-recommends-keeping-crematorium-open", "12 |  7 | news/9663800-kitchener-family-facing-deportation",],
-                'registration_most_read': [],
-            }
+            # parsely stats
+            'hp_posts': 53.8,
+            'hp_section': 8.3,
+            'hp_links': ["Father who died with daughter at Rattlesnake Point was in bitter custody dispute with ex-wife | 11,731","thespec.com/hamilton-news/ | 7,481","Who killed Jeffrey Johnson? ‘None of us get it,’ his widow says | 2,997","Maria Figliola’s regret Part Two: A hit man, a widow and a jailhouse interview with Jon Wells | 2,917","Maria Figliola’s regret: A hit man, a widow and a jailhouse interview with Jon Wells | 2,299","UPDATED: Two plead guilty in home invasion at Hamilton mobster’s Mountain home | 2,278","thespec.com/user/login/ | 2,255","Hamilton law firm must pay $426k for ‘negligent’ representation | 2,092","Naloxone-resistent drug rattles Hamilton street community | 1,968",],
+            # KPI ACTUAL
+            'min/v': '1:41',
+            'pv_omni': 3241788,
+            # KPI target
+            'min/v target': '2:03',
+            'pv_target': 6421495,
+            # NOT USED
+            'registration_last_clicks': [],
+            'registration_most_read': 'NA',
+            # omniture
+            'freq': 30.7,
         },
         'standard': {
-            'daily': {
-                # parsely stats
-                'hp_posts': 'NA',
-                'hp_section': 'NA',
-                'hp_links': 'NA',
-                # omniture
-                'freq': 'NA',
-                # readerboard
-                'pv/v': 'NA',
-                'min/v': 'NA',
-                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
-                'registration_most_read': 'NA',
-            },
-            'weekly': {
-                # parsely stats
-                'hp_posts': 49.6,
-                'hp_section': 31.1,
-                'hp_links': ["/niagara-announcements/obituaries-death-notices/ | 22,374","/stcatharines-on-news/ | 4,657","Increasing cost of housing pushing people out of Hamilton | 2,505","Calls from public result in impaired driving charges laid against Welland man | 2,320","Family searching for answers to mysterious illness | 1,914","Cancer claims Niagara Falls teen Alex Luey | 1,750","Police investigate car fire, hit and run in Thorold | 1,663","Caregiver who helped herself to senior’s cash deserves ‘special place in hell’ | 1,533","Time served for woman who attempted to defraud Niagara bank | 1,516","Obit: St. Catharines-born Bernard Slade created popular TV sitcoms like The Partridge Family | 1,475",],
-                # omniture
-                'freq': 31.6,
-                # readerboard
-                'pv/v': 2.47,
-                'min/v': '1.67',
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            },
-            'monthly': {
-                # parsely stats
-                'hp_posts': 58.6,
-                'hp_section': 30.1,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 121,297","stcatharines-on-news/ | 27,949","Fatal crash closes QEW after freezing rain hits Niagara | 8,037","Shot fired during St. Catharines fight, man sent to hospital | 4,603","Mom killed in taxi crash, daughter of Port Colborne councillor, ‘most caring person you could ever meet’ | 4,438","Video: Police investigating racist rant in Niagara mall parking spot dispute | 3,089","Hamilton woman arrested after racist rant in Niagara mall parking lot caught on video | 2,966","Impaired church leader drove wrong way on the QEW | 2,839","stcatharines-on-sports/ | 2,839","Attacker says he stabbed Niagara man because he was viewing child pornography | 2,833"],
-                # omniture
-                'freq': 33.7,
-                # readerboard
-                'pv/v': 2.40,
-                'min/v': 1.61,
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            }
+            # parsely stats
+            'hp_posts': 58.5,
+            'hp_section': 8.4,
+            'hp_links': ["stcatharinesstandard.ca/stcatharines-on-news/ | 6,410","Fiancée critical of how Niagara cop shot by fellow officer has been portrayed | 3,339","Anonymous email at heart of Grimsby CAO suspension | 2,469","Police looking for missing St. Catharines woman | 2,325","St. Catharines firefighters told to cover up for charity calendars | 2,313","St. Catharines residents raising stink about cannabis production facilities | 2,115","Man convicted of leaving scene of motorcycle crash that claimed the life of his best friend | 2,021","Photos: Driver delivers car through St. Catharines pizzeria storefront | 1,902","St. Catharines landlord given ‘benefit of the doubt’ at emotional meeting over eviction notices | 1,882","Judge bans Niagara Falls hotel worker from hotels | 1,808",],
+            # KPI ACTUAL
+            'min/v': '2:44',
+            'pv_omni': 1904788,
+            # KPI targets
+            'min/v target': '3:14',
+            'pv_target': 3317181,
+            # NOT USED
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
+            # omniture
+            'freq': 111,
+        },
+        'record': {
+            # parsely stats
+            'hp_posts': 41.5,
+            'hp_section': 9.2,
+            'hp_links': ["waterlooregion-news/ | 3,381","Father who died with daughter at Rattlesnake Point was in bitter custody dispute with ex-wife | 2,746","Jazz guitarist Allan Johnson found dead in his Waterloo apartment | 1,922","Judge blasts child protection worker, police in scathing ruling | 1,097","Man was shot by regional police officer after low-speed pursuit through muddy field | 1,003","Waterloo Region the fastest growing urban area in Canada | 977","Police seize car they suspect hit man in fatal hit-and-run crash in Kitchener | 967","Man outed by social media, brings cash back to police | 960","Preston Springs water costing Cambridge $260K per year | 875","‘This is not a selfie moment anymore’ | 740",],
+            # KPI ACTUAL
+            'min/v': '1:23',
+            'pv_omni': 1507806,
+            # KPI targets
+            'min/v target': '1:46',
+            'pv_target': 2678579,
+            # NOT USED
+            'registration_last_clicks': [(10, 'voting-issues-delay-result-in-extremely-close-kitchener-conestoga-race'), (6, 'joseph-garreffa-speaks-out-about-leaving-kitchener-rangers'), (5, 'liberal-leadership-hopeful-alvin-tedjo-promising-to-end-catholic-school-funding'), (5, 'major-waterloo-rec-centre-expansion-slated-for-completion-in-2022'), (4, 'live-updates-2019-federal-election-results'), (3, 'region-voters-stick-with-liberal-incumbents-in-four-ridings'), (2, 'virus-found-in-carp-from-alder-lake-in-new-dundee'), (3, 'driver-charged-after-collision-with-ion-train-in-kitchener'), (2, 'fence-goes-up-around-kitchener-eyesore-'), (2, 'kitchener-conestoga-has-been-a-conservative-stronghold-but-the-riding-is-changing'), (3, 'therecord-contact-us')],
+            # omniture
+            'freq': 111,
         },
         'review': {
-            'daily': {
-                # parsely stats
-                'hp_posts': 'NA',
-                'hp_section': 'NA',
-                'hp_links': 'NA',
-                # omniture
-                'freq': 'NA',
-                # readerboard
-                'pv/v': 'NA',
-                'min/v': 'NA',
-                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
-                'registration_most_read': 'NA',
-            },
-            'weekly': {
-                # parsely stats
-                'hp_posts': 48.4,
-                'hp_section': 33.1,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 15,603","niagarafalls-on-news/ | 3,011","Cancer claims Niagara Falls teen Alex Luey | 1,682","Calls from public result in impaired driving charges laid against Welland man | 1,437","Time served for woman who attempted to defraud Niagara bank | 1,117","Family searching for answers to mysterious illness | 1,073","Sparkle Awards honour ‘amazing’ light displays in Niagara Falls | 1,066","Increasing cost of housing pushing people out of Hamilton | 904","Niagara malls see ‘huge numbers of shoppers’ on Boxing Day | 901","Caregiver who helped herself to senior’s cash deserves ‘special place in hell’ | 844",],
-                # omniture
-                'freq': 31.6,
-                # readerboard
-                'pv/v': 2.94,
-                'min/v': '1.90',
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            },
-            'monthly': {
-                # parsely stats
-                'hp_posts': 111,
-                'hp_section': 111,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 78,878","niagarafalls-on-news/ | 17,144","Body discovered in Carl Road workshop blaze in Niagara Falls | 2,691","'What happened?': 2 Burlington men dead in bizarre crash at Queenston-Lewiston Bridge | 2,623","72-storey hotel, residential development approved in Niagara Falls | 2,271","Niagara Falls woman upset by response after Jeep ransacked in casino parking garage | 2,197","Thundering Waters land for sale | 2,163","Snowfall warning issued for Niagara | 1,961","Dental office manager stole $420,000 for vehicle, trips, kids’ education, gambling | 1,920","Snowstorm forces tunnel closure, keeps plows busy across Niagara | 1,912",],
-                # omniture
-                'freq': 111,
-                # readerboard
-                'pv/v': 111,
-                'min/v': '111',
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            }
+            # parsely stats
+            'hp_posts': 57.9,
+            'hp_section': 7.9,
+            'hp_links': ["niagarafalls-on-news/ | 4,146","James Cameron recalls former Niagara Falls teacher as mentor during Oscars telecast | 2,135","Niagara Falls council suspends Ioannoni’s pay, removes her from boards, committees | 1,994","Fiancée critical of how Niagara cop shot by fellow officer has been portrayed | 1,775","Judge bans Niagara Falls hotel worker from hotels | 1,666","Large scale innovative medical arts centre planned for Montrose Road in Niagara Falls | 1,642","Man convicted of leaving scene of motorcycle crash that claimed the life of his best friend | 1,476","Niagara Falls city councillor Ioannoni wants apology, reversal of punishment | 1,222","Mount Carmel Monastery’s Avila Hall to come tumbling down | 1,218","Police investigating attempted home robbery in Niagara Falls | 1,200",],
+            # KPI ACTUAL
+            'min/v': '3:06',
+            'pv_omni': 811663,
+            # KPI targets
+            'min/v target': '3:14',
+            'pv_target': 1578765,
+            # NOT USED
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
+            # omniture frequency
+            'freq': 111,
         },
         'tribune': {
-            'daily': {
-                # parsely stats
-                'hp_posts': 'NA',
-                'hp_section': 'NA',
-                'hp_links': 'NA',
-                # omniture
-                'freq': 'NA',
-                # readerboard
-                'pv/v': 'NA',
-                'min/v': 'NA',
-                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
-                'registration_most_read': 'NA',
-            },
-            'weekly': {
-                # parsely stats
-                'hp_posts': 49.9,
-                'hp_section': 36.0,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 16,763","welland-on-news/ | 3,403","Calls from public result in impaired driving charges laid against Welland man | 2,414","Time served for woman who attempted to defraud Niagara bank | 1,253","Threat against Welland politicians leads to extra security measures | 1,236","Welland councillor defends position on denying request for Out of the Cold program | 1,225","Can’t grow or sell pot, small staff remains at CannTrust’s Pelham site | 1,070","Cancer claims Niagara Falls teen Alex Luey | 1,035","Family searching for answers to mysterious illness | 917","Caregiver who helped herself to senior’s cash deserves ‘special place in hell’ | 908",],
-                # omniture
-                'freq': 38.8,
-                # readerboard
-                'pv/v': 3.23,
-                'min/v': '2.07',
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            },
-            'monthly': {
-                # parsely stats
-                'hp_posts': 59.1,
-                'hp_section': 34.3,
-                'hp_links': ["niagara-announcements/obituaries-death-notices/ | 88,560","welland-on-news/ | 18,937","Mom killed in taxi crash, daughter of Port Colborne councillor, ‘most caring person you could ever meet’ | 4,352","More people coming forward with ‘bad gas’ stories | 3,235","Port Colborne taxi passenger killed in collision on Highway 3 | 3,044","Family of Port Colborne crash victim Nicole Bates overwhelmed by community’s generosity | 3,023","Death of 29-year-old Welland woman treated as homicide | 2,870","Fatal crash closes QEW after freezing rain hits Niagara | 2,462","Calls from public result in impaired driving charges laid against Welland man | 2,415","Pelham woman dies after being struck by car | 2,226",],
-                # omniture
-                'freq': 39.5,
-                # readerboard
-                'pv/v': 3.22,
-                'min/v': 2.06,
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            }
+            # parsely stats
+            'hp_posts': 57.0,
+            'hp_section': 9.2,
+            'hp_links': ["welland-on-news/ | 4,638","Fiancée critical of how Niagara cop shot by fellow officer has been portrayed | 1,970","Man convicted of leaving scene of motorcycle crash that claimed the life of his best friend | 1,644","Troubled waters for proposed Welland waterpark | 1,244","Bear mace allegedly used in Welland altercation | 1,177","Welland developer to receive grants despite incomplete submissions | 1,049","Obituary: Former Welland educator and politician Bob Muir dies at 78 | 1,048","Welland man who uploaded child porn to Facebook awaits sentencing | 894","Photos: Taking Port Colborne’s Polar Plunge for Special Olympics | 892","Anonymous email at heart of Grimsby CAO suspension | 863",],
+            # KPI ACTUAL
+            'min/v': '3:14',
+            'pv_omni': 766179,
+            # KPI targets
+            'min/v target': '3:14',
+            'pv_target': 1543287,
+            # NOT USED
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
+            # omniture
+            'freq': 44.0,
         },
         'examiner': {
-            'daily': {
-                # parsely stats
-                'hp_posts': 'NA',
-                'hp_section': 'NA',
-                'hp_links': 'NA',
-                # omniture
-                'freq': 'NA',
-                # readerboard
-                'pv/v': 'NA',
-                'min/v': 'NA',
-                'registration_last_clicks': [(11, 'hamilton-area-election-results'),(6, 'beamsville-cannabis-operation-closes-100-staff-laid-off'),(5, 'digital-signup'),(5, 'green-keeps-hamilton-s-urban-heartland-ndp-orange'),(4, 'bullying-review-panel-proposed-for-hamilton-public-school-board'),(4, 'conservative-mp-david-sweet-narrowly-ekes-out-5th-term-in-flamborough-glanbrook'),(4, 'doctor-says-woman-was-basically-dead-weight-during-alleged-gang-sex-assault'),(4, 'good-shepherd-s-downtown-warehouse-transforms-into-35-stunning-subsidized-apartments'),(4, 'hemsworth-in-the-hammer-have-you-seen-liam-in-downtown-hamilton-'),(4, 'live-updates-hamilton-area-election-results')],
-                'registration_most_read': 'NA',
-            },
-            'weekly': {
-                # parsely stats
-                'hp_posts': 55.6,
-                'hp_section': 25.1,
-                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 14,209","peterborough-on-news/ | 3,053","Masked man robs Peterborough grocery store | 2,358","Sinkhole shuts down Highway 401 eastbound lane | 1,800","Fatal collision closes South Baptiste Lake Road north of Bancroft | 1,630","Mortons donate $25K to Peterborough Humane Society | 1,573","What’s open, closed for Christmas holidays in Peterborough | 1,556","Farewell to The Peterborough Examiner, but not to local news | 1,491","Son alerts family to dangerous CO levels in Peterborough home | 1,386","Low-rise Peterborough neighbourhood preps for highrise development | 1,369",],
-                # omniture
-                'freq': 30.7,
-                # readerboard
-                'pv/v': 2.86,
-                'min/v': '1.60',
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            },
-            'monthly': {
-                # parsely stats
-                'hp_posts': 61.0,
-                'hp_section': 26.3,
-                'hp_links': ["kawartha-announcements/obituaries-death-notices/ | 81,434","peterborough-on-news/ | 16,793","peterborough-on-sports/ | 4,277","peterborough-on-opinion/ | 3,676","Updated: Demolition begins as Peterborough council discusses saving Canadian Malt building | 3,090","Crash closes Highway 7 at Lily Lake Road west of Peterborough | 2,550","Former MPP Jeff Leal says he and others snubbed at 407 opening | 2,377","Man stabbed outside Peterborough Square | 2,365","Masked man robs Peterborough grocery store | 2,359","UPDATE: Peterborough County OPP nab gunman after search in woods | 2,318",],
-                # omniture
-                'freq': 36.1,
-                # readerboard
-                'pv/v': 2.82,
-                'min/v': 1.59,
-                'registration_last_clicks': 'NA',
-                'registration_most_read': 'NA',
-            }
+            # parsely stats
+            'hp_posts': 64.5,
+            'hp_section': 8.3,
+            'hp_links': ["peterborough-on-news/ | 4,678","Fights on the ice and even a fight in the stands at Petes game | 3,247","City police investigation in downtown Peterborough | 2,838","Building goes up in flames in Lakefield | 2,510","Sexual enhancement products seized from Forbidden Pleasures | 1,857","Peterborough police share images of ‘persons of interest’ | 1,824","UPDATED: Cyclist injured on George Street North in downtown Peterborough | 1,766","Two people suspected in jigsaw theft | 1,689","Attempted murder charge laid in Warkworth road rage incidents | 1,452","Bloody handprint placed on Peterborough city hall sign | 1,330",],
+            # KPI ACTUAL
+            'min/v': '2:32',
+            'pv_omni': 1167652,
+            # KPI target
+            'min/v target': '3:32',
+            'pv_target': 2199628,
+            # NOT USED
+            'registration_last_clicks': 'NA',
+            'registration_most_read': 'NA',
+            # omniture
+            'freq': 111,
         }
     },
     # --[ STATIC DATA ]
@@ -258,7 +114,7 @@ var = {
     },
     'daily': {
         'period': 90,
-        'term': 'day', 
+        'term': 'day',
         'files': {
             'site': 'site-2019.csv',
             'pages': 'pages.csv',
@@ -382,6 +238,8 @@ dashboard = {
             'search_pv': [1321504, 1283449, 1448467, 1509263, 1349121, 1166223, 1219682, 1089131, 1087570, 1327831, 1081974, 1110204],
             'fb_pv': [827411, 818391, 727502, 756234, 556684, 695219, 634823, 558515, 639787, 754195, 748751, 675553],
             'tco_pv': [91526, 86815, 95147, 94072, 84587, 87535, 94354, 85140, 78435, 80880, 76551, 71611],
+            'pv/ret vis': [4.617, 4.725, 4.479, 4.968, 5.173, 4.938, 4.815, 4.517, 4.733, 4.929, 5.236, 5.086, 5.29, 5.053, 4.806, 4.773, 4.809, 4.498, 4.402, 4.485, 4.562, 4.332, 4.556, 4.328, 4.675, 4.605, 5.06, 4.899, 4.669, 4.715, 4.752, 4.818, 4.636, 4.766, 4.593, 4.422, 4.84, 4.657, 4.37, 4.664, 4.713, 4.821, 4.817, 4.552, 4.602, 4.171, 4.664, 4.366, 4.285, 4.376, 4.573, 4.397, 4.517, 4.326, 4.547, 4.525, 4.544, 4.633, 4.653, 4.177, 4.219, 4.098],
+            'avg min/ret vis': [2.984, 3.034, 3.257, 2.828, 3.15, 2.961, 2.526, 2.266, 2.493, 2.964, 2.759, 3.404, 2.787, 2.526, 2.515, 2.347, 2.63, 2.45, 2.46, 2.468, 2.676, 2.293, 2.664, 2.375, 2.693, 2.755, 2.646, 2.68, 2.504, 2.608, 2.976, 2.672, 3.43, 3.711, 3.148, 3.159, 3.18, 3.263, 3.053, 3.114, 3.138, 3.067, 3.059, 2.959, 3.05, 2.744, 2.986, 2.643, 2.659, 2.615, 2.861, 2.646, 2.95, 2.654, 2.814, 2.978, 2.643, 2.86, 2.754, 2.488, 2.544, 2.515],
             'time_ref': ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
         },
         {

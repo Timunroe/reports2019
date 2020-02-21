@@ -46,6 +46,13 @@ style = {
 
 %>
 
+% if freq != 'daily':
+<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
+    <h2 {{!style["h2"]}}>SOCIAL NETWORK FOLLOWERS</h2>
+    <p>OPTIONAL</p>
+</div>
+% end
+
 <div style="font-family: sans-serif;">
     <h2 {{!style["h2"]}}>TRAFFIC PRIMER</h2>
     <p {{!style["p"]}}><a target="_blank" href="https://thespec.net/help/primer.html">Defining the terms</a> used to describe traffic to our site.</p>

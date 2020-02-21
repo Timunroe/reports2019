@@ -57,7 +57,7 @@ style = {
         <span style="font-weight: 600;">Avg time:</span> {{data['avg time']}}<br />
         <span style="font-weight: 600;">Visitors:</span> {{data['returning uv%']}}% returning
     </p>
-    % if inputs['hp_section'] != 'NA':
+    % if freq != 'daily':
     <h4 {{!style["h4"]}}>Activity after viewing home page</h4>
     <p {{!style["p"]}}>
             <span style="font-weight: 600;">{{inputs['hp_posts']}}%</span>

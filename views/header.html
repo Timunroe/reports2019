@@ -54,7 +54,11 @@ style = {
     </head>
     <body>
         <h2>{{site.title()}} {{freq}} report</h2>
+        % if freq != 'daily':
         <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-            <h2 {{!style["h2"]}}>PATH TO REGISTRATION: Last 3 clicks in 7 days</h2>
-            <h2 {{!style["h2"]}}>MOST READ BY REGISTERED USERS (page views)</h2>
+            <h2 {{!style["h2"]}}>LAST CLICK:</h2>
+            <p><small>Top article views this month prior to new sign-in</small></p>
+            <p>OPTIONAL</p>
         </div>
+        % end
+        

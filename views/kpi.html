@@ -46,43 +46,15 @@ style = {
 %>
 
 % site = data['site']
-% freq = data['freq']
 
 <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid silver; font-family: sans-serif;">
-    <h2 {{!style["h2"]}}>KPI FOR OKR:</h2>
-    % if data['site'] in ['spectator', 'record']:
+    <h2 {{!style["h2"]}}>KPI:</h2>
+    <p {{!style["p"]}}>KPIs are monthly and will rise over the month.</p>
     <p {{!style["p"]}}>
-    <span style="font-weight: 600;">Return frequency (less than 1 day): {{data['input'][site][freq]['freq']}}%</span></br>
-    Key Result: Maintain recency of visits that come within the day. Higher is better.</br>
-    % if data['site'] == 'spectator':
-    KPI/Target level: 28%</br>
-    Trend: Better than last week.
-    % end
+    <span style="font-weight: 600;">Avg. time:</span> {{data['input'][site]['min/v']}} | Target: {{data['input'][site]['min/v target']}} <br>
+    <small>Per returning visitor on 'news|local' articles published this month</small></p>
+    <p {{!style["p"]}}><span style="font-weight: 600;">PV this month (Omniture): </span> {{data['input'][site]['pv_omni']}}  | Target: {{data['input'][site]['pv_target']}} | {{round(100*( (data['input'][site]['pv_omni'] - data['input'][site]['pv_target']) /data['input'][site]['pv_target'] ),1)}}%<br>
     </p>
-    <p {{!style["p"]}}>
-    <span style="font-weight: 600;">Page views/visitor/day: {{data['input'][site][freq]['pv/v']}} (last 30 days)</span></br>
-    Key Result: Increase average number of pages consumed by visitors. Higher is better.</br>
-    % if data['site'] == 'spectator':
-    KPI/Target level: 2.4</br>
-    Trend: xxxx.
-    % end
-    </p>
-    <p {{!style["p"]}}>
-    <span style="font-weight: 600;">Home page bounce rate: 
-        {{round(100 - (data['input'][site][freq]['hp_posts'] + data['input'][site][freq]['hp_section']),1)}}%</span></br>
-    Key Result: Decrease percentage of visitors to the home page who leave without clicking an article or landing page. Lower is better.</br>
-    % if data['site'] == 'spectator':
-    KPI/Target level: Low-30s</br>
-    Trend: xxxx.
-    % end
-    </p>
-    % else:
-    <p {{!style["p"]}}>
-    <span style="font-weight: 600;">Page views per visitor:</span> {{data['input'][site][freq]['pv/v']}} | Target level: 3:5 Standard/3:2 Examiner<br>
-    <span style="font-weight: 600;">Avg. active minutes per visitor:</span> {{data['input'][site][freq]['min/v']}}  | Target level: 2:30 Standard/1:42 Examiner<br>
-    <span style="font-weight: 600;">Avg. engagement time</span> for top 10 local, non-breaking articles (ranked by engagement time)<br>
-    Last week: xxxx | Target level: 1:25 Standard /1:10 Examiner.<br>
-    Data: 
-    </p>
+    <p {{!style["p"]}}>of target left with xxx% left in month.</p>
     % end
 </div>

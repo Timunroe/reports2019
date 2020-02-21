@@ -132,3 +132,4 @@ reports/spectator_weekly.html
 *.numbers
 reports/spectator_weekly.html
 reports/spectator_weekly.html
+secret.py
